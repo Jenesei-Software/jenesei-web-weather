@@ -17,7 +17,7 @@ export const DetailTodayCard = (params: IDetailTodayCard) => {
                 {params.label}
             </div>
             <img className='DetailTodayCard__Icon' src={weatherIcon({
-                WeatherText: params.type,
+                WeatherIcon: params.type,
                 day: params.day
             })} alt="Weather Icon" />
             <div className='DetailTodayCard__Date'>

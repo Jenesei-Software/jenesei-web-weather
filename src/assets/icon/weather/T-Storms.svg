@@ -65,7 +65,7 @@
 <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.44 0"/>
 <feBlend mode="normal" in2="shape" result="effect2_innerShadow_13_171"/>
 </filter>
-<filter id="filter5_i_13_171" x="109" y="244" width="27.1506" height="31.1506" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter5_i_13_171" x="109" y="244" width="27.1506" height="31.1507" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>

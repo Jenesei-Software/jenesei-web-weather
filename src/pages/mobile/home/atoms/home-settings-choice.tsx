@@ -20,7 +20,7 @@ export const HomeSettingsChoice = (params:IHomeSettingsChoice) => {
         <div className='HomeSettingsChoice' onClick={changeSetShowSearch}>
             <img className='HomeSettingsChoice__LocationIcon' src={LocationIcon} alt="Location Icon" />
             <div className='HomeSettingsChoice__Label'>
-                {params.infoIpLocation?.AdministrativeArea?.LocalizedName}
+                {params.infoIpLocation?.LocalizedName}
             </div>
             {showSearch ?
                 <img className='HomeSettingsChoice__DropIcon' src={DropDownIcon} alt="Drop Down Icon" />
