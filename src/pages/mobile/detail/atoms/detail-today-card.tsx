@@ -4,7 +4,7 @@ import '../styles/detail-today-card.css'
 
 export interface IDetailTodayCard {
     label: string
-    type: string
+    type: number
     date: string
     toTime: boolean
     day: boolean
