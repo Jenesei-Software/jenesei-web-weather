@@ -1,11 +1,9 @@
 .HomeImage {
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: center;
-  height: 35%;
 }
 .HomeImage__Icon {
-  width: 80%;
-  height: 80%;
+  width: 100dvw;
+  height: 26dvh;
 }

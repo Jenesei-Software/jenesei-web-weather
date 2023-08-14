@@ -1,11 +1,13 @@
 import { HomeSettingsChoice } from '../atoms/home-settings-choice';
 import { HomeSettingsNotification } from '../atoms/home-settings-notification';
 import '../styles/home-settings.css'
-
-export const HomeSettings = () => {
+interface IHomeSettings {
+    infoIpLocation: any
+}
+export const HomeSettings = (params:IHomeSettings) => {
     return (
         <div className='HomeSettings'>
-            <HomeSettingsChoice />
+            <HomeSettingsChoice infoIpLocation={params.infoIpLocation} />
             <HomeSettingsNotification />
         </div>
     );

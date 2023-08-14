@@ -1,6 +1,6 @@
 .AppGeneralMobile {
   box-sizing: border-box;
-  padding-top: 52px;
+  padding-top: 6dvh;
   position: relative;
   width: 100dvw;
   height: 100dvh;
@@ -12,6 +12,9 @@
     --linear-blue-bg,
     linear-gradient(225deg, #47bfdf 0%, #4a91ff 100%)
   );
+}
+.AppGeneralMobile:has(.Home){
+  padding-bottom: 6dvh;
 }
 .AppGeneralMobile__WallpaperLeftLine {
   position: absolute;

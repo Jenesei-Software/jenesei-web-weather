@@ -1,17 +1,14 @@
 import { createEvent, createStore } from "effector";
+import { ACCU_WEATHER_API_KEY } from "../axiosInstance/axiosInstance";
+import { getForecastNow } from "../forecast-api/get-forecast-now";
 
-export interface IInfoLocation {
-  label: string;
-  type: string;
-}
-export const DEFAULT_INFO_LOCATION: IInfoLocation = {
-  label: "Krasnoyarsk",
-  type: "sun",
-};
-export const $infoLocation = createStore<IInfoLocation | null>(null);
-export const setInfoLocation = createEvent<IInfoLocation | null>();
-$infoLocation.on(setInfoLocation, (_, val) => val);
+export const $infoIpLocation = createStore<any | null>(null);
+export const setInfoIpLocation = createEvent<any | null>();
+$infoIpLocation.on(setInfoIpLocation, (_, val) => val);
 
-$infoLocation.updates.watch((info: IInfoLocation | null) => {
-  console.log("WATCH. infoLocation info:", info);
+$infoIpLocation.updates.watch((info: any | null) => {
+  console.log("WATCH. infoIpLocation info:", info);
+  if (info) {
+    getForecastNow(info?.Key, ACCU_WEATHER_API_KEY);
+  }
 });

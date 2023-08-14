@@ -6,11 +6,12 @@ import LocationIcon from '../../../../assets/icon/location.svg'
 import DropDownIcon from '../../../../assets/icon/drop-down.svg'
 import DropUpIcon from '../../../../assets/icon/drop-up.svg'
 
-import { $infoLocation } from '../../../../ui/stores/info-location';
 import { $showSearch, setShowSearch } from '../../../../ui/stores/show-search';
 
-export const HomeSettingsChoice = () => {
-    const infoLocation = useStore($infoLocation);
+interface IHomeSettingsChoice {
+    infoIpLocation: any
+}
+export const HomeSettingsChoice = (params:IHomeSettingsChoice) => {
     const showSearch = useStore($showSearch);
     const changeSetShowSearch = () => {
         setShowSearch(!showSearch);
@@ -19,7 +20,7 @@ export const HomeSettingsChoice = () => {
         <div className='HomeSettingsChoice' onClick={changeSetShowSearch}>
             <img className='HomeSettingsChoice__LocationIcon' src={LocationIcon} alt="Location Icon" />
             <div className='HomeSettingsChoice__Label'>
-                {infoLocation?.label}
+                {params.infoIpLocation?.AdministrativeArea?.LocalizedName}
             </div>
             {showSearch ?
                 <img className='HomeSettingsChoice__DropIcon' src={DropDownIcon} alt="Drop Down Icon" />
