@@ -1,3 +1,5 @@
+theme-color is #008296
+
 Naming
 ------
 value
