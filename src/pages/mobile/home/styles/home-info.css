@@ -1,6 +1,7 @@
 .HomeInfo {
   width: max-content;
-  height: auto;
+  height: 42dvh;
+  width: 90dvw;
   position: relative;
   display: flex;
   align-items: center;
@@ -16,6 +17,9 @@
   background: rgba(255, 255, 255, 0.3);
   filter: blur(2.5px);
   width: -webkit-fill-available;
+  max-width: 300px;
+  max-height: 330px;
+  height: 100%;
 }
 .HomeInfo__Container {
   border-radius: 20px;
@@ -27,12 +31,13 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  padding: 6dvh 10dvw 6dvh 10dvw;
-  max-width: 345px;
-  max-height: 400px;
-  gap: 2dvh;
+  max-width: 300px;
+  max-height: 330px;
+  gap: 8px;
   white-space: nowrap;
   box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
 .HomeInfo__Container__Date {
   color: #fff;

@@ -2,8 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 24dvh;
 }
 .HomeImage__Icon {
   width: 100dvw;
-  height: 26dvh;
+  height: 100%;
+  object-fit: contain;
 }

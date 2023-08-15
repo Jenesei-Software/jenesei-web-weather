@@ -6,7 +6,7 @@ import WindyIcon from '../../../../assets/icon/windy.svg'
 interface IHomeInfo {
     forecastNow: any
 }
-export const HomeInfo = (params:IHomeInfo) => {
+export const HomeInfo = (params: IHomeInfo) => {
     const nowDate = () => {
         const options: any = { day: 'numeric', month: 'long' };
         return "Today, " + new Date().toLocaleDateString('en-US', options);
@@ -28,7 +28,7 @@ export const HomeInfo = (params:IHomeInfo) => {
                     </div>
                 </div>
                 <div className='HomeInfo__Container__Label'>
-                    Cloudy
+                    {params.forecastNow[0]?.WeatherText}
                 </div>
                 <div className='HomeInfo__Container__WindyAndHum'>
                     <div className='HomeInfo__Container__Windy'>
