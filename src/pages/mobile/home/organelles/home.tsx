@@ -11,7 +11,7 @@ import { HomeReport } from '../molecules/home-report';
 import { setParamsURL } from '../../../../functions/stores/params-url';
 import { $infoLocation } from '../../../../functions/stores/info-location';
 import { $forecastNow } from '../../../../functions/stores/info-forecast';
-import { fetchLocationByIp } from '../../../../functions/get-location/get-location-by-position';
+import { defaultGetLocationByPosition } from '../../../../functions/get-location/get-location-by-position';
 
 
 export const Home = () => {
@@ -22,7 +22,7 @@ export const Home = () => {
         if (name) {
             setParamsURL(name);
         } else {
-            fetchLocationByIp()
+            defaultGetLocationByPosition()
         }
     }, [name])
     return (

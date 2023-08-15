@@ -1,6 +1,9 @@
-import { AccuWeatherAxios } from "../axios-instance/axios-instance";
+import {
+  ACCU_WEATHER_API_KEY,
+  AccuWeatherAxios,
+} from "../axios-instance/axios-instance";
 
-import { setLocation } from "../stores/info-location";
+import { $infoPermissionLocation, setLocation } from "../stores/info-location";
 
 export const getLocationByPosition = async (
   latitude: number,
@@ -19,4 +22,14 @@ export const getLocationByPosition = async (
     .catch((error) => {
       throw error;
     });
+};
+
+export const defaultGetLocationByPosition = () => {
+  const location = $infoPermissionLocation.getState();
+  if (location && location.latitude && location.longitude)
+    getLocationByPosition(
+      location.latitude,
+      location.longitude,
+      ACCU_WEATHER_API_KEY
+    );
 };

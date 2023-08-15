@@ -1,6 +1,6 @@
 import { AccuWeatherAxios } from "../../functions/axios-instance/axios-instance";
-import { $infoPermissionLocation, setLocation } from "../stores/info-location";
-import { getLocationByPosition } from "./get-location-by-position";
+import { setLocation } from "../stores/info-location";
+import { defaultGetLocationByPosition } from "./get-location-by-position";
 
 export const getLocationByParamsAccuWeather = async (
   params: string,
@@ -16,22 +16,10 @@ export const getLocationByParamsAccuWeather = async (
       if (res.data.length !== 0) {
         setLocation(res.data[0]);
       } else {
-        const location = $infoPermissionLocation.getState();
-        if (location && location.latitude && location.longitude)
-          getLocationByPosition(
-            location.latitude,
-            location.longitude,
-            accuWeatherApiKey
-          );
+        defaultGetLocationByPosition();
       }
     })
     .catch(() => {
-      const location = $infoPermissionLocation.getState();
-      if (location && location.latitude && location.longitude)
-        getLocationByPosition(
-          location.latitude,
-          location.longitude,
-          accuWeatherApiKey
-        );
+      defaultGetLocationByPosition();
     });
 };
