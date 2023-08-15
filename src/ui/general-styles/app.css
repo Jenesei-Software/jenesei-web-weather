@@ -16,7 +16,7 @@
   object-fit: cover;
 }
 /* 
-TODO:Сrutch
+TODO:Сrutch.
 */
 .App:has(.SearchHere-Show) .App__Wallpaper {
   animation: hideImage 1s forwards;

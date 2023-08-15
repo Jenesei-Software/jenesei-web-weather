@@ -11,7 +11,7 @@ import { askForPushNotificationPermission } from "./functions/ask-permission/ask
 import AppWallpaper from './assets/icon/wallpaper.svg'
 
 /* 
-TODO:Сrutch
+TODO:Сrutch.
 */
 document.addEventListener('touchmove', function (event: any) {
   event = event.originalEvent || event;

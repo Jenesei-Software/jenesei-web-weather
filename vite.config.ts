@@ -10,7 +10,7 @@ export default defineConfig({
         name: "Jenesei Weather",
         short_name: "JenWeather",
         start_url: "/",
-        display: "standalone",
+        display: "fullscreen",
         description: "JenWeather is Nice",
         lang: "eng",
         theme_color: "#008296",
