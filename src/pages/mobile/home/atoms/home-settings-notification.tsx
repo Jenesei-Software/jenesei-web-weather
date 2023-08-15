@@ -4,8 +4,8 @@ import '../styles/home-settings-notification.css'
 
 import NotificationIcon from '../../../../assets/icon/notification.svg'
 
-import { $showNotification, setShowNotification } from '../../../../ui/stores/show-notification';
-import { $infoNotification } from '../../../../ui/stores/info-notification';
+import { $showNotification, setShowNotification } from '../../../../functions/stores/show-notification';
+import { $infoNotification } from '../../../../functions/stores/info-notification';
 
 export const HomeSettingsNotification = () => {
     const showNotification = useStore($showNotification);

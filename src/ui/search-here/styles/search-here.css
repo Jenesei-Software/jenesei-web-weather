@@ -1,0 +1,23 @@
+.SearchHere {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 2;
+  transition: 0.15s linear;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.SearchHere__Map {
+  width: 100%;
+  height: 60%;
+}
+.SearchHere-Show {
+  transform: translate(0, 0);
+}
+.SearchHere-Hide {
+  transform: translate(0, -100dvh);
+}

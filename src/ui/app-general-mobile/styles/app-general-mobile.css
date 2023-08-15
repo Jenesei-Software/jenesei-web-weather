@@ -8,10 +8,10 @@
   flex-direction: column;
   flex-wrap: wrap;
   overflow: hidden;
-  background: var(
+  /* background: var(
     --linear-blue-bg,
     linear-gradient(225deg, #47bfdf 0%, #4a91ff 100%)
-  );
+  ); */
 }
 .AppGeneralMobile:has(.Home){
   padding-bottom: 4dvh;

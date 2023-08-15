@@ -1,6 +1,7 @@
 .HomeSettingsChoice {
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 }
 .HomeSettingsChoice__LocationIcon {
   display: flex;

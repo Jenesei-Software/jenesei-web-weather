@@ -8,14 +8,14 @@ import { HomeSettings } from '../molecules/home-settings';
 import { HomeImage } from '../molecules/home-image';
 import { HomeInfo } from '../molecules/home-info';
 import { HomeReport } from '../molecules/home-report';
-import { setParamsURL } from '../../../../ui/stores/params-url';
-import { fetchLocationByIp } from '../../../../ui/get-location/get-location-by-ip';
-import { $infoIpLocation } from '../../../../ui/stores/info-location';
-import { $forecastNow } from '../../../../ui/stores/info-forecast';
+import { setParamsURL } from '../../../../functions/stores/params-url';
+import { $infoLocation } from '../../../../functions/stores/info-location';
+import { $forecastNow } from '../../../../functions/stores/info-forecast';
+import { fetchLocationByIp } from '../../../../functions/get-location/get-location-by-position';
 
 
 export const Home = () => {
-    const infoIpLocation = useStore($infoIpLocation);
+    const infoLocation = useStore($infoLocation);
     const forecastNow = useStore($forecastNow);
     const { name } = useParams();
     useEffect(() => {
@@ -26,11 +26,11 @@ export const Home = () => {
         }
     }, [name])
     return (
-        infoIpLocation && forecastNow && <div className='Home'>
-            <HomeSettings infoIpLocation={infoIpLocation} />
+        <div className='Home'>
+            <HomeSettings infoLocation={infoLocation} />
             <HomeImage forecastNow={forecastNow} />
             <HomeInfo forecastNow={forecastNow} />
-            <HomeReport infoIpLocation={infoIpLocation} />
+            <HomeReport infoLocation={infoLocation} />
         </div>
     );
 };

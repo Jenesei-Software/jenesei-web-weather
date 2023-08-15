@@ -21,14 +21,14 @@ export const HomeInfo = (params: IHomeInfo) => {
                 </div>
                 <div className='HomeInfo__Container__Temp'>
                     <div className='HomeInfo__Container__Temp__Number'>
-                        {params.forecastNow[0]?.Temperature?.Metric?.Value}
+                        {params.forecastNow && params.forecastNow[0]?.Temperature?.Metric?.Value}
                     </div>
                     <div className='HomeInfo__Container__Temp__Symbol'>
                         °
                     </div>
                 </div>
                 <div className='HomeInfo__Container__Label'>
-                    {params.forecastNow[0]?.WeatherText}
+                    {params.forecastNow && params.forecastNow[0]?.WeatherText}
                 </div>
                 <div className='HomeInfo__Container__WindyAndHum'>
                     <div className='HomeInfo__Container__Windy'>
@@ -40,7 +40,7 @@ export const HomeInfo = (params: IHomeInfo) => {
                         </div>
                         <div className='HomeInfo__Container__Windy__Center-Section' />
                         <div className='HomeInfo__Container__Windy__Right-Section'>
-                            {params.forecastNow[0]?.Wind?.Speed?.Metric?.Value} km/h
+                            {params.forecastNow && params.forecastNow[0]?.Wind?.Speed?.Metric?.Value} km/h
                         </div>
                     </div>
                     <div className='HomeInfo__Container__Hum'>
@@ -52,7 +52,7 @@ export const HomeInfo = (params: IHomeInfo) => {
                         </div>
                         <div className='HomeInfo__Container__Hum__Center-Section' />
                         <div className='HomeInfo__Container__Hum__Right-Section'>
-                            {params.forecastNow[0]?.RelativeHumidity} %
+                            {params.forecastNow && params.forecastNow[0]?.RelativeHumidity} %
                         </div>
                     </div>
                 </div>

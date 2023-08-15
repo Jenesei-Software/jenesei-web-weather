@@ -1,12 +1,12 @@
 
-import { AccuWeatherOne } from "../axiosInstance/axiosInstance";
+import { AccuWeatherAxios } from "../axios-instance/axios-instance";
 import { setForecast10Days } from "../stores/info-forecast";
 
-export const getForecast10Days = async (
+export const getForecast10DaysAccuWeather = async (
   locationKey: string,
   accuWeatherApiKey: string
 ) => {
-  AccuWeatherOne.get(`forecasts/v1/daily/10day/${locationKey}`, {
+  AccuWeatherAxios.get(`forecasts/v1/daily/10day/${locationKey}`, {
     params: {
       apikey: accuWeatherApiKey,
     },

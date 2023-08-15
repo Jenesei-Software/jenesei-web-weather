@@ -5,8 +5,8 @@ import { DetailToday } from '../molecules/detail-today';
 import { DetailNext } from '../molecules/detail-next';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { setParamsURL } from '../../../../ui/stores/params-url';
-import { fetchLocationByIp } from '../../../../ui/get-location/get-location-by-ip';
+import { setParamsURL } from '../../../../functions/stores/params-url';
+import { fetchLocationByIp } from '../../../../functions/get-location/get-location-by-position';
 
 export const Detail = () => {
     const { name } = useParams();

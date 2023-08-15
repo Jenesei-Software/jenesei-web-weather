@@ -1,4 +1,4 @@
-import { weatherIcon } from '../../../../ui/weather-icon/weather-icon'
+import { weatherIcon } from '../../../../functions/weather-icon/weather-icon'
 
 import '../styles/detail-today-card.css'
 
