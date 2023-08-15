@@ -8,6 +8,18 @@ import { SearchHere } from "./ui/search-here/organelles/search-here";
 import { askForGeolocationPermission } from "./functions/ask-permission/ask-for-geolocation-permission";
 import { askForPushNotificationPermission } from "./functions/ask-permission/ask-for-push-notification-permission";
 
+import AppWallpaper from './assets/icon/wallpaper.svg'
+
+/* 
+TODO:Сrutch
+*/
+document.addEventListener('touchmove', function (event: any) {
+  event = event.originalEvent || event;
+  if (event.scale !== 1) {
+    event.preventDefault();
+  }
+}, false);
+
 function App() {
   useEffect(() => {
     askForGeolocationPermission()
@@ -15,6 +27,7 @@ function App() {
   }, [])
   return (
     <div className="App">
+      <img src={AppWallpaper} className="App__Wallpaper" alt="App Wallpaper" />
       <SearchHere />
       <Routes>
         <Route path="/" element={<AppGeneralMobile />}>

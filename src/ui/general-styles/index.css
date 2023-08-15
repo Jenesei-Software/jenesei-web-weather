@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
-  background: linear-gradient(225deg, #47bfdf 0%, #4a91ff 100%);
+  /* background: linear-gradient(225deg, #47bfdf 0%, #4a91ff 100%); */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

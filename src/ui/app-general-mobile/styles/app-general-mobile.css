@@ -1,23 +1,19 @@
 .AppGeneralMobile {
   box-sizing: border-box;
   padding-top: 4dvh;
+  background-color: ;
   position: relative;
   width: 100dvw;
   height: 100dvh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  overflow: hidden;
-  /* background: var(
-    --linear-blue-bg,
-    linear-gradient(225deg, #47bfdf 0%, #4a91ff 100%)
-  ); */
 }
 .AppGeneralMobile:has(.Home){
   padding-bottom: 4dvh;
 }
 .AppGeneralMobile__WallpaperLeftLine {
-  position: absolute;
+  position: fixed;
   top: 92px;
   left: -25px;
   width: 112px;
@@ -25,7 +21,7 @@
   z-index: 0;
 }
 .AppGeneralMobile__WallpaperRightLine {
-  position: absolute;
+  position: fixed;
   top: -54px;
   right: -70px;
   width: 425px;

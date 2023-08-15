@@ -5,7 +5,7 @@
   width: 100dvw;
   height: 100dvh;
   z-index: 2;
-  transition: 0.15s linear;
+  transition: 0.30s linear;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -19,5 +19,5 @@
   transform: translate(0, 0);
 }
 .SearchHere-Hide {
-  transform: translate(0, -100dvh);
+  transform: translate(0, -200dvh);
 }

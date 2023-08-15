@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      includeAssets: ["assets/*"],
       manifest: {
         name: "Jenesei Weather",
         short_name: "JenWeather",
@@ -14,8 +13,8 @@ export default defineConfig({
         display: "standalone",
         description: "JenWeather is Nice",
         lang: "eng",
-        theme_color: "#ffffff",
-        background_color: "#ffffff",
+        theme_color: "#008296",
+        background_color: "#008296",
         orientation: "portrait",
         icons: [
           {
@@ -38,16 +37,17 @@ export default defineConfig({
         ],
         prefer_related_applications: false,
       },
+      includeAssets: ["assets/*"],
       registerType: "autoUpdate",
-      devOptions: {
-        enabled: true,
-      },
-      base: "/",
-      strategies: "injectManifest",
-      filename: "service-worker.js",
+      // strategies: 'injectManifest',
+      // srcDir: 'src',
+      // filename: "service-worker.js",
       workbox: {
         sourcemap: true,
         globPatterns: ["**/*.{js,css,html,ico,png,svg,webp}"],
+      },
+      devOptions: {
+        enabled: true,
       },
       injectManifest: {
         maximumFileSizeToCacheInBytes: 8000000,
