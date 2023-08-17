@@ -11,10 +11,6 @@
   flex-direction: column;
   justify-content: flex-end;
 }
-.SearchHere__Map {
-  width: 100%;
-  height: 60%;
-}
 .SearchHere-Show {
   transform: translate(0, 0);
 }

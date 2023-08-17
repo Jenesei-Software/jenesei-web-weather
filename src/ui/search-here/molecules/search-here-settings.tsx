@@ -8,30 +8,26 @@ import MicIcon from '../../../assets/icon/mic.svg';
 
 import { ACCU_WEATHER_API_KEY } from '../../../functions/axios-instance/axios-instance';
 import { getLocationBySearchAccuWeather } from '../../../functions/get-location/get-location-by-search';
-import { setShowSearch } from '../../../functions/stores/show-search';
+import { changeShowSearch } from '../../../functions/stores/show-search';
 import { SearchHereSettingsResult } from '../atoms/search-here-settings-result';
 import { SearchHereSettingsResent } from '../atoms/search-here-settings-resent';
-import { setInfoSearchResult, setInfoSearchResultCheck } from '../../../functions/stores/info-search-result';
+import { setInfoSearchResultCheck } from '../../../functions/stores/info-search-result';
+import { useLocalStorageList } from '../../../functions/use-local-storage-list/use-local-storage-list';
+import { LS_INFO_SEARCH_RESENT_LABEL } from '../../../functions/stores/info-search-resent';
 
-// import { useLocalStorageList } from '../../use-local-storage-list/use-local-storage-list';
-// import { LS_INFO_SEARCH_RESENT_LABEL } from '../../stores/info-search-resent';
-
-export interface ISearchHereSettings {
-    showSearch: any
-}
-export const SearchHereSettings = (params: ISearchHereSettings) => {
+export const SearchHereSettings = () => {
+    const [infoSearchResent, setInfoSearchResent] = useLocalStorageList(LS_INFO_SEARCH_RESENT_LABEL, [])
     const [value, setValue] = useState<string | null>(null)
-    // const [infoSearchResent, setInfoSearchResent] = useLocalStorageList(LS_INFO_SEARCH_RESENT_LABEL, [])
-    const changeShowSearch = () => {
-        setShowSearch(!params.showSearch)
-    }
+
     useEffect(() => {
+        if (value && value !== "") {
+            setInfoSearchResultCheck(true)
+        } else {
+            setInfoSearchResultCheck(false)
+        }
         const delayDebounceFn = setTimeout(() => {
-            if(value && value !== ""){
-                setInfoSearchResultCheck(true)
+            if (value && value !== "") {
                 getLocationBySearchAccuWeather(value, ACCU_WEATHER_API_KEY);
-            }else{
-                setInfoSearchResult(null)
             }
         }, 2000)
 
@@ -46,8 +42,8 @@ export const SearchHereSettings = (params: ISearchHereSettings) => {
                 <input value={value || ""} onChange={(event: any) => setValue(event.target.value)} placeholder="Search here" className='SearchHereSettings__Bar__Input' type="text" />
                 <img className="SearchHereSettings__Bar__Mic" src={MicIcon} alt="Microphone" />
             </div>
-            <SearchHereSettingsResult />
-            <SearchHereSettingsResent />
+            <SearchHereSettingsResult value={value} infoSearchResent={infoSearchResent} setInfoSearchResent={setInfoSearchResent}/>
+            <SearchHereSettingsResent infoSearchResent={infoSearchResent}/>
         </div>
     );
 };

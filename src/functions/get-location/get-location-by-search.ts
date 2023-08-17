@@ -1,5 +1,8 @@
 import { AccuWeatherAxios } from "../axios-instance/axios-instance";
-import { setInfoSearchResult, setInfoSearchResultCheck } from "../stores/info-search-result";
+import {
+  setInfoSearchResult,
+  setInfoSearchResultCheck,
+} from "../stores/info-search-result";
 
 export const getLocationBySearchAccuWeather = async (
   params: string,
@@ -17,7 +20,8 @@ export const getLocationBySearchAccuWeather = async (
         setInfoSearchResultCheck(false);
       }
     })
-    .catch((error) => {
-      throw error
+    .catch(() => {
+      setInfoSearchResult([]);
+      setInfoSearchResultCheck(false);
     });
 };

@@ -7,3 +7,7 @@ $showSearch.on(setShowSearch, (_, val) => val);
 $showSearch.updates.watch((show: boolean) => {
   console.log("WATCH. showSearch show:", show);
 });
+
+export const changeShowSearch = () => {
+  setShowSearch(!$showSearch.getState())
+}
