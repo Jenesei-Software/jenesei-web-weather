@@ -3,7 +3,7 @@ import {
   AccuWeatherAxios,
 } from "../axios-instance/axios-instance";
 
-import { $infoPermissionLocation, setLocation } from "../stores/info-location";
+import { $infoLatLon, setLocation } from "../stores/info-location";
 
 export const getLocationByPosition = async (
   latitude: number,
@@ -25,7 +25,7 @@ export const getLocationByPosition = async (
 };
 
 export const defaultGetLocationByPosition = () => {
-  const location = $infoPermissionLocation.getState();
+  const location = $infoLatLon.getState();
   if (location && location.latitude && location.longitude)
     getLocationByPosition(
       location.latitude,

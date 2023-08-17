@@ -4,27 +4,24 @@ import { getForecastNowAccuWeather } from "../forecast-api/get-forecast-now";
 import { getLocationByPosition } from "../get-location/get-location-by-position";
 
 //Browser location
-export interface IInfoPermissionLocation {
+export interface IInfoLatLon {
   latitude: number | null;
   longitude: number | null;
 }
-export const $infoPermissionLocation =
-  createStore<IInfoPermissionLocation | null>(null);
-export const setInfoPermissionLocation =
-  createEvent<IInfoPermissionLocation | null>();
-$infoPermissionLocation.on(setInfoPermissionLocation, (_, val) => val);
+export const $infoLatLon = createStore<IInfoLatLon | null>(null);
+export const setInfoLatLon = createEvent<IInfoLatLon | null>();
+$infoLatLon.on(setInfoLatLon, (_, val) => val);
 
-$infoPermissionLocation.updates.watch(
-  (location: IInfoPermissionLocation | null) => {
-    console.log("WATCH. infoPermissionLocation location:", location);
-    if (location && location.latitude && location.longitude)
-      getLocationByPosition(
-        location.latitude,
-        location.longitude,
-        ACCU_WEATHER_API_KEY
-      );
+$infoLatLon.updates.watch((location: IInfoLatLon | null) => {
+  console.log("WATCH. infoLatLon location:", location);
+  if (location && location.latitude && location.longitude) {
+    getLocationByPosition(
+      location.latitude,
+      location.longitude,
+      ACCU_WEATHER_API_KEY
+    );
   }
-);
+});
 
 //AccuWeather Info Location
 export const $infoLocation = createStore<any | null>(null);

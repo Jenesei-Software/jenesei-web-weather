@@ -1,0 +1,18 @@
+.SearchHereSettingsResent{
+    margin-top: 20px;
+
+}
+.SearchHereSettingsResent__Title{
+    color: var(--text-dark, #444E72);
+    font-family: Overpass;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.SearchHereSettingsResent__List{
+
+}
+.SearchHereSettingsResent__List__Item{
+
+}
