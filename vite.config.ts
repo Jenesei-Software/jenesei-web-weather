@@ -452,6 +452,7 @@ const iconList = [
   },
 ];
 export default defineConfig({
+  base: "/weather-web-app",
   plugins: [
     react(),
     VitePWA({
