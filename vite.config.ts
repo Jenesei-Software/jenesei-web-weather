@@ -457,11 +457,11 @@ export default defineConfig({
     react(),
     VitePWA({
       manifest: {
-        name: "Jenesei Weather",
-        short_name: "Jen. Weather",
+        name: "Jen Weather",
+        short_name: "Jen Weather",
         start_url: "/",
         display: "standalone",
-        description: "enesei Weather is Nice",
+        description: "Jen Weather is Nice",
         lang: "eng",
         theme_color: "#008296",
         background_color: "#008296",
