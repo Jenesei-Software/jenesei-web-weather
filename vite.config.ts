@@ -452,13 +452,12 @@ const iconList = [
   },
 ];
 export default defineConfig({
-  base: "/weather-web-app",
   plugins: [
     react(),
     VitePWA({
       manifest: {
-        name: "Jen Weather",
-        short_name: "Jen Weather",
+        name: "Jenesei Weather",
+        short_name: "Jen. Weather",
         start_url: "/",
         display: "standalone",
         description: "Jen Weather is Nice",

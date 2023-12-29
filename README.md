@@ -1,4 +1,4 @@
-# PWA Weather Web App
+#  Jenesei Weather
 
 Shows the weather based on your location
 # ⌨️ Usage
