@@ -1,7 +1,7 @@
 #  Jenesei Weather
 
 Shows the weather based on your location
-# ⌨️ Usage
+### Usage ⌨️
 
 1. install dependencies with:  
 `npm i`

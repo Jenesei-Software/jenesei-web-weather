@@ -1,49 +1,34 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
-
-import { AppGeneralMobile } from "./ui/app-general-mobile/organelles/app-general-mobile";
-import { Home } from "./pages/mobile/home/organelles/home";
-import { Detail } from "./pages/mobile/detail/organelles/detail";
-import { SearchHere } from "./ui/search-here/organelles/search-here";
-import { askForGeolocationPermission } from "./functions/ask-permission/ask-for-geolocation-permission";
-import { askForPushNotificationPermission } from "./functions/ask-permission/ask-for-push-notification-permission";
-
-import AppWallpaper from './assets/icon/wallpaper.svg'
-
-/* 
-TODO:Сrutch.
-*/
-document.addEventListener('touchmove', function (event: any) {
-  event = event.originalEvent || event;
-  if (event.scale !== 1) {
-    event.preventDefault();
-  }
-}, false);
+import { i18n } from '@assets/i18n'
+import { queryClient } from '@core/query'
+import NiceModal from '@ebay/nice-modal-react'
+import { LayoutApp } from '@layouts/layout-app'
+import { AxiosProvider } from '@providers/axios-provider'
+import { LanguageProvider } from '@providers/language-provider'
+import { theme } from '@styles/theme'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { I18nextProvider } from 'react-i18next'
+import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
 
 function App() {
-  useEffect(() => {
-    askForGeolocationPermission()
-    askForPushNotificationPermission()
-  }, [])
   return (
-    <div className="App">
-      <img src={AppWallpaper} className="App__Wallpaper" alt="App Wallpaper" />
-      <SearchHere />
-      <Routes>
-        <Route path="/" element={<AppGeneralMobile />}>
-          <Route index element={<Navigate to={`/home/`} />} />
-          <Route path="*" element={<Navigate to={`/home/`} />} />
-          <Route path="home">
-            <Route path=":name" element={<Home />} />
-            <Route index element={<Home />} />
-          </Route>
-          <Route path="detail" >
-            <Route path=":name" element={<Detail />} />
-            <Route index element={<Detail />} />
-          </Route>
-        </Route>
-      </Routes>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools />
+      <I18nextProvider i18n={i18n}>
+        <ThemeProvider theme={theme}>
+          <AxiosProvider>
+            <BrowserRouter>
+              <LanguageProvider>
+                <NiceModal.Provider>
+                  <LayoutApp />
+                </NiceModal.Provider>
+              </LanguageProvider>
+            </BrowserRouter>
+          </AxiosProvider>
+        </ThemeProvider>
+      </I18nextProvider>
+    </QueryClientProvider>
   )
 }
 
