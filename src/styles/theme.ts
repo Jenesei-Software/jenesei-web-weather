@@ -32,6 +32,9 @@ export const theme = {
         100: '#ff4141ff',
         10: '#ff41411a',
       },
+      blue: {
+        100: '#81CFFA',
+      },
     },
     gray: {
       f2f2f7: '#f2f2f7ff',

@@ -1,8 +1,12 @@
-import { StyledInterT10 } from '@styles/fonts/inter'
+import { StyledInterM18, StyledInterT10 } from '@styles/fonts/inter'
 import styled from 'styled-components'
 import { Swiper } from 'swiper/react'
 
-export const HomeWrapper = styled.div``
+export const HomeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`
 
 export const HomeGeneralContainer = styled.div`
   display: flex;
@@ -16,7 +20,7 @@ export const HomeStyledStyledInterT10 = styled(StyledInterT10)<{
   $hasPlusOrMinus: boolean
 }>`
   line-height: 95px;
-  margin-left: ${(props) => (props.$hasPlusOrMinus ? '-35px' : '0px')};
+  /* margin-left: ${(props) => (props.$hasPlusOrMinus ? '-6px' : '0px')}; */
 `
 
 export const HomeGeneralTeamsContainer = styled.div`
@@ -31,6 +35,8 @@ export const HomeInfoContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
+  margin-top: 16px;
+  gap: 8px;
 `
 
 export const HomeInfoCardContainer = styled.div`
@@ -38,13 +44,12 @@ export const HomeInfoCardContainer = styled.div`
   width: 100%;
   min-height: 46px;
   position: relative;
-  padding: 15px;
+  padding: 12px;
   box-sizing: border-box;
 `
 
 export const HomeInfoCardContainerBlur = styled.div`
   box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 15px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -58,11 +63,13 @@ export const HomeInfoCardContainerBlur = styled.div`
 
   &:before {
     content: '';
+    border-radius: 15px;
     position: absolute;
     width: 100%;
     height: 100%;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
   }
 `
 
@@ -71,10 +78,12 @@ export const HomeInfoCardContainerContent = styled.div`
   position: relative;
   z-index: 1;
   flex-direction: column;
-  gap: 18px;
+  gap: 0px;
 `
 
-export const HomeInfoCardContainerContentTitle = styled.div``
+export const HomeInfoCardContainerContentTitle = styled.div`
+  padding-bottom: 2px;
+`
 
 export const HomeInfoCardContainerContentLine = styled.div`
   width: 100%;
@@ -108,10 +117,11 @@ export const HomeInfoCardContainerContentListItemPicture = styled.div<{
 export const HomeInfoCardContainerContentListItemData = styled.div<{
   $hasPlusOrMinus: boolean
 }>`
-  margin-left: ${(props) => (props.$hasPlusOrMinus ? '-10px' : '0px')};
+  /* margin-left: ${(props) => (props.$hasPlusOrMinus ? '-10px' : '0px')}; */
 `
 
 export const HomeStyledSwiper = styled(Swiper)`
+  padding-top: 6px;
   width: 100%;
   & .swiper-pagination-bullet-active {
     background: ${(props) => props.theme.color.default.white};
@@ -121,4 +131,59 @@ export const HomeStyledSwiper = styled(Swiper)`
     justify-content: center;
     align-items: center;
   }
+`
+
+export const HomeForecastDayList = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 0px;
+`
+
+export const HomeForecastDayListItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const HomeForecastDayListItemDay = styled.div`
+  width: 60px;
+`
+
+export const HomeForecastDayListItemContainerPicture = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+`
+
+export const HomeForecastDayListItemPicture = styled.div<{
+  $url: string
+}>`
+  background-image: url(${(props) => props.$url});
+  background-size: cover;
+  width: 32px;
+  height: 30px;
+`
+export const HomeForecastDayListItemContainerLine = styled.div`
+  width: 100px;
+  height: 4px;
+  border-radius: 44px;
+  background: rgb(0, 0, 0);
+  opacity: 0.15;
+`
+
+export const HomeForecastDayListItemStyledStyledInterM18 = styled(
+  StyledInterM18
+)`
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

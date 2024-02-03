@@ -16,9 +16,7 @@ export function formatTimestampToTime(
       .toString()
       .padStart(2, '0')} ${period}`
   } else {
-    formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
-      .toString()
-      .padStart(2, '0')}`
+    formattedTime = `${hours.toString().padStart(2, '0')}`
   }
 
   return formattedTime
