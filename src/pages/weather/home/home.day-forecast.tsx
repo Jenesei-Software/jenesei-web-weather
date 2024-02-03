@@ -1,0 +1,99 @@
+import {
+  HomeInfoCardContainer,
+  HomeInfoCardContainerBlur,
+  HomeInfoCardContainerContent,
+  HomeInfoCardContainerContentTitle,
+  HomeInfoCardContainerContentLine,
+  HomeForecastDayList,
+  HomeForecastDayListItem,
+  HomeForecastDayListItemDay,
+  HomeForecastDayListItemPicture,
+  HomeForecastDayListItemContainerPicture,
+  HomeForecastDayListItemStyledStyledInterM18,
+  HomeDayForecastProps,
+} from '.'
+import { IconWeather } from '@assets/icons/icon-weather'
+import { WeatherDifferenceFromTheList } from '@components/weather-difference-from-the-list'
+import { findMinMaxTemperatures } from '@functions/find-min-max-temperatures'
+import { formatTimestampDateOfWeek } from '@functions/format-timestamp-date-of-week'
+import { isToday } from '@functions/is-today'
+import {
+  StyledInterM16,
+  StyledInterR12,
+  StyledInterSB10,
+} from '@styles/fonts/inter'
+import { theme } from '@styles/theme'
+import React, { FC } from 'react'
+
+export const HomeDayForecast: FC<HomeDayForecastProps> = (props) => {
+  const resultMinMaxTemperatures = findMinMaxTemperatures(
+    props.dataGetForecastDay
+  )
+  return (
+    <HomeInfoCardContainer>
+      <HomeInfoCardContainerContent>
+        <HomeInfoCardContainerContentTitle>
+          <IconWeather.DayForecast />
+          <StyledInterR12>3-DAY FORECAST</StyledInterR12>
+        </HomeInfoCardContainerContentTitle>
+        <HomeInfoCardContainerContentLine />
+        <HomeForecastDayList>
+          {props.dataGetForecastDay.map((e, id) => (
+            <React.Fragment key={id}>
+              <HomeForecastDayListItem key={id}>
+                <HomeForecastDayListItemDay>
+                  <StyledInterM16>
+                    {formatTimestampDateOfWeek(e.date_epoch)}
+                  </StyledInterM16>
+                </HomeForecastDayListItemDay>
+                <HomeForecastDayListItemContainerPicture>
+                  <HomeForecastDayListItemPicture $url={e.day.condition.icon} />
+                  {(e.day.daily_chance_of_rain !== 0 ||
+                    e.day.daily_chance_of_snow !== 0) && (
+                    <StyledInterSB10 color={theme.color.color.blue[100]}>
+                      {e.day.daily_chance_of_rain || e.day.daily_chance_of_snow}
+                      {' %'}
+                    </StyledInterSB10>
+                  )}
+                </HomeForecastDayListItemContainerPicture>
+                <HomeForecastDayListItemStyledStyledInterM18
+                  color={theme.color.default.white40}
+                >
+                  {e.day.mintemp_c}°
+                </HomeForecastDayListItemStyledStyledInterM18>
+                {resultMinMaxTemperatures && (
+                  <WeatherDifferenceFromTheList
+                    list={{
+                      maxtemp: resultMinMaxTemperatures?.maxtemp_c,
+                      mintemp: resultMinMaxTemperatures?.mintemp_c,
+                    }}
+                    day={{
+                      maxtemp: e.day.maxtemp_c,
+                      mintemp: e.day.mintemp_c,
+                    }}
+                    now={
+                      isToday(e.date_epoch)
+                        ? {
+                            temp: props.dataGetRealtime.current.temp_c,
+                          }
+                        : undefined
+                    }
+                  />
+                )}
+                <HomeForecastDayListItemStyledStyledInterM18
+                  color={theme.color.default.white}
+                >
+                  {e.day.maxtemp_c}°
+                </HomeForecastDayListItemStyledStyledInterM18>
+              </HomeForecastDayListItem>
+              {id !== props.dataGetForecastDay.length - 1 && (
+                <HomeInfoCardContainerContentLine />
+              )}
+            </React.Fragment>
+          ))}
+        </HomeForecastDayList>
+      </HomeInfoCardContainerContent>
+      <HomeInfoCardContainerBlur />
+    </HomeInfoCardContainer>
+  )
+}

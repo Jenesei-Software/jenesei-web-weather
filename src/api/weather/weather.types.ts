@@ -165,11 +165,12 @@ export interface getForecastRequest {
 
 export interface getForecastResponse {
   location: IRealtimeLocation
+  current: IRealtimeCurrent
   forecast: { forecastday: IForecastdayCurrent[] }
 }
 
 export interface IForecastdayCurrent {
-  date: Date
+  date: string
   date_epoch: number
   day: {
     maxtemp_c: number

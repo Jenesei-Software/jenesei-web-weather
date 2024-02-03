@@ -12,10 +12,7 @@ export const useGetRealtime = (props: getRealtimeRequest) =>
 export const useGetForecastDay = (props: getForecastRequest) =>
   queryOptions({
     queryKey: [queryKeys.weather.forecast],
-    queryFn: () =>
-      weatherApi
-        .getForecast(props)
-        .then((res) => res.data.forecast.forecastday),
+    queryFn: () => weatherApi.getForecast(props).then((res) => res.data),
   })
 
 export const useGetHoursForecast = (

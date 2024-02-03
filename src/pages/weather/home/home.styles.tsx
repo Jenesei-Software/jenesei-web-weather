@@ -1,3 +1,4 @@
+import { AirQualityOneFromTheLine } from '@components/air-quality-one-from-the-line'
 import { StyledInterM18, StyledInterT10 } from '@styles/fonts/inter'
 import styled from 'styled-components'
 import { Swiper } from 'swiper/react'
@@ -6,6 +7,7 @@ export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow-y: auto;
 `
 
 export const HomeGeneralContainer = styled.div`
@@ -53,7 +55,6 @@ export const HomeInfoCardContainerBlur = styled.div`
   border-radius: 15px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.03);
   opacity: 0.7;
   width: 100%;
   min-height: 100%;
@@ -70,6 +71,7 @@ export const HomeInfoCardContainerBlur = styled.div`
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.2);
   }
 `
 
@@ -82,7 +84,13 @@ export const HomeInfoCardContainerContent = styled.div`
 `
 
 export const HomeInfoCardContainerContentTitle = styled.div`
-  padding-bottom: 2px;
+  display: flex;
+  padding-bottom: 6px;
+  align-items: center;
+  gap: 6px;
+  & span {
+    opacity: 0.6;
+  }
 `
 
 export const HomeInfoCardContainerContentLine = styled.div`
@@ -171,13 +179,6 @@ export const HomeForecastDayListItemPicture = styled.div<{
   width: 32px;
   height: 30px;
 `
-export const HomeForecastDayListItemContainerLine = styled.div`
-  width: 100px;
-  height: 4px;
-  border-radius: 44px;
-  background: rgb(0, 0, 0);
-  opacity: 0.15;
-`
 
 export const HomeForecastDayListItemStyledStyledInterM18 = styled(
   StyledInterM18
@@ -186,4 +187,14 @@ export const HomeForecastDayListItemStyledStyledInterM18 = styled(
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const HomeAirQualityTitleContainer = styled.div`
+  padding-top: 6px;
+`
+
+export const HomeAirQualityStyledAirQualityOneFromTheLine = styled(
+  AirQualityOneFromTheLine
+)`
+  margin-top: 10px;
 `

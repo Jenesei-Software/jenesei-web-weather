@@ -22,6 +22,7 @@ export const theme = {
     default: {
       br: '#0975a6ff',
       white: '#ffffff',
+      white40: '#FFFFFF4A',
     },
     color: {
       green: {
