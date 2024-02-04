@@ -1,4 +1,5 @@
 import { AirQualityOneFromTheLine } from '@components/air-quality-one-from-the-line'
+import { WeatherDifferenceFromTheList } from '@components/weather-difference-from-the-list'
 import { StyledInterM18, StyledInterT10 } from '@styles/fonts/inter'
 import styled from 'styled-components'
 import { Swiper } from 'swiper/react'
@@ -39,6 +40,11 @@ export const HomeInfoContainer = styled.div`
   padding: 20px;
   margin-top: 16px;
   gap: 8px;
+  @media (min-width: ${(props) => props.theme.size.tablet}) {
+    align-content: center;
+    flex-flow: column wrap;
+    max-height: 70dvh;
+  }
 `
 
 export const HomeInfoCardContainer = styled.div`
@@ -48,6 +54,7 @@ export const HomeInfoCardContainer = styled.div`
   position: relative;
   padding: 12px;
   box-sizing: border-box;
+  max-width: 500px;
 `
 
 export const HomeInfoCardContainerBlur = styled.div`
@@ -157,10 +164,12 @@ export const HomeForecastDayListItem = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 `
 
 export const HomeForecastDayListItemDay = styled.div`
-  width: 60px;
+  width: 40px;
+  min-width: 40px;
 `
 
 export const HomeForecastDayListItemContainerPicture = styled.div`
@@ -184,6 +193,8 @@ export const HomeForecastDayListItemStyledStyledInterM18 = styled(
   StyledInterM18
 )`
   width: 40px;
+  min-width: 40px;
+  max-width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,5 +207,21 @@ export const HomeAirQualityTitleContainer = styled.div`
 export const HomeAirQualityStyledAirQualityOneFromTheLine = styled(
   AirQualityOneFromTheLine
 )`
+  margin-top: 10px;
+`
+
+export const HomeDayForecastStyledWeatherDifferenceFromTheList = styled(
+  WeatherDifferenceFromTheList
+)`
+  width: 42%;
+  @media (max-width: ${(props) => props.theme.size.mobile}) {
+    width: 100px;
+  }
+`
+
+export const MapWrapper = styled.div`
+  height: 196px;
+  border-radius: 15px;
+  overflow: hidden;
   margin-top: 10px;
 `

@@ -3,7 +3,7 @@ import { getTemperatureColor } from '@functions/get-temperature-color'
 import styled from 'styled-components'
 
 export const WeatherDifferenceFromTheListWrapper = styled.div`
-  width: 100px;
+  width: 100%;
   height: 4px;
   border-radius: 44px;
   background: rgb(0, 0, 0, 0.15);
@@ -14,14 +14,14 @@ export const WeatherDifferenceFromTheListWrapper = styled.div`
 `
 
 export const WeatherDifferenceFromTheListNowWrapper = styled.div<{
-  $marginLeft: number
+  $left: number
 }>`
   left: ${(props) =>
-    props.$marginLeft - 4 < 0
-      ? -4
-      : props.$marginLeft - 4 > 100
-        ? 104
-        : props.$marginLeft - 4 + 'px'};
+    props.$left < 0 ? 0 : props.$left > 100 ? 100 : props.$left + '%'};
+  left: calc(
+    ${(props) =>
+        props.$left < 0 ? 0 : props.$left > 100 ? 100 : props.$left + '%'} - 4px
+  );
   width: 8px;
   height: 8px;
   position: absolute;
@@ -42,14 +42,14 @@ export const WeatherDifferenceFromTheListNow = styled.div`
 interface WeatherDifferenceFromTheListDayProps {
   $leftTemperature: number
   $rightTemperature: number
-  $marginLeft: number
+  $left: number
   width: number
 }
 
 export const WeatherDifferenceFromTheListDay = styled.div<WeatherDifferenceFromTheListDayProps>`
-  width: ${(props) => props.width + 'px'};
+  width: ${(props) => props.width + '%'};
   height: 4px;
-  margin-left: ${(props) => props.$marginLeft + 'px'};
+  margin-left: ${(props) => props.$left + '%'};
   border-radius: 44px;
   z-index: 1;
   position: absolute;

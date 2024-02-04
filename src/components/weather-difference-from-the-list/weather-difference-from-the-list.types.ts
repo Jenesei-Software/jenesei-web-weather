@@ -10,4 +10,5 @@ export interface WeatherDifferenceFromTheListProps {
   now?: {
     temp: number
   }
+  className?: string
 }

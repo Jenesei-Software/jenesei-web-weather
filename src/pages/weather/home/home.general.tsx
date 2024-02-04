@@ -26,10 +26,10 @@ export const HomeGeneral: FC<HomeGeneralProps> = (props) => {
       </StyledInterR20>
       <HomeGeneralTeamsContainer>
         <StyledInterM18>
-          H: {props.dataGetForecastDay[0].day.mintemp_c}°
+          H: {props.dataGetForecastDay[0].day.maxtemp_c}°
         </StyledInterM18>
         <StyledInterM18>
-          L: {props.dataGetForecastDay[0].day.maxtemp_c}°
+          L: {props.dataGetForecastDay[0].day.mintemp_c}°
         </StyledInterM18>
       </HomeGeneralTeamsContainer>
     </HomeGeneralContainer>

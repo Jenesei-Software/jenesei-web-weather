@@ -21,15 +21,14 @@ export const WeatherDifferenceFromTheList: FC<
   const nowLeft =
     props.now && (props.now?.temp - props.list.mintemp) / lengthListOnePercent
   return (
-    <WeatherDifferenceFromTheListWrapper>
+    <WeatherDifferenceFromTheListWrapper className={props.className}>
       {props.now && nowLeft && (
-        <WeatherDifferenceFromTheListNowWrapper $marginLeft={nowLeft}>
+        <WeatherDifferenceFromTheListNowWrapper $left={nowLeft}>
           <WeatherDifferenceFromTheListNow />
         </WeatherDifferenceFromTheListNowWrapper>
       )}
-      {/* <WeatherDifferenceFromTheListList /> */}
       <WeatherDifferenceFromTheListDay
-        $marginLeft={minDayLeft}
+        $left={minDayLeft}
         width={lengthDay}
         $leftTemperature={props.day.mintemp}
         $rightTemperature={props.day.maxtemp}

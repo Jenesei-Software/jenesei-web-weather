@@ -21,12 +21,10 @@ export const AirQualityOneFromTheLineWrapper = styled.div`
 export const AirQualityOneFromTheLineOneWrapper = styled.div<{
   $left: number
 }>`
-  left: ${(props) =>
-    props.$left - 4 < 0
-      ? -4
-      : props.$left - 4 > 100
-        ? 104
-        : props.$left - 4 + '%'};
+  left: calc(
+    ${(props) =>
+        props.$left < 0 ? 0 : props.$left > 100 ? 100 : props.$left + '%'} - 4px
+  );
   width: 8px;
   height: 8px;
   position: absolute;

@@ -26,3 +26,7 @@ export interface HomeDayForecastProps {
 export interface HomeAirQualityProps {
   realtimeCurrent: IRealtimeCurrent
 }
+
+export interface HomeMapProps {
+  dataGetRealtime: getRealtimeResponse
+}

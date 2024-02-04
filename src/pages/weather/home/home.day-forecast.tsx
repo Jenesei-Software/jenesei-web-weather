@@ -11,9 +11,9 @@ import {
   HomeForecastDayListItemContainerPicture,
   HomeForecastDayListItemStyledStyledInterM18,
   HomeDayForecastProps,
+  HomeDayForecastStyledWeatherDifferenceFromTheList,
 } from '.'
 import { IconWeather } from '@assets/icons/icon-weather'
-import { WeatherDifferenceFromTheList } from '@components/weather-difference-from-the-list'
 import { findMinMaxTemperatures } from '@functions/find-min-max-temperatures'
 import { formatTimestampDateOfWeek } from '@functions/format-timestamp-date-of-week'
 import { isToday } from '@functions/is-today'
@@ -62,7 +62,7 @@ export const HomeDayForecast: FC<HomeDayForecastProps> = (props) => {
                   {e.day.mintemp_c}°
                 </HomeForecastDayListItemStyledStyledInterM18>
                 {resultMinMaxTemperatures && (
-                  <WeatherDifferenceFromTheList
+                  <HomeDayForecastStyledWeatherDifferenceFromTheList
                     list={{
                       maxtemp: resultMinMaxTemperatures?.maxtemp_c,
                       mintemp: resultMinMaxTemperatures?.mintemp_c,
