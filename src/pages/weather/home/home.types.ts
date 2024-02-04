@@ -30,3 +30,10 @@ export interface HomeAirQualityProps {
 export interface HomeMapProps {
   dataGetRealtime: getRealtimeResponse
 }
+
+export interface HomeUVIndexProps {}
+export interface HomeSunriseProps {}
+export interface HomeWindProps {}
+export interface HomeRainfallProps {}
+export interface HomeFeelsLikeProps {}
+export interface HomeHumidityProps {}

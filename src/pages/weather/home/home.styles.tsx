@@ -47,6 +47,15 @@ export const HomeInfoContainer = styled.div`
   }
 `
 
+export const HomeInfoCardsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  align-items: stretch;
+  max-width: 500px;
+`
+
 export const HomeInfoCardContainer = styled.div`
   box-sizing: border-box;
   width: 100%;
@@ -56,7 +65,6 @@ export const HomeInfoCardContainer = styled.div`
   box-sizing: border-box;
   max-width: 500px;
 `
-
 export const HomeInfoCardContainerBlur = styled.div`
   box-sizing: border-box;
   border-radius: 15px;
@@ -221,7 +229,7 @@ export const HomeDayForecastStyledWeatherDifferenceFromTheList = styled(
 
 export const MapWrapper = styled.div`
   height: 196px;
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   margin-top: 10px;
 `

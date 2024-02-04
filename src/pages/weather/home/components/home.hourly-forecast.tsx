@@ -10,7 +10,7 @@ import {
   HomeInfoCardContainerContentListItemData,
   HomeStyledSwiper,
   HomeHourlyForecastProps,
-} from '.'
+} from '..'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { formatTimestampToTime } from '@functions/format-timestamp-date-to-time'
 import { hasPlusOrMinus } from '@functions/has-plus-or-minus'

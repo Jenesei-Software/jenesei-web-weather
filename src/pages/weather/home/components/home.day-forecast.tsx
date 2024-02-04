@@ -12,7 +12,7 @@ import {
   HomeForecastDayListItemStyledStyledInterM18,
   HomeDayForecastProps,
   HomeDayForecastStyledWeatherDifferenceFromTheList,
-} from '.'
+} from '..'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { findMinMaxTemperatures } from '@functions/find-min-max-temperatures'
 import { formatTimestampDateOfWeek } from '@functions/format-timestamp-date-of-week'

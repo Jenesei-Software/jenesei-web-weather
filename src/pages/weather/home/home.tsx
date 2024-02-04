@@ -2,12 +2,21 @@ import {
   HomeWrapper,
   HomeProps,
   HomeInfoContainer,
+  HomeInfoCardsContainer,
+} from '.'
+import {
+  HomeAirQuality,
   HomeDayForecast,
+  HomeFeelsLike,
   HomeGeneral,
   HomeHourlyForecast,
-  HomeAirQuality,
-} from '.'
-import { HomeMap } from './home.map'
+  HomeHumidity,
+  HomeMap,
+  HomeRainfall,
+  HomeSunrise,
+  HomeUVIndex,
+  HomeWind,
+} from './components'
 import {
   WEATHER_LANGUAGES,
   useGetHoursForecast,
@@ -80,6 +89,18 @@ export const Home: FC<HomeProps> = (props) => {
           />
           <HomeAirQuality realtimeCurrent={dataGetForecast.current} />
           <HomeMap dataGetRealtime={dataGetRealtime} />
+          <HomeInfoCardsContainer>
+            <HomeUVIndex />
+            <HomeSunrise />
+          </HomeInfoCardsContainer>
+          <HomeInfoCardsContainer>
+            <HomeWind />
+            <HomeRainfall />
+          </HomeInfoCardsContainer>
+          <HomeInfoCardsContainer>
+            <HomeFeelsLike />
+            <HomeHumidity />
+          </HomeInfoCardsContainer>
         </HomeInfoContainer>
       </HomeWrapper>
     )

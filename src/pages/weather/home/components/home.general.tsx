@@ -3,7 +3,7 @@ import {
   HomeStyledStyledInterT10,
   HomeGeneralTeamsContainer,
   HomeGeneralProps,
-} from '.'
+} from '..'
 import { hasPlusOrMinus } from '@functions/has-plus-or-minus'
 import {
   StyledInterM18,

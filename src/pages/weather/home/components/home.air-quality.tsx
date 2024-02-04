@@ -7,7 +7,7 @@ import {
   HomeAirQualityProps,
   HomeAirQualityTitleContainer,
   HomeAirQualityStyledAirQualityOneFromTheLine,
-} from '.'
+} from '..'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { getUsEPAIndexToTitle } from '@functions/get-usEPAIndex-to-title'
 import { StyledInterM20, StyledInterR12 } from '@styles/fonts/inter'

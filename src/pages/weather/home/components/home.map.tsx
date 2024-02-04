@@ -6,7 +6,7 @@ import {
   HomeInfoCardContainerContentLine,
   HomeMapProps,
   MapWrapper,
-} from '.'
+} from '..'
 import { load } from '@2gis/mapgl'
 import { Map } from '@2gis/mapgl/types'
 import { IconWeather } from '@assets/icons/icon-weather'
