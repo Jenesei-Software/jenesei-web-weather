@@ -1,8 +1,9 @@
 import {
   IForecastdayCurrent,
   IForecastdayHourCurrent,
-  IRealtimeCurrent,
+  ICurrent,
   getRealtimeResponse,
+  IAstronomy,
 } from '@api/weather'
 
 export interface HomeProps {
@@ -24,16 +25,26 @@ export interface HomeDayForecastProps {
 }
 
 export interface HomeAirQualityProps {
-  realtimeCurrent: IRealtimeCurrent
+  realtimeCurrent: ICurrent
 }
 
 export interface HomeMapProps {
   dataGetRealtime: getRealtimeResponse
 }
 
-export interface HomeUVIndexProps {}
-export interface HomeSunriseProps {}
+export interface HomeUVIndexProps {
+  realtimeCurrent: ICurrent
+}
+export interface HomeSunriseProps {
+  astronomy: IAstronomy
+}
 export interface HomeWindProps {}
-export interface HomeRainfallProps {}
-export interface HomeFeelsLikeProps {}
-export interface HomeHumidityProps {}
+export interface HomeRainfallProps {
+  realtimeCurrent: ICurrent
+}
+export interface HomeFeelsLikeProps {
+  realtimeCurrent: ICurrent
+}
+export interface HomeHumidityProps {
+  realtimeCurrent: ICurrent
+}

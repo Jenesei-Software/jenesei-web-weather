@@ -1,26 +1,17 @@
-import {
-  HomeInfoCardContainer,
-  HomeInfoCardContainerBlur,
-  HomeInfoCardContainerContent,
-  HomeInfoCardContainerContentTitle,
-  HomeInfoCardContainerContentLine,
-  HomeSunriseProps,
-} from '..'
 import { IconWeather } from '@assets/icons/icon-weather'
+import { LayoutWidget } from '@layouts/layout-widget'
 import { StyledInterR12 } from '@styles/fonts/inter'
-import { FC } from 'react'
 
-export const HomeSunrise: FC<HomeSunriseProps> = () => {
+export const HomeSunrise = () => {
   return (
-    <HomeInfoCardContainer>
-      <HomeInfoCardContainerContent>
-        <HomeInfoCardContainerContentTitle>
+    <LayoutWidget
+      title={
+        <>
           <IconWeather.Sunrise />
           <StyledInterR12>SUNRISE</StyledInterR12>
-        </HomeInfoCardContainerContentTitle>
-        <HomeInfoCardContainerContentLine />
-      </HomeInfoCardContainerContent>
-      <HomeInfoCardContainerBlur />
-    </HomeInfoCardContainer>
+        </>
+      }
+      content={undefined}
+    />
   )
 }

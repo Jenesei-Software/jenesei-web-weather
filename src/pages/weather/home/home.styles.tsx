@@ -1,4 +1,4 @@
-import { AirQualityOneFromTheLine } from '@components/air-quality-one-from-the-line'
+import { PointRelativeToLine } from '@components/point-relative-to-line'
 import { WeatherDifferenceFromTheList } from '@components/weather-difference-from-the-list'
 import { StyledInterM18, StyledInterT10 } from '@styles/fonts/inter'
 import styled from 'styled-components'
@@ -23,7 +23,6 @@ export const HomeStyledStyledInterT10 = styled(StyledInterT10)<{
   $hasPlusOrMinus: boolean
 }>`
   line-height: 95px;
-  /* margin-left: ${(props) => (props.$hasPlusOrMinus ? '-6px' : '0px')}; */
 `
 
 export const HomeGeneralTeamsContainer = styled.div`
@@ -56,64 +55,17 @@ export const HomeInfoCardsContainer = styled.div`
   max-width: 500px;
 `
 
-export const HomeInfoCardContainer = styled.div`
-  box-sizing: border-box;
+export const HomeStyledSwiper = styled(Swiper)`
+  padding-top: 6px;
   width: 100%;
-  min-height: 46px;
-  position: relative;
-  padding: 12px;
-  box-sizing: border-box;
-  max-width: 500px;
-`
-export const HomeInfoCardContainerBlur = styled.div`
-  box-sizing: border-box;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  opacity: 0.7;
-  width: 100%;
-  min-height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  &:before {
-    content: '';
-    border-radius: 15px;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.2);
+  & .swiper-pagination-bullet-active {
+    background: ${(props) => props.theme.color.default.white};
   }
-`
-
-export const HomeInfoCardContainerContent = styled.div`
-  display: flex;
-  position: relative;
-  z-index: 1;
-  flex-direction: column;
-  gap: 0px;
-`
-
-export const HomeInfoCardContainerContentTitle = styled.div`
-  display: flex;
-  padding-bottom: 6px;
-  align-items: center;
-  gap: 6px;
-  & span {
-    opacity: 0.6;
+  & .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-`
-
-export const HomeInfoCardContainerContentLine = styled.div`
-  width: 100%;
-  height: 0;
-  border: 0.2px solid rgb(255, 255, 255);
-  opacity: 0.5;
-  box-sizing: border-box;
 `
 
 export const HomeInfoCardContainerContentList = styled.div``
@@ -139,22 +91,7 @@ export const HomeInfoCardContainerContentListItemPicture = styled.div<{
 
 export const HomeInfoCardContainerContentListItemData = styled.div<{
   $hasPlusOrMinus: boolean
-}>`
-  /* margin-left: ${(props) => (props.$hasPlusOrMinus ? '-10px' : '0px')}; */
-`
-
-export const HomeStyledSwiper = styled(Swiper)`
-  padding-top: 6px;
-  width: 100%;
-  & .swiper-pagination-bullet-active {
-    background: ${(props) => props.theme.color.default.white};
-  }
-  & .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`
+}>``
 
 export const HomeForecastDayList = styled.div`
   width: 100%;
@@ -212,8 +149,8 @@ export const HomeAirQualityTitleContainer = styled.div`
   padding-top: 6px;
 `
 
-export const HomeAirQualityStyledAirQualityOneFromTheLine = styled(
-  AirQualityOneFromTheLine
+export const HomeAirQualityStyledPointRelativeToLine = styled(
+  PointRelativeToLine
 )`
   margin-top: 10px;
 `
@@ -232,4 +169,9 @@ export const MapWrapper = styled.div`
   border-radius: 10px;
   overflow: hidden;
   margin-top: 10px;
+`
+
+export const LineChartWrapper = styled.div`
+  width: 100%;
+  height: 32px;
 `

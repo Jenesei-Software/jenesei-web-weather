@@ -1,7 +1,7 @@
 import { WEATHER_LANGUAGES } from '.'
 
 /***************************************** Realtime API *************************************************/
-export interface IRealtimeLocation {
+export interface ILocation {
   name: string
   region: string
   country: string
@@ -12,7 +12,7 @@ export interface IRealtimeLocation {
   localtime: Date
 }
 
-export interface IRealtimeCurrent {
+export interface ICurrent {
   last_updated_epoch: number
   last_updated: Date
   temp_c: number
@@ -143,8 +143,8 @@ export interface getRealtimeRequest {
 }
 
 export interface getRealtimeResponse {
-  location: IRealtimeLocation
-  current: IRealtimeCurrent
+  location: ILocation
+  current: ICurrent
 }
 
 /***************************************** Forecast API *************************************************/
@@ -164,8 +164,8 @@ export interface getForecastRequest {
 }
 
 export interface getForecastResponse {
-  location: IRealtimeLocation
-  current: IRealtimeCurrent
+  location: ILocation
+  current: ICurrent
   forecast: { forecastday: IForecastdayCurrent[] }
 }
 
@@ -255,3 +255,25 @@ export interface IForecastdayHourCurrent {
 /***************************************** Forecast API *************************************************/
 /***************************************** Time Zone API *************************************************/
 /***************************************** Astronomy API *************************************************/
+export interface getAstronomyRequest {
+  params: {
+    q: string
+    dt: Date
+  }
+}
+
+export interface getAstronomyResponse {
+  location: ILocation
+  astronomy: IAstronomy
+}
+
+export interface IAstronomy {
+  astro: {
+    sunrise: string
+    sunset: string
+    moonrise: string
+    moonset: string
+    moon_phase: string
+    moon_illumination: string
+  }
+}

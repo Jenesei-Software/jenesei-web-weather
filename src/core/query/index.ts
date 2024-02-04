@@ -16,5 +16,6 @@ export const queryKeys = {
   weather: {
     forecast: 'weather-forecast',
     realtime: 'weather-realtime',
+    astronomy: 'weather-astronomy',
   },
 }

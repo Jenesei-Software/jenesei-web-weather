@@ -1,15 +1,8 @@
-import {
-  HomeInfoCardContainer,
-  HomeInfoCardContainerBlur,
-  HomeInfoCardContainerContent,
-  HomeInfoCardContainerContentTitle,
-  HomeInfoCardContainerContentLine,
-  HomeMapProps,
-  MapWrapper,
-} from '..'
+import { HomeMapProps, MapWrapper } from '..'
 import { load } from '@2gis/mapgl'
 import { Map } from '@2gis/mapgl/types'
 import { IconWeather } from '@assets/icons/icon-weather'
+import { LayoutWidget } from '@layouts/layout-widget'
 import { StyledInterR12 } from '@styles/fonts/inter'
 import React from 'react'
 import { FC, useEffect } from 'react'
@@ -27,21 +20,18 @@ export const HomeMap: FC<HomeMapProps> = (props) => {
         key: 'Your API access key',
       })
     })
-    // Удаляем карту при размонтировании компонента
     return () => map && map.destroy()
   }, [])
   return (
-    <HomeInfoCardContainer>
-      <HomeInfoCardContainerContent>
-        <HomeInfoCardContainerContentTitle>
+    <LayoutWidget
+      title={
+        <>
           <IconWeather.MapTemperature />
           <StyledInterR12>TEMPERATURE</StyledInterR12>
-        </HomeInfoCardContainerContentTitle>
-        <HomeInfoCardContainerContentLine />
-        <MemoMap />
-      </HomeInfoCardContainerContent>
-      <HomeInfoCardContainerBlur />
-    </HomeInfoCardContainer>
+        </>
+      }
+      content={<MemoMap />}
+    />
   )
 }
 

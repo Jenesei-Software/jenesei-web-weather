@@ -1,9 +1,4 @@
 import {
-  HomeInfoCardContainer,
-  HomeInfoCardContainerBlur,
-  HomeInfoCardContainerContent,
-  HomeInfoCardContainerContentTitle,
-  HomeInfoCardContainerContentLine,
   HomeForecastDayList,
   HomeForecastDayListItem,
   HomeForecastDayListItemDay,
@@ -17,6 +12,7 @@ import { IconWeather } from '@assets/icons/icon-weather'
 import { findMinMaxTemperatures } from '@functions/find-min-max-temperatures'
 import { formatTimestampDateOfWeek } from '@functions/format-timestamp-date-of-week'
 import { isToday } from '@functions/is-today'
+import { LayoutWidget, LayoutWidgetContainerLine } from '@layouts/layout-widget'
 import {
   StyledInterM16,
   StyledInterR12,
@@ -30,13 +26,14 @@ export const HomeDayForecast: FC<HomeDayForecastProps> = (props) => {
     props.dataGetForecastDay
   )
   return (
-    <HomeInfoCardContainer>
-      <HomeInfoCardContainerContent>
-        <HomeInfoCardContainerContentTitle>
+    <LayoutWidget
+      title={
+        <>
           <IconWeather.DayForecast />
           <StyledInterR12>3-DAY FORECAST</StyledInterR12>
-        </HomeInfoCardContainerContentTitle>
-        <HomeInfoCardContainerContentLine />
+        </>
+      }
+      content={
         <HomeForecastDayList>
           {props.dataGetForecastDay.map((e, id) => (
             <React.Fragment key={id}>
@@ -87,13 +84,12 @@ export const HomeDayForecast: FC<HomeDayForecastProps> = (props) => {
                 </HomeForecastDayListItemStyledStyledInterM18>
               </HomeForecastDayListItem>
               {id !== props.dataGetForecastDay.length - 1 && (
-                <HomeInfoCardContainerContentLine />
+                <LayoutWidgetContainerLine />
               )}
             </React.Fragment>
           ))}
         </HomeForecastDayList>
-      </HomeInfoCardContainerContent>
-      <HomeInfoCardContainerBlur />
-    </HomeInfoCardContainer>
+      }
+    />
   )
 }

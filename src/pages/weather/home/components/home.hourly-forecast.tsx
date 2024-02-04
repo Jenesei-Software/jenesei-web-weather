@@ -1,9 +1,4 @@
 import {
-  HomeInfoCardContainer,
-  HomeInfoCardContainerBlur,
-  HomeInfoCardContainerContent,
-  HomeInfoCardContainerContentTitle,
-  HomeInfoCardContainerContentLine,
   HomeInfoCardContainerContentListItem,
   HomeInfoCardContainerContentListItemDay,
   HomeInfoCardContainerContentListItemPicture,
@@ -14,6 +9,7 @@ import {
 import { IconWeather } from '@assets/icons/icon-weather'
 import { formatTimestampToTime } from '@functions/format-timestamp-date-to-time'
 import { hasPlusOrMinus } from '@functions/has-plus-or-minus'
+import { LayoutWidget } from '@layouts/layout-widget'
 import {
   StyledInterM16,
   StyledInterM18,
@@ -25,13 +21,14 @@ import { SwiperSlide } from 'swiper/react'
 
 export const HomeHourlyForecast: FC<HomeHourlyForecastProps> = (props) => {
   return (
-    <HomeInfoCardContainer>
-      <HomeInfoCardContainerContent>
-        <HomeInfoCardContainerContentTitle>
+    <LayoutWidget
+      title={
+        <>
           <IconWeather.HourlyForecast />
           <StyledInterR12>HOURLY FORECAST</StyledInterR12>
-        </HomeInfoCardContainerContentTitle>
-        <HomeInfoCardContainerContentLine />
+        </>
+      }
+      content={
         <HomeStyledSwiper
           modules={[A11y]}
           pagination={{ clickable: true }}
@@ -58,8 +55,7 @@ export const HomeHourlyForecast: FC<HomeHourlyForecastProps> = (props) => {
             </SwiperSlide>
           ))}
         </HomeStyledSwiper>
-      </HomeInfoCardContainerContent>
-      <HomeInfoCardContainerBlur />
-    </HomeInfoCardContainer>
+      }
+    />
   )
 }

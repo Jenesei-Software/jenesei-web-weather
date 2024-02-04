@@ -1,4 +1,9 @@
-import { getForecastRequest, getRealtimeRequest, weatherApi } from '.'
+import {
+  getAstronomyRequest,
+  getForecastRequest,
+  getRealtimeRequest,
+  weatherApi,
+} from '.'
 import { queryKeys } from '@core/query'
 import { getHoursForecast } from '@functions/get-hours-forecast'
 import { queryOptions } from '@tanstack/react-query'
@@ -26,4 +31,10 @@ export const useGetHoursForecast = (
         .then((res) =>
           getHoursForecast(res.data.forecast.forecastday, props.hours)
         ),
+  })
+
+export const useGetAstronomy = (props: getAstronomyRequest) =>
+  queryOptions({
+    queryKey: [queryKeys.weather.astronomy],
+    queryFn: () => weatherApi.getAstronomy(props).then((res) => res.data),
   })

@@ -1,4 +1,6 @@
 import {
+  getAstronomyRequest,
+  getAstronomyResponse,
   getForecastRequest,
   getForecastResponse,
   getRealtimeRequest,
@@ -13,6 +15,10 @@ export const weatherApi = {
     }),
   getForecast: (props: getForecastRequest) =>
     weatherAxiosInstance.get<getForecastResponse>('forecast.json', {
+      params: props.params,
+    }),
+  getAstronomy: (props: getAstronomyRequest) =>
+    weatherAxiosInstance.get<getAstronomyResponse>('astronomy.json', {
       params: props.params,
     }),
 }

@@ -11,7 +11,6 @@ import {
   HomeGeneral,
   HomeHourlyForecast,
   HomeHumidity,
-  HomeMap,
   HomeRainfall,
   HomeSunrise,
   HomeUVIndex,
@@ -22,6 +21,7 @@ import {
   useGetHoursForecast,
   useGetForecastDay,
   useGetRealtime,
+  useGetAstronomy,
 } from '@api/weather'
 import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
@@ -54,7 +54,16 @@ export const Home: FC<HomeProps> = (props) => {
         },
       }),
     })
-
+  const { data: dataGetAstronomy, isPending: isPendingGetAstronomy } = useQuery(
+    {
+      ...useGetAstronomy({
+        params: {
+          q: props.IPAddress,
+          dt: new Date(),
+        },
+      }),
+    }
+  )
   const { data: dataGetRealtime, isPending: isPendingGetRealtime } = useQuery({
     ...useGetRealtime({
       params: {
@@ -67,7 +76,8 @@ export const Home: FC<HomeProps> = (props) => {
   const isPending =
     isPendingGetRealtime ||
     isPendingGetForecastDay ||
-    isPending8GetHoursForecast
+    isPending8GetHoursForecast ||
+    isPendingGetAstronomy
 
   /****************************************** useEffect *************************************************/
 
@@ -75,8 +85,9 @@ export const Home: FC<HomeProps> = (props) => {
     !isPending &&
     dataGetRealtime &&
     data8GetHoursForecast &&
-    dataGetForecast && (
-      <HomeWrapper>
+    dataGetForecast &&
+    dataGetAstronomy && (
+      <HomeWrapper id="Home">
         <HomeGeneral
           dataGetRealtime={dataGetRealtime}
           dataGetForecastDay={dataGetForecast.forecast.forecastday}
@@ -88,18 +99,18 @@ export const Home: FC<HomeProps> = (props) => {
             dataGetForecastDay={dataGetForecast.forecast.forecastday}
           />
           <HomeAirQuality realtimeCurrent={dataGetForecast.current} />
-          <HomeMap dataGetRealtime={dataGetRealtime} />
+          {/* <HomeMap dataGetRealtime={dataGetRealtime} /> */}
           <HomeInfoCardsContainer>
-            <HomeUVIndex />
-            <HomeSunrise />
+            <HomeUVIndex realtimeCurrent={dataGetForecast.current} />
+            <HomeSunrise astronomy={dataGetAstronomy.astronomy} />
           </HomeInfoCardsContainer>
           <HomeInfoCardsContainer>
             <HomeWind />
-            <HomeRainfall />
+            <HomeRainfall realtimeCurrent={dataGetForecast.current} />
           </HomeInfoCardsContainer>
           <HomeInfoCardsContainer>
-            <HomeFeelsLike />
-            <HomeHumidity />
+            <HomeFeelsLike realtimeCurrent={dataGetForecast.current} />
+            <HomeHumidity realtimeCurrent={dataGetForecast.current} />
           </HomeInfoCardsContainer>
         </HomeInfoContainer>
       </HomeWrapper>
