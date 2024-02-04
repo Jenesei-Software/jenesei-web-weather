@@ -19,10 +19,7 @@ export function getHoursForecast(
   // Если не хватает данных в текущем дне, добавляем из следующего дня
   if (result.length < hours && forecastdaytList.length > 1) {
     const remainingHours = hours - result.length
-    const additionalForecast = filterForecastByHour(forecastdaytList[1]).slice(
-      0,
-      remainingHours
-    )
+    const additionalForecast = forecastdaytList[1].hour.slice(0, remainingHours)
     result.push(...additionalForecast)
   }
 
