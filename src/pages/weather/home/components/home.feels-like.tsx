@@ -10,7 +10,7 @@ import { IconWeather } from '@assets/icons/icon-weather'
 import { StyledInterR12 } from '@styles/fonts/inter'
 import { FC } from 'react'
 
-export const HomeFeelsLike: FC<HomeFeelsLikeProps> = (props) => {
+export const HomeFeelsLike: FC<HomeFeelsLikeProps> = () => {
   return (
     <HomeInfoCardContainer>
       <HomeInfoCardContainerContent>
