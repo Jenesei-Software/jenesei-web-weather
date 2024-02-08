@@ -68,7 +68,7 @@ export const LayoutWidgetContainerBlur = styled.div`
   border-radius: 15px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  opacity: 0.7;
+  opacity: 0.4;
   width: 100%;
   min-height: 100%;
   position: absolute;

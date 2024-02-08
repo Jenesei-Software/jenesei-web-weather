@@ -18,4 +18,5 @@ export const queryKeys = {
     realtime: 'weather-realtime',
     astronomy: 'weather-astronomy',
   },
+  'sunrise-sunset': 'sunrise-sunset',
 }

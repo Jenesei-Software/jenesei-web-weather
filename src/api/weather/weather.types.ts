@@ -9,7 +9,7 @@ export interface ILocation {
   lon: number
   tz_id: string
   localtime_epoch: number
-  localtime: Date
+  localtime: string
 }
 
 export interface ICurrent {

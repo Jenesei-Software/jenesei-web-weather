@@ -21,7 +21,6 @@ import {
   useGetHoursForecast,
   useGetForecastDay,
   useGetRealtime,
-  useGetAstronomy,
 } from '@api/weather'
 import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
@@ -54,16 +53,6 @@ export const Home: FC<HomeProps> = (props) => {
         },
       }),
     })
-  const { data: dataGetAstronomy, isPending: isPendingGetAstronomy } = useQuery(
-    {
-      ...useGetAstronomy({
-        params: {
-          q: props.IPAddress,
-          dt: new Date(),
-        },
-      }),
-    }
-  )
   const { data: dataGetRealtime, isPending: isPendingGetRealtime } = useQuery({
     ...useGetRealtime({
       params: {
@@ -76,8 +65,7 @@ export const Home: FC<HomeProps> = (props) => {
   const isPending =
     isPendingGetRealtime ||
     isPendingGetForecastDay ||
-    isPending8GetHoursForecast ||
-    isPendingGetAstronomy
+    isPending8GetHoursForecast
 
   /****************************************** useEffect *************************************************/
 
@@ -85,8 +73,7 @@ export const Home: FC<HomeProps> = (props) => {
     !isPending &&
     dataGetRealtime &&
     data8GetHoursForecast &&
-    dataGetForecast &&
-    dataGetAstronomy && (
+    dataGetForecast && (
       <HomeWrapper id="Home">
         <HomeGeneral
           dataGetRealtime={dataGetRealtime}
@@ -102,7 +89,7 @@ export const Home: FC<HomeProps> = (props) => {
           {/* <HomeMap dataGetRealtime={dataGetRealtime} /> */}
           <HomeInfoCardsContainer>
             <HomeUVIndex realtimeCurrent={dataGetForecast.current} />
-            <HomeSunrise astronomy={dataGetAstronomy.astronomy} />
+            <HomeSunrise realtimeLocation={dataGetForecast.location} />
           </HomeInfoCardsContainer>
           <HomeInfoCardsContainer>
             <HomeWind />

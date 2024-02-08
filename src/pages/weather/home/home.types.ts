@@ -3,7 +3,7 @@ import {
   IForecastdayHourCurrent,
   ICurrent,
   getRealtimeResponse,
-  IAstronomy,
+  ILocation,
 } from '@api/weather'
 
 export interface HomeProps {
@@ -36,7 +36,7 @@ export interface HomeUVIndexProps {
   realtimeCurrent: ICurrent
 }
 export interface HomeSunriseProps {
-  astronomy: IAstronomy
+  realtimeLocation: ILocation
 }
 export interface HomeWindProps {}
 export interface HomeRainfallProps {

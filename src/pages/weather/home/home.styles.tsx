@@ -175,3 +175,22 @@ export const LineChartWrapper = styled.div`
   width: 100%;
   height: 32px;
 `
+
+export const HomeSunriseWrapper = styled.div`
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`
+export const HomeSunriseWrapperAbsolute = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+`
+
+export const SunriseSunsetWrapper = styled.div`
+  height: 60px;
+  width: 100%;
+`
