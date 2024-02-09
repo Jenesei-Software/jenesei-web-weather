@@ -11,7 +11,7 @@ import { FC } from 'react'
 
 export const LayoutWidget: FC<LayoutWidgetProps> = (props) => {
   return (
-    <LayoutWidgetWrapper>
+    <LayoutWidgetWrapper $height={props.height} $width={props.width}>
       <LayoutWidgetContainer>
         <LayoutWidgetContainerTitle>{props.title}</LayoutWidgetContainerTitle>
         <LayoutWidgetContainerLine />

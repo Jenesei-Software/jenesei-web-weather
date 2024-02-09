@@ -25,7 +25,7 @@ function getSunPositionsForDay(
   }).startOf('day')
   const endDate = startDate.plus({ days: 1 })
 
-  const interval = 5
+  const interval = 30
 
   const localSunTime = DateTime.fromSeconds(localtimeEpoch, { zone: tzId })
   let checkLocalSunIndex: number | null = null
@@ -85,9 +85,32 @@ function getSunPositionsForDay(
     result[checkLocalLineIndex].line = true
   }
 
-  return result
+  return normalizeAltitudeValues(normalizeTimeValues(result))
 }
+function normalizeTimeValues(sunArray: ISun[]): ISun[] {
+  const minTime = Math.min(...sunArray.map((sun) => sun.time))
+  const maxTime = Math.max(...sunArray.map((sun) => sun.time))
 
+  const normalizedSunArray = sunArray.map((sun) => ({
+    ...sun,
+    time: Math.floor(((sun.time - minTime) / (maxTime - minTime)) * 100),
+  }))
+
+  return normalizedSunArray
+}
+function normalizeAltitudeValues(sunArray: ISun[]): ISun[] {
+  const minTime = Math.min(...sunArray.map((sun) => sun.altitude))
+  const maxTime = Math.max(...sunArray.map((sun) => sun.altitude))
+
+  const normalizedSunArray = sunArray.map((sun) => ({
+    ...sun,
+    altitude: Math.floor(
+      ((sun.altitude - minTime) / (maxTime - minTime)) * 100
+    ),
+  }))
+
+  return normalizedSunArray
+}
 function convertUTCToLocalTime(tzId: string, utcTime: Date): string {
   const localTime = DateTime.fromJSDate(utcTime, { zone: tzId })
   const hours = localTime.toFormat('HH')
@@ -121,9 +144,8 @@ export const HomeSunrise: FC<HomeSunriseProps> = (props) => {
       localSun
     )
   )
-  const result = data.sort((a, b) => a.time - b.time)
   return (
-    result && (
+    data && (
       <LayoutWidget
         title={
           <>
@@ -140,7 +162,7 @@ export const HomeSunrise: FC<HomeSunriseProps> = (props) => {
               )}
             </StyledInterR24>
             <SunriseSunsetWrapper>
-              <SunriseSunset value={result} />
+              <SunriseSunset value={data} />
             </SunriseSunsetWrapper>
             <StyledInterR16>
               Sunset:{' '}

@@ -1,19 +1,57 @@
-import { HomeWindProps } from '..'
+import {
+  HomeWindArrow,
+  HomeWindLine,
+  HomeWindProps,
+  HomeWindTitleContainer,
+  HomeWindWrapper,
+} from '..'
 import { IconWeather } from '@assets/icons/icon-weather'
+import Arrow from '@assets/pictures/wind/arrow.png'
+import Line from '@assets/pictures/wind/line.png'
 import { LayoutWidget } from '@layouts/layout-widget'
-import { StyledInterR12 } from '@styles/fonts/inter'
+import {
+  StyledInterR12,
+  StyledInterR14,
+  StyledInterSB20,
+} from '@styles/fonts/inter'
 import { FC } from 'react'
 
-export const HomeWind: FC<HomeWindProps> = () => {
+function convertKmToMps(kilometersPerHour: number): number {
+  const conversionFactor = 1000 / 3600
+
+  // Преобразование км/ч в м/с
+  const metersPerSecond = kilometersPerHour * conversionFactor
+
+  const roundedMetersPerSecond = Number(metersPerSecond.toFixed(1))
+
+  return roundedMetersPerSecond
+}
+export const HomeWind: FC<HomeWindProps> = (props) => {
   return (
     <LayoutWidget
+      height="min-content"
+      width="154px"
       title={
         <>
           <IconWeather.Wind />
           <StyledInterR12>WIND</StyledInterR12>
         </>
       }
-      content={undefined}
+      content={
+        <HomeWindWrapper>
+          <HomeWindLine src={Line} />
+          <HomeWindArrow
+            $transform={props.realtimeCurrent.wind_degree}
+            src={Arrow}
+          />
+          <HomeWindTitleContainer>
+            <StyledInterSB20>
+              {convertKmToMps(props.realtimeCurrent.wind_kph)}
+            </StyledInterSB20>
+            <StyledInterR14>m/s</StyledInterR14>
+          </HomeWindTitleContainer>
+        </HomeWindWrapper>
+      }
     />
   )
 }

@@ -1,7 +1,12 @@
 import styled, { css } from 'styled-components'
 
-export const LayoutWidgetWrapper = styled.div`
-  width: 100%;
+export const LayoutWidgetWrapper = styled.div<{
+  $height?: string
+  $width?: string
+}>`
+  width: ${(props) => props.$width ?? '100%'};
+  height: ${(props) => props.$height ?? 'auto'};
+
   position: relative;
   padding: 12px;
   max-width: 500px;

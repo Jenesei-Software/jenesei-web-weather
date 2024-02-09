@@ -3,7 +3,7 @@ export interface getSunriseSunsetRequest {
   params: {
     lat: string
     lng: string
-    date: string
+    date?: string
   }
 }
 

@@ -11,6 +11,7 @@ import {
   HomeGeneral,
   HomeHourlyForecast,
   HomeHumidity,
+  HomeMap,
   HomeRainfall,
   HomeSunrise,
   HomeUVIndex,
@@ -86,14 +87,14 @@ export const Home: FC<HomeProps> = (props) => {
             dataGetForecastDay={dataGetForecast.forecast.forecastday}
           />
           <HomeAirQuality realtimeCurrent={dataGetForecast.current} />
-          {/* <HomeMap dataGetRealtime={dataGetRealtime} /> */}
+          <HomeMap dataGetRealtime={dataGetRealtime} />
           <HomeInfoCardsContainer>
-            <HomeUVIndex realtimeCurrent={dataGetForecast.current} />
+            <HomeWind realtimeCurrent={dataGetForecast.current} />
             <HomeSunrise realtimeLocation={dataGetForecast.location} />
           </HomeInfoCardsContainer>
           <HomeInfoCardsContainer>
-            <HomeWind />
             <HomeRainfall realtimeCurrent={dataGetForecast.current} />
+            <HomeUVIndex realtimeCurrent={dataGetForecast.current} />
           </HomeInfoCardsContainer>
           <HomeInfoCardsContainer>
             <HomeFeelsLike realtimeCurrent={dataGetForecast.current} />

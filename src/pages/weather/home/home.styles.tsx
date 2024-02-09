@@ -1,6 +1,10 @@
 import { PointRelativeToLine } from '@components/point-relative-to-line'
 import { WeatherDifferenceFromTheList } from '@components/weather-difference-from-the-list'
-import { StyledInterM18, StyledInterT10 } from '@styles/fonts/inter'
+import {
+  FontInterB14,
+  StyledInterM18,
+  StyledInterT10,
+} from '@styles/fonts/inter'
 import styled from 'styled-components'
 import { Swiper } from 'swiper/react'
 
@@ -168,7 +172,6 @@ export const MapWrapper = styled.div`
   height: 196px;
   border-radius: 10px;
   overflow: hidden;
-  margin-top: 10px;
 `
 
 export const LineChartWrapper = styled.div`
@@ -190,7 +193,81 @@ export const HomeSunriseWrapperAbsolute = styled.div`
   left: 0;
 `
 
-export const SunriseSunsetWrapper = styled.div`
-  height: 60px;
+export const HomeMapWrapper = styled.div`
+  margin-top: 6px;
+  height: 200px;
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const HomeMapIconWrapper = styled.div`
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+`
+export const HomeMapIconCircle = styled.div`
+  height: 28px;
+  width: 28px;
+  border-radius: 100px;
+  background-color: #f8f2d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+export const HomeMapIconCircleTitle = styled.span`
+  ${FontInterB14}
+`
+export const HomeMapIconTitle = styled.span`
+  ${FontInterB14}
+  color: black;
+  text-shadow:
+    2px 0 #fff,
+    -2px 0 #fff,
+    0 2px #fff,
+    0 -2px #fff,
+    1px 1px #fff,
+    -1px -1px #fff,
+    1px -1px #fff,
+    -1px 1px #fff;
+`
+export const SunriseSunsetWrapper = styled.div`
+  height: 54px;
+  width: 100%;
+`
+
+export const HomeWindLine = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`
+export const HomeWindArrow = styled.img<{ $transform: number }>`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotate(${(props) => props.$transform}deg);
+  transition: transform 0.5s ease;
+`
+export const HomeWindWrapper = styled.div`
+  padding-top: 12px;
+  height: 100px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const HomeWindTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `

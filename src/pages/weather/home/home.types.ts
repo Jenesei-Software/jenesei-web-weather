@@ -38,7 +38,9 @@ export interface HomeUVIndexProps {
 export interface HomeSunriseProps {
   realtimeLocation: ILocation
 }
-export interface HomeWindProps {}
+export interface HomeWindProps {
+  realtimeCurrent: ICurrent
+}
 export interface HomeRainfallProps {
   realtimeCurrent: ICurrent
 }
