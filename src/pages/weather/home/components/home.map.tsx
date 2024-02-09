@@ -54,7 +54,7 @@ export const HomeMap: FC<HomeMapProps> = (props) => {
           <HomeMapIconWrapper>
             <HomeMapIconCircle>
               <HomeMapIconCircleTitle>
-                {props.dataGetRealtime.current.temp_c}°
+                {props.dataGetRealtime.current.temp_c}
               </HomeMapIconCircleTitle>
             </HomeMapIconCircle>
             <HomeMapIconTitle>

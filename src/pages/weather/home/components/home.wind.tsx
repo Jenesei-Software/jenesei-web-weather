@@ -30,7 +30,7 @@ export const HomeWind: FC<HomeWindProps> = (props) => {
   return (
     <LayoutWidget
       height="min-content"
-      width="154px"
+      width="176px"
       title={
         <>
           <IconWeather.Wind />
