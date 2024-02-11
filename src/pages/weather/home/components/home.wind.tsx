@@ -1,10 +1,10 @@
+import { HomeWindProps } from '..'
 import {
-  HomeWindArrow,
-  HomeWindLine,
-  HomeWindProps,
-  HomeWindTitleContainer,
   HomeWindWrapper,
-} from '..'
+  HomeWindLine,
+  HomeWindArrow,
+  HomeWindTitleContainer,
+} from './home.wind.styles'
 import { IconWeather } from '@assets/icons/icon-weather'
 import Arrow from '@assets/pictures/wind/arrow.png'
 import Line from '@assets/pictures/wind/line.png'
@@ -39,8 +39,9 @@ export const HomeWind: FC<HomeWindProps> = (props) => {
       }
       content={
         <HomeWindWrapper>
-          <HomeWindLine src={Line} />
+          <HomeWindLine alt="Wind background" src={Line} />
           <HomeWindArrow
+            alt="Wind arrow"
             $transform={props.realtimeCurrent.wind_degree}
             src={Arrow}
           />

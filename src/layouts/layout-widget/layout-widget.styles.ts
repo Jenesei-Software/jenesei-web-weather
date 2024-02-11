@@ -73,7 +73,6 @@ export const LayoutWidgetContainerBlur = styled.div`
   border-radius: 15px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  opacity: 0.4;
   width: 100%;
   min-height: 100%;
   position: absolute;
@@ -88,7 +87,7 @@ export const LayoutWidgetContainerBlur = styled.div`
     height: 100%;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
   }
 `

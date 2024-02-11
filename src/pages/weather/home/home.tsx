@@ -3,6 +3,7 @@ import {
   HomeProps,
   HomeInfoContainer,
   HomeInfoCardsContainer,
+  HomeBackground,
 } from '.'
 import {
   HomeAirQuality,
@@ -11,18 +12,17 @@ import {
   HomeGeneral,
   HomeHourlyForecast,
   HomeHumidity,
-  HomeMap,
   HomeRainfall,
   HomeSunrise,
   HomeUVIndex,
   HomeWind,
 } from './components'
 import {
-  WEATHER_LANGUAGES,
   useGetHoursForecast,
   useGetForecastDay,
   useGetRealtime,
 } from '@api/weather'
+import { getBackground } from '@functions/get-background'
 import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
 
@@ -35,7 +35,6 @@ export const Home: FC<HomeProps> = (props) => {
         params: {
           q: props.IPAddress,
           days: 3,
-          lang: WEATHER_LANGUAGES.ru,
           aqi: 'yes',
           alerts: 'yes',
         },
@@ -48,7 +47,6 @@ export const Home: FC<HomeProps> = (props) => {
         params: {
           q: props.IPAddress,
           days: 3,
-          lang: WEATHER_LANGUAGES.ru,
           aqi: 'yes',
           alerts: 'yes',
         },
@@ -58,7 +56,6 @@ export const Home: FC<HomeProps> = (props) => {
     ...useGetRealtime({
       params: {
         q: props.IPAddress,
-        lang: WEATHER_LANGUAGES.ru,
       },
     }),
   })
@@ -75,7 +72,10 @@ export const Home: FC<HomeProps> = (props) => {
     dataGetRealtime &&
     data8GetHoursForecast &&
     dataGetForecast && (
-      <HomeWrapper id="Home">
+      <HomeWrapper>
+        <HomeBackground
+          $backgroundURL={getBackground(dataGetRealtime.current.condition.text)}
+        />
         <HomeGeneral
           dataGetRealtime={dataGetRealtime}
           dataGetForecastDay={dataGetForecast.forecast.forecastday}
@@ -87,7 +87,7 @@ export const Home: FC<HomeProps> = (props) => {
             dataGetForecastDay={dataGetForecast.forecast.forecastday}
           />
           <HomeAirQuality realtimeCurrent={dataGetForecast.current} />
-          <HomeMap dataGetRealtime={dataGetRealtime} />
+          {/* <HomeMap dataGetRealtime={dataGetRealtime} /> */}
           <HomeInfoCardsContainer>
             <HomeWind realtimeCurrent={dataGetForecast.current} />
             <HomeSunrise realtimeLocation={dataGetForecast.location} />

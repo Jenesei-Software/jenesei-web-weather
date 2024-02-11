@@ -13,8 +13,22 @@ export const HomeWrapper = styled.div`
   flex-direction: column;
   gap: 12px;
   overflow-y: auto;
+  position: relative;
+  min-height: 100dvh;
 `
-
+export const HomeBackground = styled.div<{ $backgroundURL: string }>`
+  background-image: url(${(props) => props.$backgroundURL});
+  background-position: center;
+  background-size: cover;
+  height: 100dvh;
+  width: 100dvw;
+  background-color: ${(props) => props.theme.color.product['100']};
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: -1;
+`
 export const HomeGeneralContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -241,33 +255,4 @@ export const HomeMapIconTitle = styled.span`
 export const SunriseSunsetWrapper = styled.div`
   height: 54px;
   width: 100%;
-`
-
-export const HomeWindLine = styled.img`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-`
-export const HomeWindArrow = styled.img<{ $transform: number }>`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transform: rotate(${(props) => props.$transform}deg);
-  transition: transform 0.5s ease;
-`
-export const HomeWindWrapper = styled.div`
-  padding-top: 12px;
-  height: 100px;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-export const HomeWindTitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `
