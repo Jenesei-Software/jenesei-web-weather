@@ -63,7 +63,7 @@ export const CityProvider: React.FC<CityProviderProps> = (props) => {
         modules={[Pagination]}
       >
         {cities &&
-          cities.map((e, id) => (
+          cities.map((_, id) => (
             <StyledSwiperSlide key={id}>{props.children}</StyledSwiperSlide>
           ))}
       </StyledSwiper>
