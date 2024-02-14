@@ -6,9 +6,7 @@ import {
   ILocation,
 } from '@api/weather'
 
-export interface HomeProps {
-  IPAddress: string
-}
+export interface HomeProps {}
 
 export interface HomeGeneralProps {
   dataGetRealtime: getRealtimeResponse

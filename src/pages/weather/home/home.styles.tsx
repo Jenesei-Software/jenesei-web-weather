@@ -18,15 +18,14 @@ export const HomeWrapper = styled.div`
 `
 export const HomeBackground = styled.div<{ $backgroundURL: string }>`
   background-image: url(${(props) => props.$backgroundURL});
-  background-position: center;
   background-size: cover;
-  height: 100dvh;
+  height: 100%;
+  min-height: 100dvh;
   width: 100dvw;
   background-color: ${(props) => props.theme.color.product['100']};
-  position: fixed;
-  left: 0;
-  top: 0;
+  position: absolute;
   overflow: hidden;
+  top: 0;
   z-index: -1;
 `
 export const HomeGeneralContainer = styled.div`
@@ -55,6 +54,7 @@ export const HomeInfoContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
+  padding-bottom: 36px;
   margin-top: 16px;
   gap: 8px;
   @media (min-width: ${(props) => props.theme.size.tablet}) {
@@ -220,7 +220,6 @@ export const HomeMapWrapper = styled.div`
 
 export const HomeMapIconWrapper = styled.div`
   position: absolute;
-  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;

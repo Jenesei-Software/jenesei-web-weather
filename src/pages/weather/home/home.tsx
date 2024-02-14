@@ -23,17 +23,20 @@ import {
   useGetRealtime,
 } from '@api/weather'
 import { getBackground } from '@functions/get-background'
+import { useCity } from '@providers/city-provider'
 import { useQuery } from '@tanstack/react-query'
 import { FC } from 'react'
 
-export const Home: FC<HomeProps> = (props) => {
+export const Home: FC<HomeProps> = () => {
+  /****************************************** Other *************************************************/
+  const { selectedCity } = useCity()
   /****************************************** Query *************************************************/
   const { data: data8GetHoursForecast, isPending: isPending8GetHoursForecast } =
     useQuery({
       ...useGetHoursForecast({
         hours: 12,
         params: {
-          q: props.IPAddress,
+          q: selectedCity.ip,
           days: 3,
           aqi: 'yes',
           alerts: 'yes',
@@ -45,7 +48,7 @@ export const Home: FC<HomeProps> = (props) => {
     useQuery({
       ...useGetForecastDay({
         params: {
-          q: props.IPAddress,
+          q: selectedCity.ip,
           days: 3,
           aqi: 'yes',
           alerts: 'yes',
@@ -55,7 +58,7 @@ export const Home: FC<HomeProps> = (props) => {
   const { data: dataGetRealtime, isPending: isPendingGetRealtime } = useQuery({
     ...useGetRealtime({
       params: {
-        q: props.IPAddress,
+        q: selectedCity.ip,
       },
     }),
   })

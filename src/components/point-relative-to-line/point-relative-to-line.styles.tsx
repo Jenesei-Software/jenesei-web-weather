@@ -5,7 +5,6 @@ export const PointRelativeToLineWrapper = styled.div<{ $gradient: string }>`
   height: 4px;
   border-radius: 44px;
   background: linear-gradient(${(props) => props.$gradient});
-  z-index: 1;
   position: relative;
   display: flex;
   align-items: center;
@@ -24,7 +23,6 @@ export const PointRelativeToLineOneWrapper = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
   border-radius: 100px;
   background-color: #4195d2ff;
 `

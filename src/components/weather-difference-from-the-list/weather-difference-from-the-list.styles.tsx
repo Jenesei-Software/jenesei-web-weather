@@ -51,7 +51,6 @@ export const WeatherDifferenceFromTheListDay = styled.div<WeatherDifferenceFromT
   height: 4px;
   margin-left: ${(props) => props.$left + '%'};
   border-radius: 44px;
-  z-index: 1;
   position: absolute;
   left: 0;
   top: 0;

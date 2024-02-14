@@ -34,6 +34,7 @@ export const HomeHourlyForecast: FC<HomeHourlyForecastProps> = (props) => {
           pagination={{ clickable: true }}
           slidesPerView={6}
           scrollbar={{ draggable: true }}
+          nested
         >
           {props.data8GetHoursForecast.map((e, id) => (
             <SwiperSlide key={id}>

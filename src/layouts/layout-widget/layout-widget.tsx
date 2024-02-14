@@ -1,6 +1,5 @@
 import {
   LayoutWidgetContainer,
-  LayoutWidgetContainerBlur,
   LayoutWidgetContainerContent,
   LayoutWidgetContainerLine,
   LayoutWidgetContainerTitle,
@@ -19,7 +18,6 @@ export const LayoutWidget: FC<LayoutWidgetProps> = (props) => {
           {props.content}
         </LayoutWidgetContainerContent>
       </LayoutWidgetContainer>
-      <LayoutWidgetContainerBlur />
     </LayoutWidgetWrapper>
   )
 }

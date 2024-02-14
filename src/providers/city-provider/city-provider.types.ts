@@ -3,10 +3,11 @@ export interface CityProviderProps {
 }
 
 export interface City {
-  name: string
+  ip: string
+  id: number
 }
 
 export interface CityContextProps {
-  selectedCityIndex: number
+  selectedCity: City
   cities: City[]
 }
