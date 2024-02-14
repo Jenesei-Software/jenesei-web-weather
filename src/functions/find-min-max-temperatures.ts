@@ -6,7 +6,7 @@ interface TemperatureData {
 }
 
 export function findMinMaxTemperatures(
-  data: IForecastdayCurrent[]
+  data?: IForecastdayCurrent[]
 ): TemperatureData | null {
   if (!data || data.length === 0) {
     return null

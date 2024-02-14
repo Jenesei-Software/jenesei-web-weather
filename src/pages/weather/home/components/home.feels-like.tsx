@@ -7,6 +7,7 @@ import { FC } from 'react'
 export const HomeFeelsLike: FC<HomeFeelsLikeProps> = (props) => {
   return (
     <LayoutWidget
+      height="80px"
       title={
         <>
           <IconWeather.FeelsLike />
@@ -14,11 +15,13 @@ export const HomeFeelsLike: FC<HomeFeelsLikeProps> = (props) => {
         </>
       }
       content={
-        <HomeAirQualityTitleContainer>
-          <StyledInterM20>
-            {props.realtimeCurrent.feelslike_c + '°'}
-          </StyledInterM20>
-        </HomeAirQualityTitleContainer>
+        props.realtimeCurrent && (
+          <HomeAirQualityTitleContainer>
+            <StyledInterM20>
+              {props.realtimeCurrent.feelslike_c + '°'}
+            </StyledInterM20>
+          </HomeAirQualityTitleContainer>
+        )
       }
     />
   )

@@ -15,23 +15,33 @@ import { FC } from 'react'
 export const HomeGeneral: FC<HomeGeneralProps> = (props) => {
   return (
     <HomeGeneralContainer>
-      <StyledInterR36>{props.dataGetRealtime?.location.name}</StyledInterR36>
-      <HomeStyledStyledInterT10
-        $hasPlusOrMinus={hasPlusOrMinus(props.dataGetRealtime?.current.temp_c)}
-      >
-        {props.dataGetRealtime?.current.temp_c}°
-      </HomeStyledStyledInterT10>
-      <StyledInterR20>
-        {props.dataGetRealtime?.current.condition.text}
-      </StyledInterR20>
-      <HomeGeneralTeamsContainer>
-        <StyledInterM18>
-          H: {props.dataGetForecastDay[0].day.maxtemp_c}°
-        </StyledInterM18>
-        <StyledInterM18>
-          L: {props.dataGetForecastDay[0].day.mintemp_c}°
-        </StyledInterM18>
-      </HomeGeneralTeamsContainer>
+      {props.dataGetRealtime && (
+        <>
+          <StyledInterR36>
+            {props.dataGetRealtime?.location.name}
+          </StyledInterR36>
+          <HomeStyledStyledInterT10
+            $hasPlusOrMinus={hasPlusOrMinus(
+              props.dataGetRealtime?.current.temp_c
+            )}
+          >
+            {props.dataGetRealtime?.current.temp_c}°
+          </HomeStyledStyledInterT10>
+          <StyledInterR20>
+            {props.dataGetRealtime?.current.condition.text}
+          </StyledInterR20>
+        </>
+      )}
+      {props.dataGetForecastDay && (
+        <HomeGeneralTeamsContainer>
+          <StyledInterM18>
+            H: {props.dataGetForecastDay?.[0].day.maxtemp_c}°
+          </StyledInterM18>
+          <StyledInterM18>
+            L: {props.dataGetForecastDay?.[0].day.mintemp_c}°
+          </StyledInterM18>
+        </HomeGeneralTeamsContainer>
+      )}
     </HomeGeneralContainer>
   )
 }

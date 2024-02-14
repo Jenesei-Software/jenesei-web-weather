@@ -9,21 +9,21 @@ import {
 export interface HomeProps {}
 
 export interface HomeGeneralProps {
-  dataGetRealtime: getRealtimeResponse
-  dataGetForecastDay: IForecastdayCurrent[]
+  dataGetRealtime?: getRealtimeResponse
+  dataGetForecastDay?: IForecastdayCurrent[]
 }
 
 export interface HomeHourlyForecastProps {
-  data8GetHoursForecast: IForecastdayHourCurrent[]
+  data8GetHoursForecast?: IForecastdayHourCurrent[]
 }
 
 export interface HomeDayForecastProps {
-  dataGetForecastDay: IForecastdayCurrent[]
-  dataGetRealtime: getRealtimeResponse
+  dataGetForecastDay?: IForecastdayCurrent[]
+  dataGetRealtime?: getRealtimeResponse
 }
 
 export interface HomeAirQualityProps {
-  realtimeCurrent: ICurrent
+  realtimeCurrent?: ICurrent
 }
 
 export interface HomeMapProps {
@@ -31,20 +31,20 @@ export interface HomeMapProps {
 }
 
 export interface HomeUVIndexProps {
-  realtimeCurrent: ICurrent
+  realtimeCurrent?: ICurrent
 }
 export interface HomeSunriseProps {
-  realtimeLocation: ILocation
+  realtimeLocation?: ILocation
 }
 export interface HomeWindProps {
-  realtimeCurrent: ICurrent
+  realtimeCurrent?: ICurrent
 }
 export interface HomeRainfallProps {
-  realtimeCurrent: ICurrent
+  realtimeCurrent?: ICurrent
 }
 export interface HomeFeelsLikeProps {
-  realtimeCurrent: ICurrent
+  realtimeCurrent?: ICurrent
 }
 export interface HomeHumidityProps {
-  realtimeCurrent: ICurrent
+  realtimeCurrent?: ICurrent
 }

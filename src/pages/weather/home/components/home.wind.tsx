@@ -29,7 +29,7 @@ function convertKmToMps(kilometersPerHour: number): number {
 export const HomeWind: FC<HomeWindProps> = (props) => {
   return (
     <LayoutWidget
-      height="min-content"
+      height="162px"
       width="176px"
       title={
         <>
@@ -38,20 +38,22 @@ export const HomeWind: FC<HomeWindProps> = (props) => {
         </>
       }
       content={
-        <HomeWindWrapper>
-          <HomeWindLine alt="Wind background" src={Line} />
-          <HomeWindArrow
-            alt="Wind arrow"
-            $transform={props.realtimeCurrent.wind_degree}
-            src={Arrow}
-          />
-          <HomeWindTitleContainer>
-            <StyledInterSB20>
-              {convertKmToMps(props.realtimeCurrent.wind_kph)}
-            </StyledInterSB20>
-            <StyledInterR14>m/s</StyledInterR14>
-          </HomeWindTitleContainer>
-        </HomeWindWrapper>
+        props.realtimeCurrent && (
+          <HomeWindWrapper>
+            <HomeWindLine alt="Wind background" src={Line} />
+            <HomeWindArrow
+              alt="Wind arrow"
+              $transform={props.realtimeCurrent.wind_degree}
+              src={Arrow}
+            />
+            <HomeWindTitleContainer>
+              <StyledInterSB20>
+                {convertKmToMps(props.realtimeCurrent.wind_kph)}
+              </StyledInterSB20>
+              <StyledInterR14>m/s</StyledInterR14>
+            </HomeWindTitleContainer>
+          </HomeWindWrapper>
+        )
       }
     />
   )

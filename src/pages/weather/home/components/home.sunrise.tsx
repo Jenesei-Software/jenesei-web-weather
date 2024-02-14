@@ -8,7 +8,7 @@ import {
   StyledInterR24,
 } from '@styles/fonts/inter'
 import { DateTime } from 'luxon'
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import SunCalc from 'suncalc'
 
 function getSunPositionsForDay(
@@ -125,28 +125,36 @@ function convertLocalTimeToUTC(tzId: string, localtimeEpoch: number): Date {
 }
 
 export const HomeSunrise: FC<HomeSunriseProps> = (props) => {
-  const localDate = convertLocalTimeToUTC(
-    props.realtimeLocation.tz_id,
-    props.realtimeLocation.localtime_epoch
-  )
-  const localSun = SunCalc.getTimes(
-    localDate,
-    props.realtimeLocation.lat,
-    props.realtimeLocation.lon
-  )
+  const [data, setData] = useState<ISun[]>([])
+  const [localSun, setLocalSun] = useState<SunCalc.GetTimesResult | null>(null)
 
-  const [data] = useState<ISun[]>(
-    getSunPositionsForDay(
-      props.realtimeLocation.localtime_epoch,
-      props.realtimeLocation.lat,
-      props.realtimeLocation.lon,
-      props.realtimeLocation.tz_id,
-      localSun
-    )
-  )
+  useEffect(() => {
+    if (props.realtimeLocation) {
+      const localDate = convertLocalTimeToUTC(
+        props.realtimeLocation.tz_id,
+        props.realtimeLocation.localtime_epoch
+      )
+      const localSun = SunCalc.getTimes(
+        localDate,
+        props.realtimeLocation.lat,
+        props.realtimeLocation.lon
+      )
+      setLocalSun(localSun)
+      setData(
+        getSunPositionsForDay(
+          props.realtimeLocation.localtime_epoch,
+          props.realtimeLocation.lat,
+          props.realtimeLocation.lon,
+          props.realtimeLocation.tz_id,
+          localSun
+        )
+      )
+    }
+  }, [props])
   return (
     data && (
       <LayoutWidget
+        height="162px"
         title={
           <>
             <IconWeather.Sunrise />
@@ -154,24 +162,27 @@ export const HomeSunrise: FC<HomeSunriseProps> = (props) => {
           </>
         }
         content={
-          <HomeSunriseWrapper>
-            <StyledInterR24>
-              {convertUTCToLocalTime(
-                props.realtimeLocation.tz_id,
-                localSun.sunrise
-              )}
-            </StyledInterR24>
-            <SunriseSunsetWrapper>
-              <SunriseSunset value={data} />
-            </SunriseSunsetWrapper>
-            <StyledInterR16>
-              Sunset:{' '}
-              {convertUTCToLocalTime(
-                props.realtimeLocation.tz_id,
-                localSun.sunset
-              )}
-            </StyledInterR16>
-          </HomeSunriseWrapper>
+          props.realtimeLocation &&
+          localSun && (
+            <HomeSunriseWrapper>
+              <StyledInterR24>
+                {convertUTCToLocalTime(
+                  props.realtimeLocation.tz_id,
+                  localSun.sunrise
+                )}
+              </StyledInterR24>
+              <SunriseSunsetWrapper>
+                <SunriseSunset value={data} />
+              </SunriseSunsetWrapper>
+              <StyledInterR16>
+                Sunset:{' '}
+                {convertUTCToLocalTime(
+                  props.realtimeLocation.tz_id,
+                  localSun.sunset
+                )}
+              </StyledInterR16>
+            </HomeSunriseWrapper>
+          )
         }
       />
     )

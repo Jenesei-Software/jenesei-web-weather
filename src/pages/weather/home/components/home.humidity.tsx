@@ -7,6 +7,7 @@ import { FC } from 'react'
 export const HomeHumidity: FC<HomeHumidityProps> = (props) => {
   return (
     <LayoutWidget
+      height="80px"
       title={
         <>
           <IconWeather.Humidity />
@@ -14,11 +15,13 @@ export const HomeHumidity: FC<HomeHumidityProps> = (props) => {
         </>
       }
       content={
-        <HomeAirQualityTitleContainer>
-          <StyledInterM20>
-            {props.realtimeCurrent.humidity + ' %'}
-          </StyledInterM20>
-        </HomeAirQualityTitleContainer>
+        props.realtimeCurrent && (
+          <HomeAirQualityTitleContainer>
+            <StyledInterM20>
+              {props.realtimeCurrent.humidity + ' %'}
+            </StyledInterM20>
+          </HomeAirQualityTitleContainer>
+        )
       }
     />
   )

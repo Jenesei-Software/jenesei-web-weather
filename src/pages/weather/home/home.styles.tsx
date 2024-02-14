@@ -34,6 +34,7 @@ export const HomeGeneralContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-top: 34px;
+  height: 185px;
 `
 
 export const HomeStyledStyledInterT10 = styled(StyledInterT10)<{

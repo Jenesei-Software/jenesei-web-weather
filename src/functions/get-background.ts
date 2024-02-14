@@ -13,8 +13,8 @@ import squall from '/condition-codes/squall.webp'
 import thunderstorm from '/condition-codes/thunderstorm.webp'
 import tornado from '/condition-codes/tornado.webp'
 
-export function getBackground(text: string): string {
-  const lowercaseText = text.toLowerCase()
+export function getBackground(text?: string): string {
+  const lowercaseText = (text || '').toLowerCase()
 
   switch (true) {
     case lowercaseText.includes('ash'):

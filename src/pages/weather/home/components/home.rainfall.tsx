@@ -7,6 +7,7 @@ import { FC } from 'react'
 export const HomeRainfall: FC<HomeRainfallProps> = (props) => {
   return (
     <LayoutWidget
+      height="94px"
       title={
         <>
           <IconWeather.Rainfall />
@@ -14,11 +15,13 @@ export const HomeRainfall: FC<HomeRainfallProps> = (props) => {
         </>
       }
       content={
-        <HomeAirQualityTitleContainer>
-          <StyledInterM20>
-            {props.realtimeCurrent.precip_mm + ' mm'}
-          </StyledInterM20>
-        </HomeAirQualityTitleContainer>
+        props.realtimeCurrent && (
+          <HomeAirQualityTitleContainer>
+            <StyledInterM20>
+              {props.realtimeCurrent.precip_mm + ' mm'}
+            </StyledInterM20>
+          </HomeAirQualityTitleContainer>
+        )
       }
     />
   )

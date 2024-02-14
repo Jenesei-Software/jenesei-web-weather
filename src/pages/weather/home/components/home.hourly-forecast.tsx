@@ -22,6 +22,7 @@ import { SwiperSlide } from 'swiper/react'
 export const HomeHourlyForecast: FC<HomeHourlyForecastProps> = (props) => {
   return (
     <LayoutWidget
+      height="145px"
       title={
         <>
           <IconWeather.HourlyForecast />
@@ -36,25 +37,26 @@ export const HomeHourlyForecast: FC<HomeHourlyForecastProps> = (props) => {
           scrollbar={{ draggable: true }}
           nested
         >
-          {props.data8GetHoursForecast.map((e, id) => (
-            <SwiperSlide key={id}>
-              <HomeInfoCardContainerContentListItem key={id}>
-                <HomeInfoCardContainerContentListItemDay>
-                  <StyledInterM16>
-                    {formatTimestampToTime(e.time_epoch, false)}
-                  </StyledInterM16>
-                </HomeInfoCardContainerContentListItemDay>
-                <HomeInfoCardContainerContentListItemPicture
-                  $url={e.condition.icon}
-                />
-                <HomeInfoCardContainerContentListItemData
-                  $hasPlusOrMinus={hasPlusOrMinus(e.temp_c)}
-                >
-                  <StyledInterM18>{e.temp_c}°</StyledInterM18>
-                </HomeInfoCardContainerContentListItemData>
-              </HomeInfoCardContainerContentListItem>
-            </SwiperSlide>
-          ))}
+          {props.data8GetHoursForecast &&
+            props.data8GetHoursForecast.map((e, id) => (
+              <SwiperSlide key={id}>
+                <HomeInfoCardContainerContentListItem key={id}>
+                  <HomeInfoCardContainerContentListItemDay>
+                    <StyledInterM16>
+                      {formatTimestampToTime(e.time_epoch, false)}
+                    </StyledInterM16>
+                  </HomeInfoCardContainerContentListItemDay>
+                  <HomeInfoCardContainerContentListItemPicture
+                    $url={e.condition.icon}
+                  />
+                  <HomeInfoCardContainerContentListItemData
+                    $hasPlusOrMinus={hasPlusOrMinus(e.temp_c)}
+                  >
+                    <StyledInterM18>{e.temp_c}°</StyledInterM18>
+                  </HomeInfoCardContainerContentListItemData>
+                </HomeInfoCardContainerContentListItem>
+              </SwiperSlide>
+            ))}
         </HomeStyledSwiper>
       }
     />
