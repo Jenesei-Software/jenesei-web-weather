@@ -25,5 +25,3 @@ src/core/keys/*
 *.njsproj
 *.sln
 *.sw?
-
-src/ui/axiosInstance/axiosInstance.ts

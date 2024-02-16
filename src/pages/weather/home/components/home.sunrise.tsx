@@ -2,11 +2,7 @@ import { HomeSunriseProps, HomeSunriseWrapper, SunriseSunsetWrapper } from '..'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { ISun, SunriseSunset } from '@components/sunrise-sunset'
 import { LayoutWidget } from '@layouts/layout-widget'
-import {
-  StyledInterR12,
-  StyledInterR16,
-  StyledInterR24,
-} from '@styles/fonts/inter'
+import { SpanInterR12, SpanInterR16, SpanInterR24 } from '@styles/fonts/inter'
 import { DateTime } from 'luxon'
 import { FC, useState, useEffect } from 'react'
 import SunCalc from 'suncalc'
@@ -158,29 +154,29 @@ export const HomeSunrise: FC<HomeSunriseProps> = (props) => {
         title={
           <>
             <IconWeather.Sunrise />
-            <StyledInterR12>SUNRISE</StyledInterR12>
+            <SpanInterR12>SUNRISE</SpanInterR12>
           </>
         }
         content={
           props.realtimeLocation &&
           localSun && (
             <HomeSunriseWrapper>
-              <StyledInterR24>
+              <SpanInterR24>
                 {convertUTCToLocalTime(
                   props.realtimeLocation.tz_id,
                   localSun.sunrise
                 )}
-              </StyledInterR24>
+              </SpanInterR24>
               <SunriseSunsetWrapper>
                 <SunriseSunset value={data} />
               </SunriseSunsetWrapper>
-              <StyledInterR16>
+              <SpanInterR16>
                 Sunset:{' '}
                 {convertUTCToLocalTime(
                   props.realtimeLocation.tz_id,
                   localSun.sunset
                 )}
-              </StyledInterR16>
+              </SpanInterR16>
             </HomeSunriseWrapper>
           )
         }

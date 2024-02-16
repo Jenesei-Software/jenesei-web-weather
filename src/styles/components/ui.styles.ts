@@ -1,4 +1,4 @@
-import { StyledInterR16 } from '@styles/fonts/inter'
+import { SpanInterR16 } from '@styles/fonts/inter'
 import { theme } from '@styles/theme'
 import ReactLoading from 'react-loading'
 import styled from 'styled-components'
@@ -13,7 +13,7 @@ UIReactLoading.defaultProps = {
 
 export const UIALotOfTitle = styled.div``
 
-export const UIInterR16OnClick = styled(StyledInterR16)`
+export const UIInterR16OnClick = styled(SpanInterR16)`
   color: ${(props) => props.theme.color.product['100']};
   cursor: pointer;
 `

@@ -16,30 +16,17 @@ import {
   HomeUVIndex,
   HomeWind,
 } from './components'
-import {
-  useGetHoursForecast,
-  useGetForecastDay,
-  useGetRealtime,
-} from '@api/weather'
-import { useCity } from '@providers/city-provider'
+import { useGetForecastDay, useGetRealtime } from '@api/weather'
+import { getHoursForecast } from '@functions/get-hours-forecast'
+import { CityContext } from '@providers/city-provider'
 import { useQuery } from '@tanstack/react-query'
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 
 export const Home: FC<HomeProps> = () => {
   /****************************************** Other *************************************************/
-  const { selectedCity } = useCity()
+  const { selectedCity } = useContext(CityContext)
+
   /****************************************** Query *************************************************/
-  const { data: data8GetHoursForecast } = useQuery({
-    ...useGetHoursForecast({
-      hours: 12,
-      params: {
-        q: selectedCity.ip,
-        days: 3,
-        aqi: 'yes',
-        alerts: 'yes',
-      },
-    }),
-  })
 
   const { data: dataGetForecast } = useQuery({
     ...useGetForecastDay({
@@ -51,6 +38,7 @@ export const Home: FC<HomeProps> = () => {
       },
     }),
   })
+
   const { data: dataGetRealtime } = useQuery({
     ...useGetRealtime({
       params: {
@@ -68,7 +56,12 @@ export const Home: FC<HomeProps> = () => {
         dataGetForecastDay={dataGetForecast?.forecast.forecastday}
       />
       <HomeInfoContainer>
-        <HomeHourlyForecast data8GetHoursForecast={data8GetHoursForecast} />
+        <HomeHourlyForecast
+          data8GetHoursForecast={getHoursForecast(
+            dataGetForecast?.forecast.forecastday || [],
+            12
+          )}
+        />
         <HomeDayForecast
           dataGetRealtime={dataGetRealtime}
           dataGetForecastDay={dataGetForecast?.forecast.forecastday}

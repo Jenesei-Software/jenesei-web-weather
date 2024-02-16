@@ -1,14 +1,21 @@
 import styled, { css } from 'styled-components'
 
-export interface StyledInterProps {
+export interface SpanInterProps {
   color?: string
+  width?: string
+  textAlign?: 'center'
+  textWrap?: 'nowrap'
 }
 
-const FontInter = css`
+const FontInter = css<SpanInterProps>`
   font-family: Inter;
   font-style: normal;
   line-height: normal;
-  color: ${(props) => props.theme.color.default.white};
+  color: ${(props) =>
+    props.color ? props.color : props.theme.color.default.white};
+  width: ${(props) => (props.width ? props.width : 'auto')};
+  text-align: ${(props) => props.textAlign};
+  text-wrap: ${(props) => props.textWrap};
 `
 
 export const FontInterSB10 = css`
@@ -16,10 +23,8 @@ export const FontInterSB10 = css`
   font-size: 10px;
   font-weight: 600;
 `
-export const StyledInterSB10 = styled.span<StyledInterProps>`
+export const SpanInterSB10 = styled.span<SpanInterProps>`
   ${FontInterSB10};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterSB14 = css`
@@ -27,10 +32,8 @@ export const FontInterSB14 = css`
   font-size: 14px;
   font-weight: 600;
 `
-export const StyledInterSB14 = styled.span<StyledInterProps>`
+export const SpanInterSB14 = styled.span<SpanInterProps>`
   ${FontInterSB14};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterSB16 = css`
@@ -38,10 +41,8 @@ const FontInterSB16 = css`
   font-size: 16px;
   font-weight: 600;
 `
-export const StyledInterSB16 = styled.span<StyledInterProps>`
+export const SpanInterSB16 = styled.span<SpanInterProps>`
   ${FontInterSB16};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterSB18 = css`
@@ -49,10 +50,8 @@ const FontInterSB18 = css`
   font-size: 18px;
   font-weight: 600;
 `
-export const StyledInterSB18 = styled.span<StyledInterProps>`
+export const SpanInterSB18 = styled.span<SpanInterProps>`
   ${FontInterSB18};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterSB20 = css`
@@ -60,10 +59,8 @@ const FontInterSB20 = css`
   font-size: 20px;
   font-weight: 600;
 `
-export const StyledInterSB20 = styled.span<StyledInterProps>`
+export const SpanInterSB20 = styled.span<SpanInterProps>`
   ${FontInterSB20};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterM12 = css`
@@ -71,10 +68,8 @@ export const FontInterM12 = css`
   font-size: 12px;
   font-weight: 500;
 `
-export const StyledInterM12 = styled.span<StyledInterProps>`
+export const SpanInterM12 = styled.span<SpanInterProps>`
   ${FontInterM12};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterM14 = css`
@@ -82,10 +77,8 @@ export const FontInterM14 = css`
   font-size: 14px;
   font-weight: 500;
 `
-export const StyledInterM14 = styled.span<StyledInterProps>`
+export const SpanInterM14 = styled.span<SpanInterProps>`
   ${FontInterM14};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterM16 = css`
@@ -93,18 +86,8 @@ export const FontInterM16 = css`
   font-size: 16px;
   font-weight: 500;
 `
-export const StyledInterM16 = styled.span<StyledInterProps>`
+export const SpanInterM16 = styled.span<SpanInterProps>`
   ${FontInterM14};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
-`
-export const StyledInterM16Mobile = styled.span<StyledInterProps>`
-  ${FontInterM14};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
-  @media (max-width: ${(props) => props.theme.size.mobile}) {
-    font-size: 12px;
-  }
 `
 
 export const FontInterM18 = css`
@@ -113,10 +96,8 @@ export const FontInterM18 = css`
   font-weight: 500;
 `
 
-export const StyledInterM18 = styled.span<StyledInterProps>`
+export const SpanInterM18 = styled.span<SpanInterProps>`
   ${FontInterM18};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterM20 = css`
@@ -125,10 +106,8 @@ export const FontInterM20 = css`
   font-weight: 500;
 `
 
-export const StyledInterM20 = styled.span<StyledInterProps>`
+export const SpanInterM20 = styled.span<SpanInterProps>`
   ${FontInterM20};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterM22 = css`
@@ -136,10 +115,8 @@ export const FontInterM22 = css`
   font-size: 22px;
   font-weight: 500;
 `
-export const StyledInterM22 = styled.span<StyledInterProps>`
+export const SpanInterM22 = styled.span<SpanInterProps>`
   ${FontInterM22};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterB14 = css`
@@ -147,10 +124,8 @@ export const FontInterB14 = css`
   font-size: 14px;
   font-weight: 700;
 `
-export const StyledInterB14 = styled.span<StyledInterProps>`
+export const SpanInterB14 = styled.span<SpanInterProps>`
   ${FontInterB14};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterB16 = css`
@@ -158,10 +133,8 @@ export const FontInterB16 = css`
   font-size: 16px;
   font-weight: 700;
 `
-export const StyledInterB16 = styled.span<StyledInterProps>`
+export const SpanInterB16 = styled.span<SpanInterProps>`
   ${FontInterB16};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterB20 = css`
@@ -169,10 +142,8 @@ export const FontInterB20 = css`
   font-size: 20px;
   font-weight: 700;
 `
-export const StyledInterB20 = styled.span<StyledInterProps>`
+export const SpanInterB20 = styled.span<SpanInterProps>`
   ${FontInterB20};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterB32 = css`
@@ -180,10 +151,8 @@ const FontInterB32 = css`
   font-size: 32px;
   font-weight: 700;
 `
-export const StyledInterB32 = styled.span<StyledInterProps>`
+export const SpanInterB32 = styled.span<SpanInterProps>`
   ${FontInterB32};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterB36 = css`
@@ -191,18 +160,8 @@ const FontInterB36 = css`
   font-size: 36px;
   font-weight: 700;
 `
-export const StyledInterB36 = styled.span<StyledInterProps>`
+export const SpanInterB36 = styled.span<SpanInterProps>`
   ${FontInterB36};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
-`
-export const StyledInterB36Mobile = styled.span<StyledInterProps>`
-  ${FontInterB36};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
-  @media (max-width: ${(props) => props.theme.size.mobile}) {
-    font-size: 20px;
-  }
 `
 
 const FontInterR12 = css`
@@ -210,10 +169,8 @@ const FontInterR12 = css`
   font-size: 12px;
   font-weight: 400;
 `
-export const StyledInterR12 = styled.span<StyledInterProps>`
+export const SpanInterR12 = styled.span<SpanInterProps>`
   ${FontInterR12};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterR14 = css`
@@ -221,10 +178,8 @@ const FontInterR14 = css`
   font-size: 14px;
   font-weight: 400;
 `
-export const StyledInterR14 = styled.span<StyledInterProps>`
+export const SpanInterR14 = styled.span<SpanInterProps>`
   ${FontInterR14};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 export const FontInterR16 = css`
@@ -232,10 +187,8 @@ export const FontInterR16 = css`
   font-size: 16px !important;
   font-weight: 400;
 `
-export const StyledInterR16 = styled.span<StyledInterProps>`
+export const SpanInterR16 = styled.span<SpanInterProps>`
   ${FontInterR16};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterR20 = css`
@@ -243,10 +196,8 @@ const FontInterR20 = css`
   font-size: 20px;
   font-weight: 400;
 `
-export const StyledInterR20 = styled.span<StyledInterProps>`
+export const SpanInterR20 = styled.span<SpanInterProps>`
   ${FontInterR20};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterR24 = css`
@@ -254,10 +205,8 @@ const FontInterR24 = css`
   font-size: 24px;
   font-weight: 400;
 `
-export const StyledInterR24 = styled.span<StyledInterProps>`
+export const SpanInterR24 = styled.span<SpanInterProps>`
   ${FontInterR24};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterR36 = css`
@@ -265,10 +214,8 @@ const FontInterR36 = css`
   font-size: 36px;
   font-weight: 400;
 `
-export const StyledInterR36 = styled.span<StyledInterProps>`
+export const SpanInterR36 = styled.span<SpanInterProps>`
   ${FontInterR36};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `
 
 const FontInterT100 = css`
@@ -276,8 +223,6 @@ const FontInterT100 = css`
   font-size: 100px;
   font-weight: 100;
 `
-export const StyledInterT10 = styled.span<StyledInterProps>`
+export const SpanInterT10 = styled.span<SpanInterProps>`
   ${FontInterT100};
-  color: ${(props) =>
-    props.color ? props.color : props.theme.color.default.white};
 `

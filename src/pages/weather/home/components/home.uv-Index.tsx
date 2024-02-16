@@ -6,7 +6,7 @@ import {
 import { IconWeather } from '@assets/icons/icon-weather'
 import { getUVIndexToTitle } from '@functions/get-uvIndex-to-title copy'
 import { LayoutWidget } from '@layouts/layout-widget'
-import { StyledInterM20, StyledInterR12 } from '@styles/fonts/inter'
+import { SpanInterM20, SpanInterR12 } from '@styles/fonts/inter'
 import { FC } from 'react'
 
 export const HomeUVIndex: FC<HomeUVIndexProps> = (props) => {
@@ -16,20 +16,20 @@ export const HomeUVIndex: FC<HomeUVIndexProps> = (props) => {
       title={
         <>
           <IconWeather.UVIndex />
-          <StyledInterR12>UV INDEX</StyledInterR12>
+          <SpanInterR12>UV INDEX</SpanInterR12>
         </>
       }
       content={
         props.realtimeCurrent && (
           <>
             <HomeAirQualityTitleContainer>
-              <StyledInterM20>
+              <SpanInterM20>
                 {props.realtimeCurrent.uv +
                   ' ' +
                   getUVIndexToTitle(
                     props.realtimeCurrent.air_quality['us-epa-index']
                   )}
-              </StyledInterM20>
+              </SpanInterM20>
             </HomeAirQualityTitleContainer>
             <HomeAirQualityStyledPointRelativeToLine
               value={props.realtimeCurrent.uv}

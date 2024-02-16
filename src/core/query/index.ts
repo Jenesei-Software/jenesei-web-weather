@@ -11,12 +11,11 @@ export const queryClient = new QueryClient({
 
 export const queryKeys = {
   auth: {
-    ip: 'authIp',
+    ip: 'locationIp',
   },
   weather: {
     forecast: 'weather-forecast',
     realtime: 'weather-realtime',
     astronomy: 'weather-astronomy',
   },
-  'sunrise-sunset': 'sunrise-sunset',
 }

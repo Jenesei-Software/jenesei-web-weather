@@ -6,7 +6,7 @@ import {
 import { IconWeather } from '@assets/icons/icon-weather'
 import { getUsEPAIndexToTitle } from '@functions/get-usEPAIndex-to-title'
 import { LayoutWidget } from '@layouts/layout-widget'
-import { StyledInterM20, StyledInterR12 } from '@styles/fonts/inter'
+import { SpanInterM20, SpanInterR12 } from '@styles/fonts/inter'
 import { FC } from 'react'
 
 export const HomeAirQuality: FC<HomeAirQualityProps> = (props) => {
@@ -16,20 +16,20 @@ export const HomeAirQuality: FC<HomeAirQualityProps> = (props) => {
       title={
         <>
           <IconWeather.AirQuality />
-          <StyledInterR12>AIR QUALITY</StyledInterR12>
+          <SpanInterR12>AIR QUALITY</SpanInterR12>
         </>
       }
       content={
         props.realtimeCurrent && (
           <>
             <HomeAirQualityTitleContainer>
-              <StyledInterM20>
+              <SpanInterM20>
                 {props.realtimeCurrent.air_quality.pm2_5 +
                   ' ' +
                   getUsEPAIndexToTitle(
                     props.realtimeCurrent.air_quality['us-epa-index']
                   )}
-              </StyledInterM20>
+              </SpanInterM20>
             </HomeAirQualityTitleContainer>
             <HomeAirQualityStyledPointRelativeToLine
               value={props.realtimeCurrent.air_quality.pm2_5}

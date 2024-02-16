@@ -21,12 +21,6 @@ const weatherOptions = {
 
 export const weatherAxiosInstance = axios.create(weatherOptions)
 
-const sunriseSunsetHostOptions = {
-  baseURL: config.sunriseSunsetHost,
-}
-
-export const sunriseSunsetAxiosInstance = axios.create(sunriseSunsetHostOptions)
-
 const ipOptions = {
   baseURL: config.ipHost,
   headers: {

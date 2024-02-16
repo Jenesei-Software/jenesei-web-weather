@@ -1,10 +1,6 @@
 import { PointRelativeToLine } from '@components/point-relative-to-line'
-import { WeatherDifferenceFromTheList } from '@components/weather-difference-from-the-list'
-import {
-  FontInterB14,
-  StyledInterM18,
-  StyledInterT10,
-} from '@styles/fonts/inter'
+import { WeatherDifference } from '@components/weather-difference'
+import { FontInterB14, SpanInterM18, SpanInterT10 } from '@styles/fonts/inter'
 import styled from 'styled-components'
 import { Swiper } from 'swiper/react'
 
@@ -15,6 +11,7 @@ export const HomeWrapper = styled.div`
   overflow-y: auto;
   position: relative;
   min-height: 100dvh;
+  align-items: center;
 `
 export const HomeBackground = styled.div<{ $backgroundURL: string }>`
   background-image: url(${(props) => props.$backgroundURL});
@@ -35,12 +32,15 @@ export const HomeGeneralContainer = styled.div`
   justify-content: flex-start;
   margin-top: 34px;
   height: 185px;
+  min-width: 200px;
+  width: 100%;
 `
 
-export const HomeStyledStyledInterT10 = styled(StyledInterT10)<{
+export const HomeStyledSpanInterT10 = styled(SpanInterT10)<{
   $hasPlusOrMinus: boolean
 }>`
   line-height: 95px;
+  display: flex;
 `
 
 export const HomeGeneralTeamsContainer = styled.div`
@@ -58,6 +58,8 @@ export const HomeInfoContainer = styled.div`
   padding-bottom: 36px;
   margin-top: 16px;
   gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
   @media (min-width: ${(props) => props.theme.size.tablet}) {
     align-content: center;
     flex-flow: column wrap;
@@ -153,9 +155,7 @@ export const HomeForecastDayListItemPicture = styled.div<{
   height: 30px;
 `
 
-export const HomeForecastDayListItemStyledStyledInterM18 = styled(
-  StyledInterM18
-)`
+export const HomeForecastDayListItemStyledSpanInterM18 = styled(SpanInterM18)`
   width: 40px;
   min-width: 40px;
   max-width: 40px;
@@ -174,9 +174,7 @@ export const HomeAirQualityStyledPointRelativeToLine = styled(
   margin-top: 10px;
 `
 
-export const HomeDayForecastStyledWeatherDifferenceFromTheList = styled(
-  WeatherDifferenceFromTheList
-)`
+export const HomeDayForecastStyledWeatherDifference = styled(WeatherDifference)`
   width: 42%;
   @media (max-width: ${(props) => props.theme.size.mobile}) {
     width: 100px;

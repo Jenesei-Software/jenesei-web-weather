@@ -4,12 +4,13 @@ export function getHoursForecast(
   forecastdaytList: IForecastdayCurrent[],
   hours: number
 ): IForecastdayHourCurrent[] {
+  if (forecastdaytList.length == 0) return []
   const currentDate = new Date()
   const currentHour = currentDate.getHours()
 
   // Функция для фильтрации прогноза по часам
   const filterForecastByHour = (forecast: IForecastdayCurrent) =>
-    forecast.hour.filter(
+    forecast?.hour.filter(
       (_, id) => id >= currentHour && id <= currentHour + hours - 1
     )
 

@@ -1,15 +1,7 @@
 import { AxiosContextProps, AxiosProviderProps } from '.'
-import { createContext, useContext, useEffect } from 'react'
+import { createContext, useEffect } from 'react'
 
-const AxiosContext = createContext<AxiosContextProps | null>(null)
-
-export const useAxios = () => {
-  const context = useContext(AxiosContext)
-  if (!context) {
-    throw new Error('useAxios must be used within an AxiosProvider')
-  }
-  return context
-}
+const AxiosContext = createContext<AxiosContextProps>({})
 
 export const AxiosProvider: React.FC<AxiosProviderProps> = (props) => {
   // const [tokenData, setTokenData] = useState<ITokenData | null>(null)

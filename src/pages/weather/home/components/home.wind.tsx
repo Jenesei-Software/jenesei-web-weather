@@ -5,15 +5,11 @@ import {
   HomeWindArrow,
   HomeWindTitleContainer,
 } from './home.wind.styles'
+import Arrow from '/wind/arrow.png'
+import Line from '/wind/line.png'
 import { IconWeather } from '@assets/icons/icon-weather'
-import Arrow from '@assets/pictures/wind/arrow.png'
-import Line from '@assets/pictures/wind/line.png'
 import { LayoutWidget } from '@layouts/layout-widget'
-import {
-  StyledInterR12,
-  StyledInterR14,
-  StyledInterSB20,
-} from '@styles/fonts/inter'
+import { SpanInterR12, SpanInterR14, SpanInterSB20 } from '@styles/fonts/inter'
 import { FC } from 'react'
 
 function convertKmToMps(kilometersPerHour: number): number {
@@ -34,7 +30,7 @@ export const HomeWind: FC<HomeWindProps> = (props) => {
       title={
         <>
           <IconWeather.Wind />
-          <StyledInterR12>WIND</StyledInterR12>
+          <SpanInterR12>WIND</SpanInterR12>
         </>
       }
       content={
@@ -47,10 +43,10 @@ export const HomeWind: FC<HomeWindProps> = (props) => {
               src={Arrow}
             />
             <HomeWindTitleContainer>
-              <StyledInterSB20>
+              <SpanInterSB20>
                 {convertKmToMps(props.realtimeCurrent.wind_kph)}
-              </StyledInterSB20>
-              <StyledInterR14>m/s</StyledInterR14>
+              </SpanInterSB20>
+              <SpanInterR14>m/s</SpanInterR14>
             </HomeWindTitleContainer>
           </HomeWindWrapper>
         )

@@ -3,7 +3,6 @@ import { queryClient } from '@core/query'
 import NiceModal from '@ebay/nice-modal-react'
 import { LayoutApp } from '@layouts/layout-app'
 import { AxiosProvider } from '@providers/axios-provider'
-import { LanguageProvider } from '@providers/language-provider'
 import { theme } from '@styles/theme'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -19,11 +18,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <AxiosProvider>
             <BrowserRouter>
-              <LanguageProvider>
-                <NiceModal.Provider>
-                  <LayoutApp />
-                </NiceModal.Provider>
-              </LanguageProvider>
+              <NiceModal.Provider>
+                <LayoutApp />
+              </NiceModal.Provider>
             </BrowserRouter>
           </AxiosProvider>
         </ThemeProvider>

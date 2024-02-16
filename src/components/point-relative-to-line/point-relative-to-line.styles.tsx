@@ -15,8 +15,13 @@ export const PointRelativeToLineOneWrapper = styled.div<{
 }>`
   left: calc(
     ${(props) =>
-        props.$left < 0 ? 0 : props.$left > 100 ? 100 : props.$left + '%'} - 4px
+        props.$left < 0
+          ? '0%'
+          : props.$left > 100
+            ? '100%'
+            : props.$left + '%'} - 4px
   );
+  transition: left 1s;
   width: 8px;
   height: 8px;
   position: absolute;

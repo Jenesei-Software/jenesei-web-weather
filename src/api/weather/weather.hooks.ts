@@ -5,7 +5,6 @@ import {
   weatherApi,
 } from '.'
 import { queryKeys } from '@core/query'
-import { getHoursForecast } from '@functions/get-hours-forecast'
 import { queryOptions } from '@tanstack/react-query'
 
 export const useGetRealtime = (props: getRealtimeRequest) =>
@@ -18,19 +17,6 @@ export const useGetForecastDay = (props: getForecastRequest) =>
   queryOptions({
     queryKey: [queryKeys.weather.forecast, props.params.q],
     queryFn: () => weatherApi.getForecast(props).then((res) => res.data),
-  })
-
-export const useGetHoursForecast = (
-  props: getForecastRequest & { hours: number }
-) =>
-  queryOptions({
-    queryKey: [queryKeys.weather.forecast, props.hours, props.params.q],
-    queryFn: () =>
-      weatherApi
-        .getForecast(props)
-        .then((res) =>
-          getHoursForecast(res.data.forecast.forecastday, props.hours)
-        ),
   })
 
 export const useGetAstronomy = (props: getAstronomyRequest) =>

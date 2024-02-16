@@ -1,15 +1,13 @@
 import {
-  WeatherDifferenceFromTheListDay,
-  WeatherDifferenceFromTheListNow,
-  WeatherDifferenceFromTheListNowWrapper,
-  WeatherDifferenceFromTheListProps,
-  WeatherDifferenceFromTheListWrapper,
+  WeatherDifferenceDay,
+  WeatherDifferenceNow,
+  WeatherDifferenceNowWrapper,
+  WeatherDifferenceProps,
+  WeatherDifferenceWrapper,
 } from '.'
 import { FC } from 'react'
 
-export const WeatherDifferenceFromTheList: FC<
-  WeatherDifferenceFromTheListProps
-> = (props) => {
+export const WeatherDifference: FC<WeatherDifferenceProps> = (props) => {
   const lengthList = props.list.maxtemp - props.list.mintemp
   const lengthListOnePercent = lengthList / 100
   const minDayLeft =
@@ -21,18 +19,18 @@ export const WeatherDifferenceFromTheList: FC<
   const nowLeft =
     props.now && (props.now?.temp - props.list.mintemp) / lengthListOnePercent
   return (
-    <WeatherDifferenceFromTheListWrapper className={props.className}>
+    <WeatherDifferenceWrapper className={props.className}>
       {props.now && nowLeft && (
-        <WeatherDifferenceFromTheListNowWrapper $left={nowLeft}>
-          <WeatherDifferenceFromTheListNow />
-        </WeatherDifferenceFromTheListNowWrapper>
+        <WeatherDifferenceNowWrapper $left={nowLeft}>
+          <WeatherDifferenceNow />
+        </WeatherDifferenceNowWrapper>
       )}
-      <WeatherDifferenceFromTheListDay
+      <WeatherDifferenceDay
         $left={minDayLeft}
         width={lengthDay}
         $leftTemperature={props.day.mintemp}
         $rightTemperature={props.day.maxtemp}
       />
-    </WeatherDifferenceFromTheListWrapper>
+    </WeatherDifferenceWrapper>
   )
 }
