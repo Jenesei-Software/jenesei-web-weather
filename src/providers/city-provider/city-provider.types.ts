@@ -3,7 +3,7 @@ export interface CityProviderProps {
 }
 
 export interface City {
-  ip: string
+  q: string
   id: number
 }
 

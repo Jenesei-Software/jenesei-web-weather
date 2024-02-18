@@ -4,22 +4,20 @@ import {
   HomeInfoContainer,
   HomeInfoCardsContainer,
 } from '.'
-import {
-  HomeAirQuality,
-  HomeDayForecast,
-  HomeFeelsLike,
-  HomeGeneral,
-  HomeHourlyForecast,
-  HomeHumidity,
-  HomeRainfall,
-  HomeSunrise,
-  HomeUVIndex,
-  HomeWind,
-} from './components'
 import { useGetForecastDay, useGetRealtime } from '@api/weather'
 import { getHoursForecast } from '@functions/get-hours-forecast'
 import { CityContext } from '@providers/city-provider'
 import { useQuery } from '@tanstack/react-query'
+import { WidgetAirQuality } from '@widgets/air-quality'
+import { WidgetDayForecast } from '@widgets/day-forecast'
+import { WidgetFeelsLike } from '@widgets/feels-like'
+import { WidgetGeneral } from '@widgets/general'
+import { WidgetHourlyForecast } from '@widgets/hourly-forecast'
+import { WidgetHumidity } from '@widgets/humidity'
+import { WidgetRainfall } from '@widgets/rainfall'
+import { WidgetSunrise } from '@widgets/sunrise'
+import { WidgetUVIndex } from '@widgets/uv-Index'
+import { WidgetWind } from '@widgets/wind'
 import { FC, useContext } from 'react'
 
 export const Home: FC<HomeProps> = () => {
@@ -31,7 +29,7 @@ export const Home: FC<HomeProps> = () => {
   const { data: dataGetForecast } = useQuery({
     ...useGetForecastDay({
       params: {
-        q: selectedCity.ip,
+        q: selectedCity.q,
         days: 3,
         aqi: 'yes',
         alerts: 'yes',
@@ -42,7 +40,7 @@ export const Home: FC<HomeProps> = () => {
   const { data: dataGetRealtime } = useQuery({
     ...useGetRealtime({
       params: {
-        q: selectedCity.ip,
+        q: selectedCity.q,
       },
     }),
   })
@@ -51,33 +49,33 @@ export const Home: FC<HomeProps> = () => {
 
   return (
     <HomeWrapper>
-      <HomeGeneral
+      <WidgetGeneral
         dataGetRealtime={dataGetRealtime}
         dataGetForecastDay={dataGetForecast?.forecast.forecastday}
       />
       <HomeInfoContainer>
-        <HomeHourlyForecast
+        <WidgetHourlyForecast
           data8GetHoursForecast={getHoursForecast(
             dataGetForecast?.forecast.forecastday || [],
             12
           )}
         />
-        <HomeDayForecast
+        <WidgetDayForecast
           dataGetRealtime={dataGetRealtime}
           dataGetForecastDay={dataGetForecast?.forecast.forecastday}
         />
-        <HomeAirQuality realtimeCurrent={dataGetForecast?.current} />
+        <WidgetAirQuality realtimeCurrent={dataGetForecast?.current} />
         <HomeInfoCardsContainer>
-          <HomeWind realtimeCurrent={dataGetForecast?.current} />
-          <HomeSunrise realtimeLocation={dataGetForecast?.location} />
+          <WidgetWind realtimeCurrent={dataGetForecast?.current} />
+          <WidgetSunrise realtimeLocation={dataGetForecast?.location} />
         </HomeInfoCardsContainer>
         <HomeInfoCardsContainer>
-          <HomeRainfall realtimeCurrent={dataGetForecast?.current} />
-          <HomeUVIndex realtimeCurrent={dataGetForecast?.current} />
+          <WidgetRainfall realtimeCurrent={dataGetForecast?.current} />
+          <WidgetUVIndex realtimeCurrent={dataGetForecast?.current} />
         </HomeInfoCardsContainer>
         <HomeInfoCardsContainer>
-          <HomeFeelsLike realtimeCurrent={dataGetForecast?.current} />
-          <HomeHumidity realtimeCurrent={dataGetForecast?.current} />
+          <WidgetFeelsLike realtimeCurrent={dataGetForecast?.current} />
+          <WidgetHumidity realtimeCurrent={dataGetForecast?.current} />
         </HomeInfoCardsContainer>
       </HomeInfoContainer>
     </HomeWrapper>

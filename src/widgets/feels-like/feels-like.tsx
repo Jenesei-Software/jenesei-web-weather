@@ -1,26 +1,27 @@
-import { HomeAirQualityTitleContainer, HomeRainfallProps } from '..'
+import { WidgetFeelsLikeProps } from '.'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { LayoutWidget } from '@layouts/layout-widget'
+import { FrameWidgetTitleContainer } from '@styles/components'
 import { SpanInterM20, SpanInterR12 } from '@styles/fonts/inter'
 import { FC } from 'react'
 
-export const HomeRainfall: FC<HomeRainfallProps> = (props) => {
+export const WidgetFeelsLike: FC<WidgetFeelsLikeProps> = (props) => {
   return (
     <LayoutWidget
-      height="94px"
+      height="80px"
       title={
         <>
-          <IconWeather.Rainfall />
-          <SpanInterR12>RAINFALL</SpanInterR12>
+          <IconWeather.FeelsLike />
+          <SpanInterR12>FEELS LIKE</SpanInterR12>
         </>
       }
       content={
         props.realtimeCurrent && (
-          <HomeAirQualityTitleContainer>
+          <FrameWidgetTitleContainer>
             <SpanInterM20>
-              {props.realtimeCurrent.precip_mm + ' mm'}
+              {props.realtimeCurrent.feelslike_c + '°'}
             </SpanInterM20>
-          </HomeAirQualityTitleContainer>
+          </FrameWidgetTitleContainer>
         )
       }
     />

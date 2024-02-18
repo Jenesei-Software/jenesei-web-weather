@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
-export const HomeWindLine = styled.img`
+export const WidgetWindLine = styled.img`
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: contain;
 `
-export const HomeWindArrow = styled.img<{ $transform: number }>`
+export const WidgetWindArrow = styled.img<{ $transform: number }>`
   position: absolute;
   width: 80%;
   height: 80%;
@@ -14,7 +14,7 @@ export const HomeWindArrow = styled.img<{ $transform: number }>`
   transform: rotate(${(props) => props.$transform}deg);
   transition: transform 0.5s ease;
 `
-export const HomeWindWrapper = styled.div`
+export const WidgetWindWrapper = styled.div`
   padding-top: 12px;
   height: 100px;
   width: 100%;
@@ -23,7 +23,7 @@ export const HomeWindWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `
-export const HomeWindTitleContainer = styled.div`
+export const WidgetWindTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

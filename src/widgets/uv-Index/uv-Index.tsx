@@ -1,15 +1,15 @@
-import {
-  HomeAirQualityStyledPointRelativeToLine,
-  HomeAirQualityTitleContainer,
-  HomeUVIndexProps,
-} from '..'
+import { WidgetUVIndexProps } from '.'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { getUVIndexToTitle } from '@functions/get-uvIndex-to-title copy'
 import { LayoutWidget } from '@layouts/layout-widget'
+import {
+  FrameWidgetStyledPointRelativeToLine,
+  FrameWidgetTitleContainer,
+} from '@styles/components'
 import { SpanInterM20, SpanInterR12 } from '@styles/fonts/inter'
 import { FC } from 'react'
 
-export const HomeUVIndex: FC<HomeUVIndexProps> = (props) => {
+export const WidgetUVIndex: FC<WidgetUVIndexProps> = (props) => {
   return (
     <LayoutWidget
       height="94px"
@@ -22,7 +22,7 @@ export const HomeUVIndex: FC<HomeUVIndexProps> = (props) => {
       content={
         props.realtimeCurrent && (
           <>
-            <HomeAirQualityTitleContainer>
+            <FrameWidgetTitleContainer>
               <SpanInterM20>
                 {props.realtimeCurrent.uv +
                   ' ' +
@@ -30,8 +30,8 @@ export const HomeUVIndex: FC<HomeUVIndexProps> = (props) => {
                     props.realtimeCurrent.air_quality['us-epa-index']
                   )}
               </SpanInterM20>
-            </HomeAirQualityTitleContainer>
-            <HomeAirQualityStyledPointRelativeToLine
+            </FrameWidgetTitleContainer>
+            <FrameWidgetStyledPointRelativeToLine
               value={props.realtimeCurrent.uv}
               maxValue={12}
               gradient="90.00deg, rgb(101, 219, 124) 1.169%,rgb(245, 231, 83) 24.979%,rgb(230, 58, 82) 77.888%,rgb(181, 93, 224) 99.237%"

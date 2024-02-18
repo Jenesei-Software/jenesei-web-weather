@@ -5,14 +5,13 @@ import {
   StyledSwiper,
   StyledSwiperSlide,
 } from '.'
-import { getIPAddress } from '@api/auth'
 import {
   getForecastRequest,
   getRealtimeRequest,
   weatherApi,
 } from '@api/weather'
 import { queryClient, queryKeys } from '@core/query'
-import { useQuery } from '@tanstack/react-query'
+import { useGeoLocation } from '@providers/geolocation-provider'
 import React, { createContext, useState } from 'react'
 import { useEffect } from 'react'
 import 'swiper/css'
@@ -20,7 +19,7 @@ import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
 
 export const CityContext = createContext<CityContextProps>({
-  selectedCity: { ip: '144.34.213.172', id: 2 },
+  selectedCity: { q: '144.34.213.172', id: 2 },
   cities: [],
 })
 
@@ -35,7 +34,7 @@ const getRealtime = async (props: getRealtimeRequest) => {
 const fetchForecastForCity = async (city: City) => {
   const dataForecastDay = await getForecastDay({
     params: {
-      q: city.ip,
+      q: city.q,
       days: 3,
       aqi: 'yes',
       alerts: 'yes',
@@ -43,14 +42,14 @@ const fetchForecastForCity = async (city: City) => {
   })
   const dataRealtime = await getRealtime({
     params: {
-      q: city.ip,
+      q: city.q,
     },
   })
   queryClient.setQueryData(
-    [queryKeys.weather.forecast, city.ip],
+    [queryKeys.weather.forecast, city.q],
     dataForecastDay
   )
-  queryClient.setQueryData([queryKeys.weather.realtime, city.ip], dataRealtime)
+  queryClient.setQueryData([queryKeys.weather.realtime, city.q], dataRealtime)
 }
 
 export const CityProvider: React.FC<CityProviderProps> = (props) => {
@@ -58,22 +57,29 @@ export const CityProvider: React.FC<CityProviderProps> = (props) => {
   const [cities, setCities] = useState<City[]>([])
   const [selectedCity, setSelectedCity] = useState<City>(cities[0])
   const [loading, setLoading] = useState(true)
+  const { geoLocation } = useGeoLocation()
 
   /****************************************** Query *************************************************/
-  const { data: dataIPAddress } = useQuery({
-    ...getIPAddress(),
-  })
+  // const { data: dataIPAddress } = useQuery({
+  //   ...getIPAddress(),
+  // })
   /****************************************** useEffect *************************************************/
   useEffect(() => {
-    if (dataIPAddress) {
+    if (geoLocation.latitude) {
       setCities([
-        { ip: dataIPAddress?.ip, id: 0 },
-        { ip: '206.71.50.230', id: 1 },
-        { ip: '144.34.213.172', id: 2 },
+        {
+          q: `${geoLocation.latitude},${geoLocation.longitude}`,
+          id: 0,
+        },
+        { q: '206.71.50.230', id: 1 },
+        { q: '144.34.213.172', id: 2 },
       ])
-      setSelectedCity({ ip: dataIPAddress?.ip, id: 0 })
+      setSelectedCity({
+        q: `${geoLocation.latitude},${geoLocation.longitude}`,
+        id: 0,
+      })
     }
-  }, [dataIPAddress])
+  }, [geoLocation, geoLocation])
 
   useEffect(() => {
     const fetchCityData = async () => {

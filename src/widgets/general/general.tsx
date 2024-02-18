@@ -1,42 +1,43 @@
 import {
-  HomeGeneralContainer,
-  HomeStyledSpanInterT10,
-  HomeGeneralTeamsContainer,
-  HomeGeneralProps,
-} from '..'
+  WidgetGeneralContainer,
+  WidgetGeneralProps,
+  WidgetGeneralStyledTextTransition,
+  WidgetGeneralTeamsContainer,
+  WidgetStyledSpanInterT10,
+} from '.'
 import { hasPlusOrMinus } from '@functions/has-plus-or-minus'
 import { SpanInterM18, SpanInterR20, SpanInterR36 } from '@styles/fonts/inter'
 import { FC } from 'react'
-import TextTransition, { presets } from 'react-text-transition'
+import { presets } from 'react-text-transition'
 
-export const HomeGeneral: FC<HomeGeneralProps> = (props) => {
+export const WidgetGeneral: FC<WidgetGeneralProps> = (props) => {
   return (
-    <HomeGeneralContainer>
+    <WidgetGeneralContainer>
       <>
         <SpanInterR36>
-          <TextTransition springConfig={presets.gentle}>
+          <WidgetGeneralStyledTextTransition springConfig={presets.gentle}>
             {props.dataGetRealtime?.location.name}
-          </TextTransition>
+          </WidgetGeneralStyledTextTransition>
         </SpanInterR36>
-        <HomeStyledSpanInterT10
+        <WidgetStyledSpanInterT10
           $hasPlusOrMinus={hasPlusOrMinus(
             props.dataGetRealtime?.current.temp_c
           )}
         >
           {props.dataGetRealtime?.current.temp_c}°
-        </HomeStyledSpanInterT10>
+        </WidgetStyledSpanInterT10>
         <SpanInterR20>
           {props.dataGetRealtime?.current.condition.text}
         </SpanInterR20>
-        <HomeGeneralTeamsContainer>
+        <WidgetGeneralTeamsContainer>
           <SpanInterM18>
             H: {props.dataGetForecastDay?.[0].day.maxtemp_c}°
           </SpanInterM18>
           <SpanInterM18>
             L: {props.dataGetForecastDay?.[0].day.mintemp_c}°
           </SpanInterM18>
-        </HomeGeneralTeamsContainer>
+        </WidgetGeneralTeamsContainer>
       </>
-    </HomeGeneralContainer>
+    </WidgetGeneralContainer>
   )
 }

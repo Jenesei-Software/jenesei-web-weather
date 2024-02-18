@@ -36,7 +36,7 @@ export const SpanInterSB14 = styled.span<SpanInterProps>`
   ${FontInterSB14};
 `
 
-const FontInterSB16 = css`
+export const FontInterSB16 = css`
   ${FontInter};
   font-size: 16px;
   font-weight: 600;
@@ -209,7 +209,7 @@ export const SpanInterR24 = styled.span<SpanInterProps>`
   ${FontInterR24};
 `
 
-const FontInterR36 = css`
+export const FontInterR36 = css`
   ${FontInter};
   font-size: 36px;
   font-weight: 400;

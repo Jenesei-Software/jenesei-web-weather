@@ -1,4 +1,8 @@
-import { HomeSunriseProps, HomeSunriseWrapper, SunriseSunsetWrapper } from '..'
+import {
+  WidgetSunriseProps,
+  WidgetSunriseWrapper,
+  WidgetSunriseSunsetWrapper,
+} from '.'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { ISun, SunriseSunset } from '@components/sunrise-sunset'
 import { LayoutWidget } from '@layouts/layout-widget'
@@ -113,14 +117,13 @@ function convertUTCToLocalTime(tzId: string, utcTime: Date): string {
   const minutes = localTime.toFormat('mm')
   return `${hours}:${minutes}`
 }
-
 function convertLocalTimeToUTC(tzId: string, localtimeEpoch: number): Date {
   const localTime = DateTime.fromSeconds(localtimeEpoch, { zone: tzId })
   const utcTime = localTime.toUTC().toJSDate()
   return utcTime
 }
 
-export const HomeSunrise: FC<HomeSunriseProps> = (props) => {
+export const WidgetSunrise: FC<WidgetSunriseProps> = (props) => {
   const [data, setData] = useState<ISun[]>([])
   const [localSun, setLocalSun] = useState<SunCalc.GetTimesResult | null>(null)
 
@@ -160,16 +163,16 @@ export const HomeSunrise: FC<HomeSunriseProps> = (props) => {
         content={
           props.realtimeLocation &&
           localSun && (
-            <HomeSunriseWrapper>
+            <WidgetSunriseWrapper>
               <SpanInterR24>
                 {convertUTCToLocalTime(
                   props.realtimeLocation.tz_id,
                   localSun.sunrise
                 )}
               </SpanInterR24>
-              <SunriseSunsetWrapper>
+              <WidgetSunriseSunsetWrapper>
                 <SunriseSunset value={data} />
-              </SunriseSunsetWrapper>
+              </WidgetSunriseSunsetWrapper>
               <SpanInterR16>
                 Sunset:{' '}
                 {convertUTCToLocalTime(
@@ -177,7 +180,7 @@ export const HomeSunrise: FC<HomeSunriseProps> = (props) => {
                   localSun.sunset
                 )}
               </SpanInterR16>
-            </HomeSunriseWrapper>
+            </WidgetSunriseWrapper>
           )
         }
       />

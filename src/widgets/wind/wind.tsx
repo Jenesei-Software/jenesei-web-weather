@@ -1,10 +1,10 @@
-import { HomeWindProps } from '..'
 import {
-  HomeWindWrapper,
-  HomeWindLine,
-  HomeWindArrow,
-  HomeWindTitleContainer,
-} from './home.wind.styles'
+  WidgetWindWrapper,
+  WidgetWindLine,
+  WidgetWindArrow,
+  WidgetWindTitleContainer,
+  WidgetWindProps,
+} from '.'
 import Arrow from '/wind/arrow.png'
 import Line from '/wind/line.png'
 import { IconWeather } from '@assets/icons/icon-weather'
@@ -22,7 +22,7 @@ function convertKmToMps(kilometersPerHour: number): number {
 
   return roundedMetersPerSecond
 }
-export const HomeWind: FC<HomeWindProps> = (props) => {
+export const WidgetWind: FC<WidgetWindProps> = (props) => {
   return (
     <LayoutWidget
       height="162px"
@@ -35,20 +35,20 @@ export const HomeWind: FC<HomeWindProps> = (props) => {
       }
       content={
         props.realtimeCurrent && (
-          <HomeWindWrapper>
-            <HomeWindLine alt="Wind background" src={Line} />
-            <HomeWindArrow
+          <WidgetWindWrapper>
+            <WidgetWindLine alt="Wind background" src={Line} />
+            <WidgetWindArrow
               alt="Wind arrow"
               $transform={props.realtimeCurrent.wind_degree}
               src={Arrow}
             />
-            <HomeWindTitleContainer>
+            <WidgetWindTitleContainer>
               <SpanInterSB20>
                 {convertKmToMps(props.realtimeCurrent.wind_kph)}
               </SpanInterSB20>
               <SpanInterR14>m/s</SpanInterR14>
-            </HomeWindTitleContainer>
-          </HomeWindWrapper>
+            </WidgetWindTitleContainer>
+          </WidgetWindWrapper>
         )
       }
     />

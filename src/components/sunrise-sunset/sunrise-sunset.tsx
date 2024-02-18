@@ -25,10 +25,10 @@ export const SunriseSunset: React.FC<SunriseSunsetProps> = (props) => {
 const CustomizedComponents = (props: any) => {
   const { formattedGraphicalItems } = props
   const nowTrue = formattedGraphicalItems[0].props.points.find(
-    (e: any) => e.payload.now == true
+    (e: any) => e?.payload?.now == true
   )
   const lineTrue = formattedGraphicalItems[0].props.points.find(
-    (e: any) => e.payload.line == true
+    (e: any) => e?.payload?.line == true
   )
   const normalizedY = ((lineTrue?.y || 0) / props.height) * 100
   return (
@@ -58,7 +58,9 @@ const CustomizedComponents = (props: any) => {
           </linearGradient>
         </defs>
       </g>
-      {nowTrue.payload.altitude >= lineTrue.payload.altitude ? (
+      {nowTrue &&
+      lineTrue &&
+      nowTrue?.payload.altitude >= lineTrue?.payload.altitude ? (
         <g transform={`translate(${nowTrue?.x - 17},${nowTrue?.y - 17})`}>
           <svg
             width="34.000000"

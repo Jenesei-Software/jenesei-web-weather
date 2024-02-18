@@ -1,13 +1,13 @@
 import {
-  HomeForecastDayList,
-  HomeForecastDayListItem,
-  HomeForecastDayListItemDay,
-  HomeForecastDayListItemPicture,
-  HomeForecastDayListItemContainerPicture,
-  HomeForecastDayListItemStyledSpanInterM18,
-  HomeDayForecastProps,
-  HomeDayForecastStyledWeatherDifference,
-} from '..'
+  WidgetDayForecastProps,
+  WidgetDayForecastStyledWeatherDifference,
+  WidgetDayForecastList,
+  WidgetDayForecastListItem,
+  WidgetDayForecastListItemContainerPicture,
+  WidgetDayForecastListItemDay,
+  WidgetDayForecastListItemPicture,
+  WidgetDayForecastListItemStyledSpanInterM18,
+} from '.'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { findMinMaxTemperatures } from '@functions/find-min-max-temperatures'
 import { formatTimestampDateOfWeek } from '@functions/format-timestamp-date-of-week'
@@ -17,7 +17,7 @@ import { SpanInterM16, SpanInterR12, SpanInterSB10 } from '@styles/fonts/inter'
 import { theme } from '@styles/theme'
 import React, { FC } from 'react'
 
-export const HomeDayForecast: FC<HomeDayForecastProps> = (props) => {
+export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
   const resultMinMaxTemperatures = findMinMaxTemperatures(
     props?.dataGetForecastDay
   )
@@ -31,18 +31,18 @@ export const HomeDayForecast: FC<HomeDayForecastProps> = (props) => {
         </>
       }
       content={
-        <HomeForecastDayList>
+        <WidgetDayForecastList>
           {props.dataGetForecastDay &&
             props.dataGetForecastDay.map((e, id) => (
               <React.Fragment key={id}>
-                <HomeForecastDayListItem key={id}>
-                  <HomeForecastDayListItemDay>
+                <WidgetDayForecastListItem key={id}>
+                  <WidgetDayForecastListItemDay>
                     <SpanInterM16>
                       {formatTimestampDateOfWeek(e.date_epoch)}
                     </SpanInterM16>
-                  </HomeForecastDayListItemDay>
-                  <HomeForecastDayListItemContainerPicture>
-                    <HomeForecastDayListItemPicture
+                  </WidgetDayForecastListItemDay>
+                  <WidgetDayForecastListItemContainerPicture>
+                    <WidgetDayForecastListItemPicture
                       $url={e.day.condition.icon}
                     />
                     {(e.day.daily_chance_of_rain !== 0 ||
@@ -53,14 +53,14 @@ export const HomeDayForecast: FC<HomeDayForecastProps> = (props) => {
                         {' %'}
                       </SpanInterSB10>
                     )}
-                  </HomeForecastDayListItemContainerPicture>
-                  <HomeForecastDayListItemStyledSpanInterM18
+                  </WidgetDayForecastListItemContainerPicture>
+                  <WidgetDayForecastListItemStyledSpanInterM18
                     color={theme.color.default.white40}
                   >
                     {e.day.mintemp_c}°
-                  </HomeForecastDayListItemStyledSpanInterM18>
+                  </WidgetDayForecastListItemStyledSpanInterM18>
                   {props.dataGetRealtime && resultMinMaxTemperatures && (
-                    <HomeDayForecastStyledWeatherDifference
+                    <WidgetDayForecastStyledWeatherDifference
                       list={{
                         maxtemp: resultMinMaxTemperatures?.maxtemp_c,
                         mintemp: resultMinMaxTemperatures?.mintemp_c,
@@ -78,19 +78,19 @@ export const HomeDayForecast: FC<HomeDayForecastProps> = (props) => {
                       }
                     />
                   )}
-                  <HomeForecastDayListItemStyledSpanInterM18
+                  <WidgetDayForecastListItemStyledSpanInterM18
                     color={theme.color.default.white}
                   >
                     {e.day.maxtemp_c}°
-                  </HomeForecastDayListItemStyledSpanInterM18>
-                </HomeForecastDayListItem>
+                  </WidgetDayForecastListItemStyledSpanInterM18>
+                </WidgetDayForecastListItem>
                 {props.dataGetForecastDay &&
                   id !== props.dataGetForecastDay.length - 1 && (
                     <LayoutWidgetContainerLine />
                   )}
               </React.Fragment>
             ))}
-        </HomeForecastDayList>
+        </WidgetDayForecastList>
       }
     />
   )
