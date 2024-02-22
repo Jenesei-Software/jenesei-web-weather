@@ -6,19 +6,19 @@ import {
   getRealtimeRequest,
   getRealtimeResponse,
 } from '.'
-import { weatherAxiosInstance } from '@api/axios'
+import { weatherApiHostAxiosInstance } from '@api/axios'
 
 export const weatherApi = {
   getRealtime: (props: getRealtimeRequest) =>
-    weatherAxiosInstance.get<getRealtimeResponse>('current.json', {
+    weatherApiHostAxiosInstance.get<getRealtimeResponse>('current.json', {
       params: props.params,
     }),
   getForecast: (props: getForecastRequest) =>
-    weatherAxiosInstance.get<getForecastResponse>('forecast.json', {
+    weatherApiHostAxiosInstance.get<getForecastResponse>('forecast.json', {
       params: props.params,
     }),
   getAstronomy: (props: getAstronomyRequest) =>
-    weatherAxiosInstance.get<getAstronomyResponse>('astronomy.json', {
+    weatherApiHostAxiosInstance.get<getAstronomyResponse>('astronomy.json', {
       params: props.params,
     }),
 }

@@ -1,5 +1,5 @@
-import { ICurrent } from '@api/weather'
+import { CurrentAndForecastsWeatherResponse } from '@api/openweathermap'
 
 export interface WidgetUVIndexProps {
-  realtimeCurrent?: ICurrent
+  data?: CurrentAndForecastsWeatherResponse
 }

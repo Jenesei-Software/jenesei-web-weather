@@ -16,10 +16,10 @@ export const WidgetFeelsLike: FC<WidgetFeelsLikeProps> = (props) => {
         </>
       }
       content={
-        props.realtimeCurrent && (
+        props.data && (
           <FrameWidgetTitleContainer>
             <SpanInterM20>
-              {props.realtimeCurrent.feelslike_c + '°'}
+              {props.data.current.feels_like.toFixed() + '°'}
             </SpanInterM20>
           </FrameWidgetTitleContainer>
         )

@@ -1,55 +1,57 @@
 import {
+  CITY_LOCAL_STORAGE,
   City,
   CityContextProps,
   CityProviderProps,
-  StyledSwiper,
-  StyledSwiperSlide,
+  MY_LOCATION,
 } from '.'
 import {
-  getForecastRequest,
-  getRealtimeRequest,
-  weatherApi,
-} from '@api/weather'
+  CurrentAndForecastsWeatherRequest,
+  OPEN_WEATHER_MAP_API_KEY,
+  openWeatherMapApi,
+} from '@api/openweathermap'
+import { Menu } from '@components/menu'
 import { queryClient, queryKeys } from '@core/query'
 import { useGeoLocation } from '@providers/geolocation-provider'
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useContext, useCallback } from 'react'
 import { useEffect } from 'react'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { Pagination } from 'swiper/modules'
 
-export const CityContext = createContext<CityContextProps>({
-  selectedCity: { q: '144.34.213.172', id: 2 },
-  cities: [],
-})
+export const CityContext = createContext<CityContextProps | undefined>(
+  undefined
+)
 
-const getForecastDay = async (props: getForecastRequest) => {
-  return weatherApi.getForecast(props).then((res) => res.data)
+// eslint-disable-next-line react-refresh/only-export-components
+export const useCity = () => {
+  const context = useContext(CityContext)
+  if (!context) {
+    throw new Error('useCity must be used within a CityProvider')
+  }
+  return context
 }
 
-const getRealtime = async (props: getRealtimeRequest) => {
-  return weatherApi.getRealtime(props).then((res) => res.data)
+const getCurrentAndForecastsWeather = async (
+  props: CurrentAndForecastsWeatherRequest
+) => {
+  return openWeatherMapApi
+    .getCurrentAndForecastsWeather(props)
+    .then((res) => res.data)
 }
 
 const fetchForecastForCity = async (city: City) => {
-  const dataForecastDay = await getForecastDay({
+  const dataForecastDay = await getCurrentAndForecastsWeather({
     params: {
-      q: city.q,
-      days: 3,
-      aqi: 'yes',
-      alerts: 'yes',
-    },
-  })
-  const dataRealtime = await getRealtime({
-    params: {
-      q: city.q,
+      appid: OPEN_WEATHER_MAP_API_KEY,
+      lat: city.lan,
+      lon: city.lon,
+      units: 'metric',
     },
   })
   queryClient.setQueryData(
-    [queryKeys.weather.forecast, city.q],
+    [queryKeys.openWeatherMap.currentAndForecasts, city.lan, city.lon],
     dataForecastDay
   )
-  queryClient.setQueryData([queryKeys.weather.realtime, city.q], dataRealtime)
 }
 
 export const CityProvider: React.FC<CityProviderProps> = (props) => {
@@ -59,27 +61,45 @@ export const CityProvider: React.FC<CityProviderProps> = (props) => {
   const [loading, setLoading] = useState(true)
   const { geoLocation } = useGeoLocation()
 
-  /****************************************** Query *************************************************/
-  // const { data: dataIPAddress } = useQuery({
-  //   ...getIPAddress(),
-  // })
+  /****************************************** useCallback *************************************************/
+  const addToLocalStorage = useCallback(
+    (city: City, index: number) => {
+      const updatedCities = [...cities]
+      updatedCities.splice(index, 0, city)
+      setCities(updatedCities)
+      localStorage.setItem(CITY_LOCAL_STORAGE, JSON.stringify(updatedCities))
+    },
+    [cities]
+  )
+
+  const removeFromLocalStorage = useCallback(
+    (id: string) => {
+      const updatedCities = cities.filter((city) => city.id !== id)
+      setCities(updatedCities)
+      localStorage.setItem(CITY_LOCAL_STORAGE, JSON.stringify(updatedCities))
+    },
+    [cities]
+  )
+
   /****************************************** useEffect *************************************************/
   useEffect(() => {
-    if (geoLocation.latitude) {
-      setCities([
-        {
-          q: `${geoLocation.latitude},${geoLocation.longitude}`,
-          id: 0,
-        },
-        { q: '206.71.50.230', id: 1 },
-        { q: '144.34.213.172', id: 2 },
-      ])
-      setSelectedCity({
-        q: `${geoLocation.latitude},${geoLocation.longitude}`,
-        id: 0,
-      })
+    const storedCities = JSON.parse(
+      localStorage.getItem(CITY_LOCAL_STORAGE) || '[]'
+    )
+    if (geoLocation.latitude && geoLocation.longitude) {
+      const geoLocationCity = {
+        name: MY_LOCATION.name,
+        id: MY_LOCATION.id,
+        lan: geoLocation.latitude,
+        lon: geoLocation.longitude,
+      }
+      storedCities.map((e: { id: string }) =>
+        e.id == 'location' ? geoLocationCity : e
+      )
+      setCities(storedCities.length == 0 ? [geoLocationCity] : storedCities)
+      setSelectedCity(geoLocationCity)
     }
-  }, [geoLocation, geoLocation])
+  }, [geoLocation])
 
   useEffect(() => {
     const fetchCityData = async () => {
@@ -94,27 +114,16 @@ export const CityProvider: React.FC<CityProviderProps> = (props) => {
   return (
     <CityContext.Provider
       value={{
+        addToLocalStorage,
+        removeFromLocalStorage,
         selectedCity,
         cities,
+        loading,
+        setSelectedCity,
       }}
     >
-      {loading == false && (
-        <StyledSwiper
-          onTransitionEnd={(event) =>
-            setSelectedCity(
-              cities.find((element) => element.id === event.activeIndex) ||
-                cities[0]
-            )
-          }
-          pagination={{ clickable: true }}
-          modules={[Pagination]}
-        >
-          {cities &&
-            cities.map((_, id) => (
-              <StyledSwiperSlide key={id}>{props.children}</StyledSwiperSlide>
-            ))}
-        </StyledSwiper>
-      )}
+      {!loading && cities && selectedCity && props.children}
+      <Menu />
     </CityContext.Provider>
   )
 }

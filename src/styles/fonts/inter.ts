@@ -191,6 +191,12 @@ export const SpanInterR16 = styled.span<SpanInterProps>`
   ${FontInterR16};
 `
 
+export const FontInterR19 = css`
+  ${FontInter};
+  font-size: 19px !important;
+  font-weight: 400;
+`
+
 const FontInterR20 = css`
   ${FontInter};
   font-size: 20px;

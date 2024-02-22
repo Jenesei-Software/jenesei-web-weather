@@ -16,7 +16,8 @@ export const WidgetHourlyForecastContainerContentListItemDay = styled.div``
 export const WidgetHourlyForecastContainerContentListItemPicture = styled.div<{
   $url: string
 }>`
-  background-image: url(${(props) => props.$url});
+  background-image: ${(props) =>
+    `url(https://openweathermap.org/img/wn/${props.$url}.png)`};
   background-size: cover;
   width: 36px;
   height: 36px;

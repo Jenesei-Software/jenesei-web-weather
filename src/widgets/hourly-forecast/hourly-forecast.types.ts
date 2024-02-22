@@ -1,5 +1,5 @@
-import { IForecastdayHourCurrent } from '@api/weather'
+import { CurrentAndForecastsWeatherResponse } from '@api/openweathermap'
 
 export interface WidgetHourlyForecastProps {
-  data8GetHoursForecast?: IForecastdayHourCurrent[]
+  data?: CurrentAndForecastsWeatherResponse
 }

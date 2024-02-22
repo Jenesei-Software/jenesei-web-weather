@@ -16,9 +16,9 @@ export const WidgetHumidity: FC<WidgetHumidityProps> = (props) => {
         </>
       }
       content={
-        props.realtimeCurrent && (
+        props.data && (
           <FrameWidgetTitleContainer>
-            <SpanInterM20>{props.realtimeCurrent.humidity + ' %'}</SpanInterM20>
+            <SpanInterM20>{props.data.current.humidity + ' %'}</SpanInterM20>
           </FrameWidgetTitleContainer>
         )
       }

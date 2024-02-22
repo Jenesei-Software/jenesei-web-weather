@@ -1,0 +1,16 @@
+import { InputHTMLAttributes } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
+
+export interface InputDefaultProps
+  extends InputHTMLAttributes<HTMLInputElement> {
+  register?: UseFormRegisterReturn
+  value?: string
+  readOnly?: boolean
+  disabled?: boolean
+  icon?: {
+    value: () => JSX.Element
+    onCLick: () => void
+  }
+  className?: string
+  leftContainer?: boolean
+}

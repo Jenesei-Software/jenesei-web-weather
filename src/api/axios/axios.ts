@@ -1,3 +1,4 @@
+import { API_NINJA_API_KEY } from '@api/api-ninja'
 import { config } from '@api/config'
 import { WEATHER_API_KEY } from '@api/weather/weather.constants'
 import axios from 'axios'
@@ -12,20 +13,28 @@ const defaultOptions = {
 
 export const axiosInstance = axios.create(defaultOptions)
 
-const weatherOptions = {
-  baseURL: config.weatherHost,
+const weatherApiHostOptions = {
+  baseURL: config.weatherApiHost,
   headers: {
     key: WEATHER_API_KEY,
   },
 }
 
-export const weatherAxiosInstance = axios.create(weatherOptions)
+export const weatherApiHostAxiosInstance = axios.create(weatherApiHostOptions)
 
-const ipOptions = {
-  baseURL: config.ipHost,
+const openWeatherMapHostOptions = {
+  baseURL: config.openWeatherMapHost,
+}
+
+export const openWeatherMapHostAxiosInstance = axios.create(
+  openWeatherMapHostOptions
+)
+
+const apiNinjaHostOptions = {
+  baseURL: config.apiNinjaHost,
   headers: {
-    'Content-Type': 'application/json',
+    'X-Api-Key': API_NINJA_API_KEY,
   },
 }
 
-export const ipAxiosInstance = axios.create(ipOptions)
+export const apiNinjaHostAxiosInstance = axios.create(apiNinjaHostOptions)

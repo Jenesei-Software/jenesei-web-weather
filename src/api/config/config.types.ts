@@ -1,8 +1,9 @@
 export interface ConfigItem {
   appHost: string
   apiHost: string
-  weatherHost: string
-  ipHost: string
+  weatherApiHost: string
+  openWeatherMapHost: string
+  apiNinjaHost: string
   coreURL?: string
 }
 

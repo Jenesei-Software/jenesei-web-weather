@@ -3,12 +3,15 @@ import {
   HomeProps,
   HomeInfoContainer,
   HomeInfoCardsContainer,
+  StyledSwiper,
+  StyledSwiperSlide,
 } from '.'
-import { useGetForecastDay, useGetRealtime } from '@api/weather'
-import { getHoursForecast } from '@functions/get-hours-forecast'
-import { CityContext } from '@providers/city-provider'
+import {
+  OPEN_WEATHER_MAP_API_KEY,
+  useGetCurrentAndForecastsWeather,
+} from '@api/openweathermap'
+import { useCity } from '@providers/city-provider'
 import { useQuery } from '@tanstack/react-query'
-import { WidgetAirQuality } from '@widgets/air-quality'
 import { WidgetDayForecast } from '@widgets/day-forecast'
 import { WidgetFeelsLike } from '@widgets/feels-like'
 import { WidgetGeneral } from '@widgets/general'
@@ -18,66 +21,66 @@ import { WidgetRainfall } from '@widgets/rainfall'
 import { WidgetSunrise } from '@widgets/sunrise'
 import { WidgetUVIndex } from '@widgets/uv-Index'
 import { WidgetWind } from '@widgets/wind'
-import { FC, useContext } from 'react'
+import { FC } from 'react'
+import { Pagination } from 'swiper/modules'
 
 export const Home: FC<HomeProps> = () => {
   /****************************************** Other *************************************************/
-  const { selectedCity } = useContext(CityContext)
+  const { selectedCity, cities, setSelectedCity } = useCity()
 
   /****************************************** Query *************************************************/
-
-  const { data: dataGetForecast } = useQuery({
-    ...useGetForecastDay({
+  const { data: dataGetCurrentAndForecastsWeather } = useQuery({
+    ...useGetCurrentAndForecastsWeather({
       params: {
-        q: selectedCity.q,
-        days: 3,
-        aqi: 'yes',
-        alerts: 'yes',
-      },
-    }),
-  })
-
-  const { data: dataGetRealtime } = useQuery({
-    ...useGetRealtime({
-      params: {
-        q: selectedCity.q,
+        appid: OPEN_WEATHER_MAP_API_KEY,
+        lat: selectedCity.lan,
+        lon: selectedCity.lon,
+        units: 'metric',
       },
     }),
   })
 
   /****************************************** useEffect *************************************************/
-
   return (
-    <HomeWrapper>
-      <WidgetGeneral
-        dataGetRealtime={dataGetRealtime}
-        dataGetForecastDay={dataGetForecast?.forecast.forecastday}
-      />
-      <HomeInfoContainer>
-        <WidgetHourlyForecast
-          data8GetHoursForecast={getHoursForecast(
-            dataGetForecast?.forecast.forecastday || [],
-            12
-          )}
-        />
-        <WidgetDayForecast
-          dataGetRealtime={dataGetRealtime}
-          dataGetForecastDay={dataGetForecast?.forecast.forecastday}
-        />
-        <WidgetAirQuality realtimeCurrent={dataGetForecast?.current} />
-        <HomeInfoCardsContainer>
-          <WidgetWind realtimeCurrent={dataGetForecast?.current} />
-          <WidgetSunrise realtimeLocation={dataGetForecast?.location} />
-        </HomeInfoCardsContainer>
-        <HomeInfoCardsContainer>
-          <WidgetRainfall realtimeCurrent={dataGetForecast?.current} />
-          <WidgetUVIndex realtimeCurrent={dataGetForecast?.current} />
-        </HomeInfoCardsContainer>
-        <HomeInfoCardsContainer>
-          <WidgetFeelsLike realtimeCurrent={dataGetForecast?.current} />
-          <WidgetHumidity realtimeCurrent={dataGetForecast?.current} />
-        </HomeInfoCardsContainer>
-      </HomeInfoContainer>
-    </HomeWrapper>
+    <StyledSwiper
+      pagination={{ clickable: true }}
+      modules={[Pagination]}
+      onTransitionEnd={(event) => {
+        setSelectedCity(
+          cities.find((_, index) => index === event.activeIndex) || cities[0]
+        )
+      }}
+    >
+      {cities &&
+        selectedCity &&
+        cities.map((_, id) => (
+          <StyledSwiperSlide key={id}>
+            <HomeWrapper>
+              <WidgetGeneral
+                selectedCity={selectedCity}
+                data={dataGetCurrentAndForecastsWeather}
+              />
+              <HomeInfoContainer>
+                <WidgetHourlyForecast
+                  data={dataGetCurrentAndForecastsWeather}
+                />
+                <WidgetDayForecast data={dataGetCurrentAndForecastsWeather} />
+                <HomeInfoCardsContainer>
+                  <WidgetWind data={dataGetCurrentAndForecastsWeather} />
+                  <WidgetSunrise data={dataGetCurrentAndForecastsWeather} />
+                </HomeInfoCardsContainer>
+                <HomeInfoCardsContainer>
+                  <WidgetRainfall data={dataGetCurrentAndForecastsWeather} />
+                  <WidgetUVIndex data={dataGetCurrentAndForecastsWeather} />
+                </HomeInfoCardsContainer>
+                <HomeInfoCardsContainer>
+                  <WidgetFeelsLike data={dataGetCurrentAndForecastsWeather} />
+                  <WidgetHumidity data={dataGetCurrentAndForecastsWeather} />
+                </HomeInfoCardsContainer>
+              </HomeInfoContainer>
+            </HomeWrapper>
+          </StyledSwiperSlide>
+        ))}
+    </StyledSwiper>
   )
 }

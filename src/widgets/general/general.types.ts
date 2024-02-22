@@ -1,6 +1,7 @@
-import { IForecastdayCurrent, getRealtimeResponse } from '@api/weather'
+import { CurrentAndForecastsWeatherResponse } from '@api/openweathermap'
+import { City } from '@providers/city-provider'
 
 export interface WidgetGeneralProps {
-  dataGetRealtime?: getRealtimeResponse
-  dataGetForecastDay?: IForecastdayCurrent[]
+  data?: CurrentAndForecastsWeatherResponse
+  selectedCity: City
 }

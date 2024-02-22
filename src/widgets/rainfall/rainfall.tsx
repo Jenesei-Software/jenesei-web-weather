@@ -12,14 +12,22 @@ export const WidgetRainfall: FC<WidgetRainfallProps> = (props) => {
       title={
         <>
           <IconWeather.Rainfall />
-          <SpanInterR12>RAINFALL</SpanInterR12>
+          <SpanInterR12>
+            {props.data && props.data.current.rain
+              ? 'RAINFALL'
+              : props.data && props.data.current.snow
+                ? 'SNOW'
+                : ''}
+          </SpanInterR12>
         </>
       }
       content={
-        props.realtimeCurrent && (
+        props.data && (
           <FrameWidgetTitleContainer>
             <SpanInterM20>
-              {props.realtimeCurrent.precip_mm + ' mm'}
+              {(props.data.current.rain?.['1h'] ||
+                props.data.current.snow?.['1h'] ||
+                0) + ' mm'}
             </SpanInterM20>
           </FrameWidgetTitleContainer>
         )

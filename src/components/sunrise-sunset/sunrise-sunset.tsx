@@ -34,7 +34,7 @@ const CustomizedComponents = (props: any) => {
   return (
     <>
       <g transform={`translate(${0},${lineTrue?.y})`}>
-        <svg width="100%" height="3" viewBox="0 0 100% 3" fill="#989CA6">
+        <svg width="100%" height="3" fill="#989CA6">
           <defs />
           <line
             id="Line"

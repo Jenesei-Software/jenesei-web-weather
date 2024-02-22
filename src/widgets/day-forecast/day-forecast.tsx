@@ -18,38 +18,34 @@ import { theme } from '@styles/theme'
 import React, { FC } from 'react'
 
 export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
-  const resultMinMaxTemperatures = findMinMaxTemperatures(
-    props?.dataGetForecastDay
-  )
+  const resultMinMaxTemperatures = findMinMaxTemperatures(props?.data?.daily)
   return (
     <LayoutWidget
-      height="192px"
+      height="430px"
       title={
         <>
           <IconWeather.DayForecast />
-          <SpanInterR12>3-DAY FORECAST</SpanInterR12>
+          <SpanInterR12>8-DAY FORECAST</SpanInterR12>
         </>
       }
       content={
         <WidgetDayForecastList>
-          {props.dataGetForecastDay &&
-            props.dataGetForecastDay.map((e, id) => (
+          {props.data &&
+            props.data.daily.map((e, id) => (
               <React.Fragment key={id}>
                 <WidgetDayForecastListItem key={id}>
                   <WidgetDayForecastListItemDay>
                     <SpanInterM16>
-                      {formatTimestampDateOfWeek(e.date_epoch)}
+                      {formatTimestampDateOfWeek(e.dt)}
                     </SpanInterM16>
                   </WidgetDayForecastListItemDay>
                   <WidgetDayForecastListItemContainerPicture>
                     <WidgetDayForecastListItemPicture
-                      $url={e.day.condition.icon}
+                      $url={e.weather[0].icon}
                     />
-                    {(e.day.daily_chance_of_rain !== 0 ||
-                      e.day.daily_chance_of_snow !== 0) && (
+                    {+e.pop.toFixed() > 0 && (
                       <SpanInterSB10 color={theme.color.color.blue[100]}>
-                        {e.day.daily_chance_of_rain ||
-                          e.day.daily_chance_of_snow}
+                        {(e.pop * 100).toFixed()}
                         {' %'}
                       </SpanInterSB10>
                     )}
@@ -57,22 +53,22 @@ export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
                   <WidgetDayForecastListItemStyledSpanInterM18
                     color={theme.color.default.white40}
                   >
-                    {e.day.mintemp_c}°
+                    {e.temp.min.toFixed(1)}°
                   </WidgetDayForecastListItemStyledSpanInterM18>
-                  {props.dataGetRealtime && resultMinMaxTemperatures && (
+                  {resultMinMaxTemperatures && (
                     <WidgetDayForecastStyledWeatherDifference
                       list={{
-                        maxtemp: resultMinMaxTemperatures?.maxtemp_c,
-                        mintemp: resultMinMaxTemperatures?.mintemp_c,
+                        maxtemp: resultMinMaxTemperatures?.max,
+                        mintemp: resultMinMaxTemperatures?.min,
                       }}
                       day={{
-                        maxtemp: e.day.maxtemp_c,
-                        mintemp: e.day.mintemp_c,
+                        maxtemp: e.temp.max,
+                        mintemp: e.temp.min,
                       }}
                       now={
-                        isToday(e.date_epoch)
+                        isToday(e.dt)
                           ? {
-                              temp: props.dataGetRealtime.current.temp_c,
+                              temp: props.data?.current.temp,
                             }
                           : undefined
                       }
@@ -81,13 +77,12 @@ export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
                   <WidgetDayForecastListItemStyledSpanInterM18
                     color={theme.color.default.white}
                   >
-                    {e.day.maxtemp_c}°
+                    {e.temp.max.toFixed(1)}°
                   </WidgetDayForecastListItemStyledSpanInterM18>
                 </WidgetDayForecastListItem>
-                {props.dataGetForecastDay &&
-                  id !== props.dataGetForecastDay.length - 1 && (
-                    <LayoutWidgetContainerLine />
-                  )}
+                {props.data?.daily && id !== props.data?.daily.length - 1 && (
+                  <LayoutWidgetContainerLine />
+                )}
               </React.Fragment>
             ))}
         </WidgetDayForecastList>

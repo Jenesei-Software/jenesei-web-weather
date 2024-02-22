@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { SwiperSlide } from 'swiper/react'
+import { Swiper } from 'swiper/react'
 
 export const HomeWrapper = styled.div`
   display: flex;
@@ -6,7 +8,8 @@ export const HomeWrapper = styled.div`
   gap: 12px;
   overflow-y: auto;
   position: relative;
-  min-height: 100dvh;
+  height: 100%;
+  width: 100%;
   align-items: center;
 `
 export const HomeBackground = styled.div<{ $backgroundURL: string }>`
@@ -27,7 +30,7 @@ export const HomeInfoContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
-  padding-bottom: 36px;
+  padding-bottom: 10px;
   margin-top: 16px;
   gap: 8px;
   width: 100%;
@@ -47,3 +50,22 @@ export const HomeInfoCardsContainer = styled.div`
   align-items: stretch;
   max-width: 500px;
 `
+
+export const StyledSwiper = styled(Swiper)`
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: static;
+  & .swiper-pagination-bullet-active {
+    background: ${(props) => props.theme.color.default.white};
+  }
+  & .swiper-pagination {
+    bottom: 32px;
+    width: auto;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 3;
+  }
+`
+
+export const StyledSwiperSlide = styled(SwiperSlide)``

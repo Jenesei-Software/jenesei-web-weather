@@ -1,5 +1,5 @@
-import { ILocation } from '@api/weather'
+import { CurrentAndForecastsWeatherResponse } from '@api/openweathermap'
 
 export interface WidgetSunriseProps {
-  realtimeLocation?: ILocation
+  data?: CurrentAndForecastsWeatherResponse
 }

@@ -1,29 +1,29 @@
-import { IForecastdayCurrent } from '@api/weather'
+import { CurrentAndForecastsWeatherResponse } from '@api/openweathermap'
 
 interface TemperatureData {
-  maxtemp_c: number
-  mintemp_c: number
+  max: number
+  min: number
 }
 
 export function findMinMaxTemperatures(
-  data?: IForecastdayCurrent[]
+  data?: CurrentAndForecastsWeatherResponse['daily']
 ): TemperatureData | null {
   if (!data || data.length === 0) {
     return null
   }
 
   const result: TemperatureData = {
-    maxtemp_c: Number.NEGATIVE_INFINITY,
-    mintemp_c: Number.POSITIVE_INFINITY,
+    max: Number.NEGATIVE_INFINITY,
+    min: Number.POSITIVE_INFINITY,
   }
 
   for (const item of data) {
-    if (item.day.maxtemp_c > result.maxtemp_c) {
-      result.maxtemp_c = item.day.maxtemp_c
+    if (item.temp.max > result.max) {
+      result.max = item.temp.max
     }
 
-    if (item.day.mintemp_c < result.mintemp_c) {
-      result.mintemp_c = item.day.mintemp_c
+    if (item.temp.min < result.min) {
+      result.min = item.temp.min
     }
   }
 

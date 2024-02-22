@@ -12,16 +12,6 @@ import { LayoutWidget } from '@layouts/layout-widget'
 import { SpanInterR12, SpanInterR14, SpanInterSB20 } from '@styles/fonts/inter'
 import { FC } from 'react'
 
-function convertKmToMps(kilometersPerHour: number): number {
-  const conversionFactor = 1000 / 3600
-
-  // Преобразование км/ч в м/с
-  const metersPerSecond = kilometersPerHour * conversionFactor
-
-  const roundedMetersPerSecond = Number(metersPerSecond.toFixed(1))
-
-  return roundedMetersPerSecond
-}
 export const WidgetWind: FC<WidgetWindProps> = (props) => {
   return (
     <LayoutWidget
@@ -34,17 +24,17 @@ export const WidgetWind: FC<WidgetWindProps> = (props) => {
         </>
       }
       content={
-        props.realtimeCurrent && (
+        props.data && (
           <WidgetWindWrapper>
             <WidgetWindLine alt="Wind background" src={Line} />
             <WidgetWindArrow
               alt="Wind arrow"
-              $transform={props.realtimeCurrent.wind_degree}
+              $transform={props.data.current.wind_deg}
               src={Arrow}
             />
             <WidgetWindTitleContainer>
               <SpanInterSB20>
-                {convertKmToMps(props.realtimeCurrent.wind_kph)}
+                {props.data.current.wind_speed.toFixed(1)}
               </SpanInterSB20>
               <SpanInterR14>m/s</SpanInterR14>
             </WidgetWindTitleContainer>

@@ -8,7 +8,7 @@ export interface WeatherDifferenceProps {
     mintemp: number
   }
   now?: {
-    temp: number
+    temp?: number
   }
   className?: string
 }

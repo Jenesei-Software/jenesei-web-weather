@@ -3,6 +3,11 @@
 }
 
 body {
+  background: linear-gradient(
+    180deg,
+    rgba(31, 99, 242, 1) 0%,
+    rgba(26, 214, 252, 1) 100%
+  );
   margin: 0;
   padding: 0;
 }

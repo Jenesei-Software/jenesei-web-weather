@@ -20,19 +20,17 @@ export const WidgetUVIndex: FC<WidgetUVIndexProps> = (props) => {
         </>
       }
       content={
-        props.realtimeCurrent && (
+        props.data && (
           <>
             <FrameWidgetTitleContainer>
               <SpanInterM20>
-                {props.realtimeCurrent.uv +
+                {props.data.current.uvi +
                   ' ' +
-                  getUVIndexToTitle(
-                    props.realtimeCurrent.air_quality['us-epa-index']
-                  )}
+                  getUVIndexToTitle(props.data.current.uvi)}
               </SpanInterM20>
             </FrameWidgetTitleContainer>
             <FrameWidgetStyledPointRelativeToLine
-              value={props.realtimeCurrent.uv}
+              value={props.data.current.uvi}
               maxValue={12}
               gradient="90.00deg, rgb(101, 219, 124) 1.169%,rgb(245, 231, 83) 24.979%,rgb(230, 58, 82) 77.888%,rgb(181, 93, 224) 99.237%"
             />

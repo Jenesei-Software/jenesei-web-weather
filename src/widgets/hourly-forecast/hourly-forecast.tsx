@@ -33,22 +33,22 @@ export const WidgetHourlyForecast: FC<WidgetHourlyForecastProps> = (props) => {
           scrollbar={{ draggable: true }}
           nested
         >
-          {props.data8GetHoursForecast &&
-            props.data8GetHoursForecast.map((e, id) => (
+          {props.data &&
+            props.data.hourly.map((e, id) => (
               <SwiperSlide key={id}>
                 <WidgetHourlyForecastContainerContentListItem key={id}>
                   <WidgetHourlyForecastContainerContentListItemDay>
                     <SpanInterM16>
-                      {formatTimestampToTime(e.time_epoch, false)}
+                      {formatTimestampToTime(e.dt, false)}
                     </SpanInterM16>
                   </WidgetHourlyForecastContainerContentListItemDay>
                   <WidgetHourlyForecastContainerContentListItemPicture
-                    $url={e.condition.icon}
+                    $url={e.weather[0].icon}
                   />
                   <WidgetHourlyForecastContainerContentListItemData
-                    $hasPlusOrMinus={hasPlusOrMinus(e.temp_c)}
+                    $hasPlusOrMinus={hasPlusOrMinus(e.temp)}
                   >
-                    <SpanInterM18>{e.temp_c}°</SpanInterM18>
+                    <SpanInterM18>{e.temp.toFixed(1)}°</SpanInterM18>
                   </WidgetHourlyForecastContainerContentListItemData>
                 </WidgetHourlyForecastContainerContentListItem>
               </SwiperSlide>

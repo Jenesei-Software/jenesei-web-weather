@@ -37,10 +37,11 @@ export const WidgetDayForecastListItemContainerPicture = styled.div`
 export const WidgetDayForecastListItemPicture = styled.div<{
   $url: string
 }>`
-  background-image: url(${(props) => props.$url});
+  background-image: ${(props) =>
+    `url(https://openweathermap.org/img/wn/${props.$url}.png)`};
   background-size: cover;
   width: 32px;
-  height: 30px;
+  height: 26px;
 `
 
 export const WidgetDayForecastListItemStyledSpanInterM18 = styled(SpanInterM18)`

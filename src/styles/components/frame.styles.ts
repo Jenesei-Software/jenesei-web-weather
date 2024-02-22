@@ -16,3 +16,15 @@ export const FrameWidgetTitleContainer = styled.div`
 export const FrameWidgetStyledPointRelativeToLine = styled(PointRelativeToLine)`
   margin-top: 10px;
 `
+
+export interface FrameProps {
+  $position?: 'relative' | 'static'
+  width?: string
+}
+export const FrameFlexCenter = styled.div<FrameProps>`
+  width: ${(props) => (props.width ? props.width : '100%')};
+  position: ${(props) => (props.$position ? props.$position : 'static')};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`

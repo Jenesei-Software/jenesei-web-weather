@@ -1,5 +1,5 @@
-import { ICurrent } from '@api/weather'
+import { CurrentAndForecastsWeatherResponse } from '@api/openweathermap'
 
 export interface WidgetFeelsLikeProps {
-  realtimeCurrent?: ICurrent
+  data?: CurrentAndForecastsWeatherResponse
 }

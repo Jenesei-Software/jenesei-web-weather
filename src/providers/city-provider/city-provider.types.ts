@@ -3,11 +3,17 @@ export interface CityProviderProps {
 }
 
 export interface City {
-  q: string
-  id: number
+  name: string
+  id: string
+  lan: number
+  lon: number
 }
 
 export interface CityContextProps {
   selectedCity: City
   cities: City[]
+  addToLocalStorage: (city: City, index: number) => void
+  removeFromLocalStorage: (id: string) => void
+  loading: boolean
+  setSelectedCity: React.Dispatch<React.SetStateAction<City>>
 }

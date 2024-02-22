@@ -13,6 +13,10 @@ export const queryKeys = {
   auth: {
     ip: 'locationIp',
   },
+  openWeatherMap: {
+    currentAndForecasts: 'current-and-forecasts',
+    geocoding: 'geocoding',
+  },
   weather: {
     forecast: 'weather-forecast',
     realtime: 'weather-realtime',

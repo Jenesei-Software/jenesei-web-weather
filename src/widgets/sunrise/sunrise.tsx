@@ -128,23 +128,23 @@ export const WidgetSunrise: FC<WidgetSunriseProps> = (props) => {
   const [localSun, setLocalSun] = useState<SunCalc.GetTimesResult | null>(null)
 
   useEffect(() => {
-    if (props.realtimeLocation) {
+    if (props.data) {
       const localDate = convertLocalTimeToUTC(
-        props.realtimeLocation.tz_id,
-        props.realtimeLocation.localtime_epoch
+        props.data.timezone,
+        props.data.current.dt
       )
       const localSun = SunCalc.getTimes(
         localDate,
-        props.realtimeLocation.lat,
-        props.realtimeLocation.lon
+        props.data.lat,
+        props.data.lon
       )
       setLocalSun(localSun)
       setData(
         getSunPositionsForDay(
-          props.realtimeLocation.localtime_epoch,
-          props.realtimeLocation.lat,
-          props.realtimeLocation.lon,
-          props.realtimeLocation.tz_id,
+          props.data.current.dt,
+          props.data.lat,
+          props.data.lon,
+          props.data.timezone,
           localSun
         )
       )
@@ -161,24 +161,18 @@ export const WidgetSunrise: FC<WidgetSunriseProps> = (props) => {
           </>
         }
         content={
-          props.realtimeLocation &&
+          props.data &&
           localSun && (
             <WidgetSunriseWrapper>
               <SpanInterR24>
-                {convertUTCToLocalTime(
-                  props.realtimeLocation.tz_id,
-                  localSun.sunrise
-                )}
+                {convertUTCToLocalTime(props.data.timezone, localSun.sunrise)}
               </SpanInterR24>
               <WidgetSunriseSunsetWrapper>
                 <SunriseSunset value={data} />
               </WidgetSunriseSunsetWrapper>
               <SpanInterR16>
                 Sunset:{' '}
-                {convertUTCToLocalTime(
-                  props.realtimeLocation.tz_id,
-                  localSun.sunset
-                )}
+                {convertUTCToLocalTime(props.data.timezone, localSun.sunset)}
               </SpanInterR16>
             </WidgetSunriseWrapper>
           )
