@@ -1,5 +1,7 @@
-export const IconLibrary = {
-  List: function () {
+import { IconLibraryProps } from '.'
+
+export const IconLibrary: IconLibraryProps = {
+  List: (props) => {
     return (
       <svg
         width="23.157227"
@@ -7,6 +9,7 @@ export const IconLibrary = {
         viewBox="0 0 23.1572 16.9468"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className={props.className}
       >
         <defs />
         <path
@@ -19,7 +22,7 @@ export const IconLibrary = {
       </svg>
     )
   },
-  Search: function () {
+  Search: (props) => {
     return (
       <svg
         width="18.127930"
@@ -27,6 +30,7 @@ export const IconLibrary = {
         viewBox="0 0 18.1279 18.3042"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className={props.className}
       >
         <defs />
         <g opacity="0.500000">
@@ -41,7 +45,7 @@ export const IconLibrary = {
       </svg>
     )
   },
-  Map: function () {
+  Map: (props) => {
     return (
       <svg
         width="23.572754"
@@ -49,6 +53,7 @@ export const IconLibrary = {
         viewBox="0 0 23.5728 22.3936"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className={props.className}
       >
         <defs />
         <path

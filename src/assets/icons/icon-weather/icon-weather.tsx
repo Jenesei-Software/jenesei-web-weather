@@ -1,7 +1,10 @@
-export const IconWeather = {
-  DayForecast: function () {
+import { IconWeatherProps } from '.'
+
+export const IconWeather: IconWeatherProps = {
+  DayForecast: (props) => {
     return (
       <svg
+        className={props.className}
         width="14.882812"
         height="13.674316"
         viewBox="0 0 14.8828 13.6743"
@@ -20,9 +23,10 @@ export const IconWeather = {
       </svg>
     )
   },
-  AirQuality: function () {
+  AirQuality: (props) => {
     return (
       <svg
+        className={props.className}
         width="15.776367"
         height="18.090820"
         viewBox="0 0 15.7764 18.0908"
@@ -41,9 +45,15 @@ export const IconWeather = {
       </svg>
     )
   },
-  HourlyForecast: function () {
+  HourlyForecast: (props) => {
     return (
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <svg
+        className={props.className}
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+      >
         <path
           d="M8 16C12.3765 16 16 12.3687 16 8C16 3.62354 12.3687 0 7.99217 0C3.62354 0 0 3.62354 0 8C0 12.3687 3.63138 16 8 16ZM8 14.6667C4.29805 14.6667 1.34118 11.702 1.34118 8C1.34118 4.29805 4.29021 1.33334 7.99217 1.33334C11.6942 1.33334 14.6667 4.29805 14.6667 8C14.6667 11.702 11.702 14.6667 8 14.6667Z"
           fill="white"
@@ -57,9 +67,10 @@ export const IconWeather = {
       </svg>
     )
   },
-  MapTemperature: function () {
+  MapTemperature: (props) => {
     return (
       <svg
+        className={props.className}
         width="9.938965"
         height="16.494141"
         viewBox="0 0 9.93896 16.4941"
@@ -78,9 +89,10 @@ export const IconWeather = {
       </svg>
     )
   },
-  UVIndex: function () {
+  UVIndex: (props) => {
     return (
       <svg
+        className={props.className}
         width="16.296387"
         height="16.333008"
         viewBox="0 0 16.2964 16.333"
@@ -99,9 +111,10 @@ export const IconWeather = {
       </svg>
     )
   },
-  Sunrise: function () {
+  Sunrise: (props) => {
     return (
       <svg
+        className={props.className}
         width="18.771973"
         height="15.432129"
         viewBox="0 0 18.772 15.4321"
@@ -120,9 +133,10 @@ export const IconWeather = {
       </svg>
     )
   },
-  Wind: function () {
+  Wind: (props) => {
     return (
       <svg
+        className={props.className}
         width="15.198059"
         height="13.256836"
         viewBox="0 0 15.1981 13.2568"
@@ -141,9 +155,10 @@ export const IconWeather = {
       </svg>
     )
   },
-  Rainfall: function () {
+  Rainfall: (props) => {
     return (
       <svg
+        className={props.className}
         width="10.407715"
         height="15.080566"
         viewBox="0 0 10.4077 15.0806"
@@ -162,9 +177,10 @@ export const IconWeather = {
       </svg>
     )
   },
-  FeelsLike: function () {
+  FeelsLike: (props) => {
     return (
       <svg
+        className={props.className}
         width="9.938965"
         height="16.494141"
         viewBox="0 0 9.93896 16.4941"
@@ -183,9 +199,10 @@ export const IconWeather = {
       </svg>
     )
   },
-  Humidity: function () {
+  Humidity: (props) => {
     return (
       <svg
+        className={props.className}
         width="15.908936"
         height="12.949219"
         viewBox="0 0 15.9089 12.9492"
