@@ -12,5 +12,10 @@ export interface InputDefaultProps
     onCLick: () => void
   }
   className?: string
-  leftContainer?: boolean
+  prefixContent?: {
+    width: string
+    content: React.ReactNode
+    left: string
+    right: string
+  }
 }

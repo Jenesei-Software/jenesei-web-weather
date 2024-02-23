@@ -1,5 +1,5 @@
 import { CurrentAndForecastsWeatherResponse } from '@api/openweathermap'
-import { City } from '@providers/city-provider'
+import { City } from '@providers/provider-city'
 
 export interface WidgetGeneralProps {
   data?: CurrentAndForecastsWeatherResponse

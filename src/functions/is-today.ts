@@ -1,13 +1,9 @@
-export function isToday(timestamp: number): boolean {
-  const currentDate = new Date()
-  currentDate.setHours(0, 0, 0, 0)
+import { DateTime } from 'luxon'
 
-  const targetDate = new Date(timestamp * 1000)
-  targetDate.setHours(0, 0, 0, 0)
-
-  return (
-    currentDate.getFullYear() === targetDate.getFullYear() &&
-    currentDate.getMonth() === targetDate.getMonth() &&
-    currentDate.getDate() === targetDate.getDate()
-  )
+export function isToday(timestamp: number, timezone: string): boolean {
+  const currentDate = DateTime.now().setZone(timezone).startOf('day')
+  const targetDate = DateTime.fromSeconds(timestamp, {
+    zone: timezone,
+  }).startOf('day')
+  return currentDate.equals(targetDate)
 }

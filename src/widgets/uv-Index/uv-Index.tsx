@@ -24,13 +24,13 @@ export const WidgetUVIndex: FC<WidgetUVIndexProps> = (props) => {
           <>
             <FrameWidgetTitleContainer>
               <SpanInterM20>
-                {props.data.current.uvi +
+                {props.data.daily[0].uvi.toFixed() +
                   ' ' +
-                  getUVIndexToTitle(props.data.current.uvi)}
+                  getUVIndexToTitle(props.data.daily[0].uvi.toFixed())}
               </SpanInterM20>
             </FrameWidgetTitleContainer>
             <FrameWidgetStyledPointRelativeToLine
-              value={props.data.current.uvi}
+              value={props.data.daily[0].uvi}
               maxValue={12}
               gradient="90.00deg, rgb(101, 219, 124) 1.169%,rgb(245, 231, 83) 24.979%,rgb(230, 58, 82) 77.888%,rgb(181, 93, 224) 99.237%"
             />

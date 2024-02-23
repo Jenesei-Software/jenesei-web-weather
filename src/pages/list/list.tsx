@@ -14,9 +14,10 @@ import {
   OPEN_WEATHER_MAP_API_KEY,
   useGetGeocoding,
 } from '@api/openweathermap'
+import { IconLibrary } from '@assets/icons/icon-library'
 import { InputDefault } from '@components/input-default'
-import { useApp } from '@providers/app-provider'
-import { City, MY_LOCATION, useCity } from '@providers/city-provider'
+import { useApp } from '@providers/provider-app'
+import { City, MY_LOCATION, useCity } from '@providers/provider-city'
 import { SpanInterB36 } from '@styles/fonts/inter'
 import { FC, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
@@ -60,11 +61,19 @@ export const List: FC = () => {
     }
   }, [search, mutateGetGeocoding])
 
+  useEffect(() => {
+    return () => {
+      setSearch('')
+      changeBackground(null)
+      setSearchResult(null)
+    }
+  }, [])
+  /****************************************** Functions *************************************************/
   const handleAddToLocalStorage = (city: City, index: number) => {
     addToLocalStorage(city, index)
     setSearch('')
   }
-  // queryClient.getQueryData(queryKey)
+
   return (
     <ListWrapper>
       <SpanInterB36>{searchResult ? 'Cities' : 'Weather'}</SpanInterB36>
@@ -72,7 +81,12 @@ export const List: FC = () => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
         placeholder="Search for a city"
-        leftContainer
+        prefixContent={{
+          width: '19px',
+          content: <IconLibrary.Search />,
+          left: '16px',
+          right: '8px',
+        }}
       />
       {searchResult && (
         <ListSearchResultWrapper>
@@ -80,7 +94,7 @@ export const List: FC = () => {
             <ListSearchResultItem key={id}>
               <ListSearchResultItemTitle>
                 {e.name}
-                {', ' + e.state}
+                {e.state && ', ' + e.state}
                 {', ' + e.country}
               </ListSearchResultItemTitle>
               <ListSearchResultItemAdd

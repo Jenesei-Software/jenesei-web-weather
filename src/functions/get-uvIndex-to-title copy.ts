@@ -1,6 +1,9 @@
-export function getUVIndexToTitle(uvIndex: number, postTitle?: string): string {
+export function getUVIndexToTitle(
+  uvIndex: number | string,
+  postTitle?: string
+): string {
   let title = postTitle || ''
-  switch (uvIndex) {
+  switch (+uvIndex) {
     case 0:
       title += ' Low'
       break

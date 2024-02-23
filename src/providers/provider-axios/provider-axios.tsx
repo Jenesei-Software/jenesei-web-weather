@@ -1,9 +1,9 @@
-import { AxiosContextProps, AxiosProviderProps } from '.'
+import { AxiosContextProps, ProviderAxiosProps } from '.'
 import { createContext, useEffect } from 'react'
 
 const AxiosContext = createContext<AxiosContextProps>({})
 
-export const AxiosProvider: React.FC<AxiosProviderProps> = (props) => {
+export const ProviderAxios: React.FC<ProviderAxiosProps> = (props) => {
   // const [tokenData, setTokenData] = useState<ITokenData | null>(null)
   // const isAuthorized = !!tokenData?.token
 

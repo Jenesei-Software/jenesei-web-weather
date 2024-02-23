@@ -1,6 +1,6 @@
 import {
   GeoLocationContextProps,
-  GeoLocationProviderProps,
+  ProviderGeoLocationProps,
   LocationIsNotAllowedButton,
   LocationIsNotAllowedTitle,
   LocationIsNotAllowedWrapper,
@@ -13,7 +13,7 @@ const GeoLocationContext = createContext<GeoLocationContextProps | undefined>(
 )
 
 // Создаем провайдер для контекста
-export const GeoLocationProvider: FC<GeoLocationProviderProps> = (props) => {
+export const ProviderGeoLocation: FC<ProviderGeoLocationProps> = (props) => {
   const [geoLocation, setGeoLocation] = useState({
     latitude: null as number | null,
     longitude: null as number | null,
@@ -68,7 +68,7 @@ export const GeoLocationProvider: FC<GeoLocationProviderProps> = (props) => {
 export const useGeoLocation = () => {
   const context = useContext(GeoLocationContext)
   if (!context) {
-    throw new Error('useGeoLocation must be used within a GeoLocationProvider')
+    throw new Error('useGeoLocation must be used within a ProviderGeoLocation')
   }
   return context
 }

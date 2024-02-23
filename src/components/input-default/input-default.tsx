@@ -1,5 +1,8 @@
-import { InputDefaultProps, UIInputDefault, UIInputLeftContainer } from '.'
-import { IconLibrary } from '@assets/icons/icon-library'
+import {
+  InputDefaultPrefixContent,
+  InputDefaultProps,
+  InputDefaultStyledUIInput,
+} from '.'
 import { FrameFlexCenter } from '@styles/components'
 
 export const InputDefault = (props: InputDefaultProps) => {
@@ -9,19 +12,24 @@ export const InputDefault = (props: InputDefaultProps) => {
       width="100%"
       $position="relative"
     >
-      {props.leftContainer && (
-        <UIInputLeftContainer>
-          <IconLibrary.Search />
-        </UIInputLeftContainer>
+      {props.prefixContent && (
+        <InputDefaultPrefixContent
+          $width={props.prefixContent.width}
+          $left={props.prefixContent.left}
+        >
+          {props.prefixContent.content}
+        </InputDefaultPrefixContent>
       )}
-      <UIInputDefault
-        $leftContainer={props.leftContainer}
+      <InputDefaultStyledUIInput
+        {...props.register}
+        $prefixWidth={props.prefixContent && props.prefixContent.width}
+        $prefixLeft={props.prefixContent && props.prefixContent.left}
+        $prefixRight={props.prefixContent && props.prefixContent.right}
         disabled={props.disabled}
         readOnly={props.readOnly}
         onChange={props.onChange}
         defaultValue={props.defaultValue}
         value={props.value}
-        {...props.register}
         placeholder={props.placeholder}
         type={props.type}
       />

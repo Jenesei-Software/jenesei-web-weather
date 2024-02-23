@@ -1,4 +1,4 @@
-export interface CityProviderProps {
+export interface ProviderCityProps {
   children: React.ReactNode
 }
 

@@ -10,7 +10,7 @@ import {
   OPEN_WEATHER_MAP_API_KEY,
   useGetCurrentAndForecastsWeather,
 } from '@api/openweathermap'
-import { useCity } from '@providers/city-provider'
+import { useCity } from '@providers/provider-city'
 import { useQuery } from '@tanstack/react-query'
 import { WidgetDayForecast } from '@widgets/day-forecast'
 import { WidgetFeelsLike } from '@widgets/feels-like'

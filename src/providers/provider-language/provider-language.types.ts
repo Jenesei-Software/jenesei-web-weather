@@ -1,6 +1,6 @@
 import { OPEN_WEATHER_MAP_LANGUAGES } from '@api/openweathermap'
 
-export interface LanguageProviderProps {
+export interface ProviderLanguageProps {
   children: React.ReactNode
 }
 

@@ -17,12 +17,11 @@ export const WeatherDifference: FC<WeatherDifferenceProps> = (props) => {
     (props.day.maxtemp - props.day.mintemp) / lengthListOnePercent
 
   const nowLeft =
-    props.now &&
     props.now?.temp &&
     (props.now?.temp - props.list.mintemp) / lengthListOnePercent
   return (
     <WeatherDifferenceWrapper className={props.className}>
-      {props.now && nowLeft && (
+      {props.now && nowLeft !== undefined && (
         <WeatherDifferenceNowWrapper $left={nowLeft}>
           <WeatherDifferenceNow />
         </WeatherDifferenceNowWrapper>

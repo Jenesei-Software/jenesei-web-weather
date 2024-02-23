@@ -11,7 +11,6 @@ import {
 import { IconWeather } from '@assets/icons/icon-weather'
 import { findMinMaxTemperatures } from '@functions/find-min-max-temperatures'
 import { formatTimestampDateOfWeek } from '@functions/format-timestamp-date-of-week'
-import { isToday } from '@functions/is-today'
 import { LayoutWidget, LayoutWidgetContainerLine } from '@layouts/layout-widget'
 import { SpanInterM16, SpanInterR12, SpanInterSB10 } from '@styles/fonts/inter'
 import { theme } from '@styles/theme'
@@ -21,7 +20,7 @@ export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
   const resultMinMaxTemperatures = findMinMaxTemperatures(props?.data?.daily)
   return (
     <LayoutWidget
-      height="430px"
+      height="424px"
       title={
         <>
           <IconWeather.DayForecast />
@@ -66,7 +65,7 @@ export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
                         mintemp: e.temp.min,
                       }}
                       now={
-                        isToday(e.dt)
+                        id == 0
                           ? {
                               temp: props.data?.current.temp,
                             }

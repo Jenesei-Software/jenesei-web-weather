@@ -1,4 +1,4 @@
-export interface GeoLocationProviderProps {
+export interface ProviderGeoLocationProps {
   children: React.ReactNode
 }
 

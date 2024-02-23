@@ -2,7 +2,7 @@ import {
   CITY_LOCAL_STORAGE,
   City,
   CityContextProps,
-  CityProviderProps,
+  ProviderCityProps,
   MY_LOCATION,
 } from '.'
 import {
@@ -12,7 +12,7 @@ import {
 } from '@api/openweathermap'
 import { Menu } from '@components/menu'
 import { queryClient, queryKeys } from '@core/query'
-import { useGeoLocation } from '@providers/geolocation-provider'
+import { useGeoLocation } from '@providers/provider-geolocation'
 import React, { createContext, useState, useContext, useCallback } from 'react'
 import { useEffect } from 'react'
 import 'swiper/css'
@@ -26,7 +26,7 @@ export const CityContext = createContext<CityContextProps | undefined>(
 export const useCity = () => {
   const context = useContext(CityContext)
   if (!context) {
-    throw new Error('useCity must be used within a CityProvider')
+    throw new Error('useCity must be used within a ProviderCity')
   }
   return context
 }
@@ -54,7 +54,7 @@ const fetchForecastForCity = async (city: City) => {
   )
 }
 
-export const CityProvider: React.FC<CityProviderProps> = (props) => {
+export const ProviderCity: React.FC<ProviderCityProps> = (props) => {
   /****************************************** Other *************************************************/
   const [cities, setCities] = useState<City[]>([])
   const [selectedCity, setSelectedCity] = useState<City>(cities[0])

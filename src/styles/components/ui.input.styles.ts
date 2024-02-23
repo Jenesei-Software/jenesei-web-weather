@@ -1,4 +1,4 @@
-import { FontInterR16 } from '@styles/fonts/inter'
+import { FontInterR19 } from '@styles/fonts/inter'
 import { InputHTMLAttributes } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import styled, { css } from 'styled-components'
@@ -50,43 +50,47 @@ export const UIInputIcon = styled.div<UIInputIconProps>`
 `
 
 export const UIInputPlaceholder = css`
-  &::placeholder {
-    color: ${(props) => props.theme.color.black['40']};
-    font-weight: 700;
-    opacity: 1;
-  }
-  &::-ms-input-placeholder {
-    font-weight: 700;
-    color: ${(props) => props.theme.color.black['40']};
-  }
+  ${FontInterR19};
+  color: ${(props) => props.theme.color.default.white};
+  opacity: 0.6;
 `
 export const UIInput = css`
-  ${FontInterR16};
+  ${FontInterR19};
   ${UIInputPlaceholder};
+  padding: 0px 12px 0px 12px;
   display: flex;
-  padding: 16px 20px;
   align-items: center;
   gap: 10px;
   align-self: stretch;
   resize: none;
   overflow: hidden;
   outline: none;
-  height: 44px;
-  min-height: 44px;
-  max-height: 44px;
-  line-height: 12px;
+  height: 52px;
+  min-height: 52px;
+  max-height: 52px;
+  line-height: 24px;
   box-sizing: border-box;
   width: 100%;
-  border-radius: 6px;
+  border-radius: 16px;
   border: none;
-  outline: 1px solid ${(props) => props.theme.color.black['60']};
-  background: ${(props) => props.theme.color.default.white};
-  color: ${(props) => props.theme.color.black['80']};
-  box-shadow: ${(props) => props.theme.inputs.default.effects.boxShadow};
+  z-index: 1;
+  outline: 1px solid transparent;
+  transition: outline-color 0.2s;
+  background: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background: rgb(255, 255, 255, 0.1);
+  &::placeholder {
+    ${UIInputPlaceholder}
+  }
+
+  &::-ms-input-placeholder {
+    ${UIInputPlaceholder}
+  }
   &:focus,
-  &:active,
   &:focus-visible {
-    outline: 1px solid ${(props) => props.theme.color.black['100']};
+    outline: 1px solid ${(props) => props.theme.color.default.white};
   }
   &*,
   &*::before,

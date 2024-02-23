@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const AppProviderWrapper = styled.div<{ $background: string }>`
+export const ProviderAppWrapper = styled.div<{ $background: string }>`
   display: flex;
   flex-direction: column;
   max-width: 100dvw;

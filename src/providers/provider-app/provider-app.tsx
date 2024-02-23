@@ -1,8 +1,8 @@
-import { AppProviderWrapper } from '.'
-import { AppContextProps } from './app-provider.types'
+import { ProviderAppWrapper } from '.'
+import { AppContextProps } from './provider-app.types'
 import { AppRoutesWeather } from '@core/router'
-import { CityProvider } from '@providers/city-provider'
-import { GeoLocationProvider } from '@providers/geolocation-provider'
+import { ProviderCity } from '@providers/provider-city'
+import { ProviderGeoLocation } from '@providers/provider-geolocation'
 import React, { createContext, useContext, useState } from 'react'
 
 export const AppContext = createContext<AppContextProps | undefined>(undefined)
@@ -11,12 +11,12 @@ export const AppContext = createContext<AppContextProps | undefined>(undefined)
 export const useApp = () => {
   const context = useContext(AppContext)
   if (!context) {
-    throw new Error('useCity must be used within a CityProvider')
+    throw new Error('useCity must be used within a ProviderCity')
   }
   return context
 }
 
-export const AppProvider: React.FC = () => {
+export const ProviderApp: React.FC = () => {
   const [background, setBackground] = useState<string | null>(null)
   const changeBackground = (background: string | null) => {
     setBackground(background)
@@ -27,13 +27,13 @@ export const AppProvider: React.FC = () => {
         changeBackground,
       }}
     >
-      <AppProviderWrapper $background={background ? background : `transparent`}>
-        <GeoLocationProvider>
-          <CityProvider>
+      <ProviderAppWrapper $background={background ? background : `transparent`}>
+        <ProviderGeoLocation>
+          <ProviderCity>
             <AppRoutesWeather />
-          </CityProvider>
-        </GeoLocationProvider>
-      </AppProviderWrapper>
+          </ProviderCity>
+        </ProviderGeoLocation>
+      </ProviderAppWrapper>
     </AppContext.Provider>
   )
 }
