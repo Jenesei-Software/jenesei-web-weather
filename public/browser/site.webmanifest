@@ -1,5 +1,6 @@
 {
   "background_color": "#f2f2f6",
+  "description": "The best weather service.",
   "display": "standalone",
   "icons": [
     {
@@ -13,7 +14,10 @@
       "type": "image/png"
     }
   ],
-  "name": "Jen. Weather",
+  "id": "jenesei-weather",
+  "lang": "eng",
+  "name": "Jenesei Weather",
+  "orientation": "portrait",
   "short_name": "Jen. Weather",
   "start_url": "/",
   "theme_color": "#4195d2"
