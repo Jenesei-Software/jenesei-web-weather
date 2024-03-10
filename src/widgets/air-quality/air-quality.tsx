@@ -6,7 +6,7 @@ import {
   FrameWidgetStyledPointRelativeToLine,
   FrameWidgetTitleContainer,
 } from '@styles/components'
-import { SpanInterM20, SpanInterR12 } from '@styles/fonts/inter'
+import { JeneseiTheme, SpanInterM20, SpanInterR12 } from 'jenesei-react-ui'
 import { FC } from 'react'
 
 export const WidgetAirQuality: FC<WidgetAirQualityProps> = (props) => {
@@ -16,14 +16,16 @@ export const WidgetAirQuality: FC<WidgetAirQualityProps> = (props) => {
       title={
         <>
           <IconWeather.AirQuality />
-          <SpanInterR12>AIR QUALITY</SpanInterR12>
+          <SpanInterR12 color={JeneseiTheme.colors.white[100]}>
+            AIR QUALITY
+          </SpanInterR12>
         </>
       }
       content={
         props.realtimeCurrent && (
           <>
             <FrameWidgetTitleContainer>
-              <SpanInterM20>
+              <SpanInterM20 color={JeneseiTheme.colors.white[100]}>
                 {props.realtimeCurrent.air_quality.pm2_5 +
                   ' ' +
                   getUsEPAIndexToTitle(

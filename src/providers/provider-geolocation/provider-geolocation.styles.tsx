@@ -1,4 +1,4 @@
-import { FontInterR36, FontInterSB16 } from '@styles/fonts/inter'
+import { FontInterR36, FontInterSB16 } from 'jenesei-react-ui'
 import styled from 'styled-components'
 
 export const LocationIsNotAllowedWrapper = styled.div`

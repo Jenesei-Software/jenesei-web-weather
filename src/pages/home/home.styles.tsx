@@ -18,7 +18,7 @@ export const HomeBackground = styled.div<{ $backgroundURL: string }>`
   height: 100%;
   min-height: 100dvh;
   width: 100dvw;
-  background-color: ${(props) => props.theme.color.product['100']};
+  background-color: ${(props) => props.theme.colors.product['100']};
   position: absolute;
   overflow: hidden;
   top: 0;
@@ -35,7 +35,7 @@ export const HomeInfoContainer = styled.div`
   gap: 8px;
   width: 100%;
   box-sizing: border-box;
-  @media (min-width: ${(props) => props.theme.size.tablet}) {
+  @media (min-width: ${(props) => props.theme.screens.tablet.width}) {
     align-content: center;
     flex-flow: column wrap;
     max-height: 70dvh;
@@ -57,7 +57,7 @@ export const StyledSwiper = styled(Swiper)`
   overflow-y: auto;
   position: static;
   & .swiper-pagination-bullet-active {
-    background: ${(props) => props.theme.color.default.white};
+    background: ${(props) => props.theme.colors.white[100]};
   }
   & .swiper-pagination {
     bottom: 32px;

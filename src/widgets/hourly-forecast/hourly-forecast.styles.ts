@@ -31,7 +31,7 @@ export const WidgetHourlyForecastStyledSwiper = styled(Swiper)`
   padding-top: 6px;
   width: 100%;
   & .swiper-pagination-bullet-active {
-    background: ${(props) => props.theme.color.default.white};
+    background: ${(props) => props.theme.screens.tablet.width};
   }
   & .swiper-slide {
     display: flex;

@@ -2,7 +2,7 @@ import { WidgetFeelsLikeProps } from '.'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { LayoutWidget } from '@layouts/layout-widget'
 import { FrameWidgetTitleContainer } from '@styles/components'
-import { SpanInterM20, SpanInterR12 } from '@styles/fonts/inter'
+import { JeneseiTheme, SpanInterM20, SpanInterR12 } from 'jenesei-react-ui'
 import { FC } from 'react'
 
 export const WidgetFeelsLike: FC<WidgetFeelsLikeProps> = (props) => {
@@ -12,13 +12,15 @@ export const WidgetFeelsLike: FC<WidgetFeelsLikeProps> = (props) => {
       title={
         <>
           <IconWeather.FeelsLike />
-          <SpanInterR12>FEELS LIKE</SpanInterR12>
+          <SpanInterR12 color={JeneseiTheme.colors.white[100]}>
+            FEELS LIKE
+          </SpanInterR12>
         </>
       }
       content={
         props.data && (
           <FrameWidgetTitleContainer>
-            <SpanInterM20>
+            <SpanInterM20 color={JeneseiTheme.colors.white[100]}>
               {props.data.current.feels_like.toFixed() + '°'}
             </SpanInterM20>
           </FrameWidgetTitleContainer>

@@ -1,5 +1,5 @@
 import { WeatherDifference } from '@components/weather-difference'
-import { SpanInterM18 } from '@styles/fonts/inter'
+import { SpanInterM18 } from 'jenesei-react-ui'
 import styled from 'styled-components'
 
 export const WidgetDayForecastList = styled.div`
@@ -45,6 +45,7 @@ export const WidgetDayForecastListItemPicture = styled.div<{
 `
 
 export const WidgetDayForecastListItemStyledSpanInterM18 = styled(SpanInterM18)`
+  color: ${(props) => props.theme.colors.white[100]};
   width: 40px;
   min-width: 40px;
   max-width: 40px;
@@ -57,7 +58,7 @@ export const WidgetDayForecastStyledWeatherDifference = styled(
   WeatherDifference
 )`
   width: 42%;
-  @media (max-width: ${(props) => props.theme.size.mobile}) {
+  @media (max-width: ${(props) => props.theme.screens.mobile.width}) {
     width: 100px;
   }
 `

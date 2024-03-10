@@ -9,7 +9,12 @@ import Arrow from '/wind/arrow.png'
 import Line from '/wind/line.png'
 import { IconWeather } from '@assets/icons/icon-weather'
 import { LayoutWidget } from '@layouts/layout-widget'
-import { SpanInterR12, SpanInterR14, SpanInterSB20 } from '@styles/fonts/inter'
+import {
+  JeneseiTheme,
+  SpanInterR12,
+  SpanInterR14,
+  SpanInterSB20,
+} from 'jenesei-react-ui'
 import { FC } from 'react'
 
 export const WidgetWind: FC<WidgetWindProps> = (props) => {
@@ -20,7 +25,9 @@ export const WidgetWind: FC<WidgetWindProps> = (props) => {
       title={
         <>
           <IconWeather.Wind />
-          <SpanInterR12>WIND</SpanInterR12>
+          <SpanInterR12 color={JeneseiTheme.colors.white[100]}>
+            WIND
+          </SpanInterR12>
         </>
       }
       content={
@@ -33,10 +40,12 @@ export const WidgetWind: FC<WidgetWindProps> = (props) => {
               src={Arrow}
             />
             <WidgetWindTitleContainer>
-              <SpanInterSB20>
+              <SpanInterSB20 color={JeneseiTheme.colors.white[100]}>
                 {props.data.current.wind_speed.toFixed(1)}
               </SpanInterSB20>
-              <SpanInterR14>m/s</SpanInterR14>
+              <SpanInterR14 color={JeneseiTheme.colors.white[100]}>
+                m/s
+              </SpanInterR14>
             </WidgetWindTitleContainer>
           </WidgetWindWrapper>
         )

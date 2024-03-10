@@ -6,7 +6,12 @@ import {
 import { IconWeather } from '@assets/icons/icon-weather'
 import { ISun, SunriseSunset } from '@components/sunrise-sunset'
 import { LayoutWidget } from '@layouts/layout-widget'
-import { SpanInterR12, SpanInterR16, SpanInterR24 } from '@styles/fonts/inter'
+import {
+  JeneseiTheme,
+  SpanInterR12,
+  SpanInterR16,
+  SpanInterR24,
+} from 'jenesei-react-ui'
 import { DateTime } from 'luxon'
 import { FC, useState, useEffect } from 'react'
 import SunCalc from 'suncalc'
@@ -157,20 +162,22 @@ export const WidgetSunrise: FC<WidgetSunriseProps> = (props) => {
         title={
           <>
             <IconWeather.Sunrise />
-            <SpanInterR12>SUNRISE</SpanInterR12>
+            <SpanInterR12 color={JeneseiTheme.colors.white[100]}>
+              SUNRISE
+            </SpanInterR12>
           </>
         }
         content={
           props.data &&
           localSun && (
             <WidgetSunriseWrapper>
-              <SpanInterR24>
+              <SpanInterR24 color={JeneseiTheme.colors.white[100]}>
                 {convertUTCToLocalTime(props.data.timezone, localSun.sunrise)}
               </SpanInterR24>
               <WidgetSunriseSunsetWrapper>
                 <SunriseSunset value={data} />
               </WidgetSunriseSunsetWrapper>
-              <SpanInterR16>
+              <SpanInterR16 color={JeneseiTheme.colors.white[100]}>
                 Sunset:{' '}
                 {convertUTCToLocalTime(props.data.timezone, localSun.sunset)}
               </SpanInterR16>

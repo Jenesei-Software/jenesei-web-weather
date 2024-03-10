@@ -1,4 +1,4 @@
-import { SpanInterT10 } from '@styles/fonts/inter'
+import { SpanInterT10 } from 'jenesei-react-ui'
 import TextTransition from 'react-text-transition'
 import styled from 'styled-components'
 
@@ -20,6 +20,7 @@ export const WidgetGeneralStyledTextTransition = styled(TextTransition)`
 export const WidgetStyledSpanInterT10 = styled(SpanInterT10)<{
   $hasPlusOrMinus: boolean
 }>`
+  color: ${(props) => props.theme.colors.white[100]};
   line-height: 95px;
   display: flex;
 `

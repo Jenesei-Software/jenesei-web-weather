@@ -1,4 +1,4 @@
-import { FontInterSB16 } from '@styles/fonts/inter'
+import { FontInterSB16 } from 'jenesei-react-ui'
 import styled from 'styled-components'
 
 export const ListWrapper = styled.div`

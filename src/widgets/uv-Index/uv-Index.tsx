@@ -6,7 +6,7 @@ import {
   FrameWidgetStyledPointRelativeToLine,
   FrameWidgetTitleContainer,
 } from '@styles/components'
-import { SpanInterM20, SpanInterR12 } from '@styles/fonts/inter'
+import { JeneseiTheme, SpanInterM20, SpanInterR12 } from 'jenesei-react-ui'
 import { FC } from 'react'
 
 export const WidgetUVIndex: FC<WidgetUVIndexProps> = (props) => {
@@ -16,14 +16,16 @@ export const WidgetUVIndex: FC<WidgetUVIndexProps> = (props) => {
       title={
         <>
           <IconWeather.UVIndex />
-          <SpanInterR12>UV INDEX</SpanInterR12>
+          <SpanInterR12 color={JeneseiTheme.colors.white[100]}>
+            UV INDEX
+          </SpanInterR12>
         </>
       }
       content={
         props.data && (
           <>
             <FrameWidgetTitleContainer>
-              <SpanInterM20>
+              <SpanInterM20 color={JeneseiTheme.colors.white[100]}>
                 {props.data.daily[0].uvi.toFixed() +
                   ' ' +
                   getUVIndexToTitle(props.data.daily[0].uvi.toFixed())}

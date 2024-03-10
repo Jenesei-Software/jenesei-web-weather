@@ -18,7 +18,7 @@ import { IconLibrary } from '@assets/icons/icon-library'
 import { InputDefault } from '@components/input-default'
 import { useApp } from '@providers/provider-app'
 import { City, MY_LOCATION, useCity } from '@providers/provider-city'
-import { SpanInterB36 } from '@styles/fonts/inter'
+import { JeneseiTheme, SpanInterB36 } from 'jenesei-react-ui'
 import { FC, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -76,7 +76,9 @@ export const List: FC = () => {
 
   return (
     <ListWrapper>
-      <SpanInterB36>{searchResult ? 'Cities' : 'Weather'}</SpanInterB36>
+      <SpanInterB36 color={JeneseiTheme.colors.white[100]}>
+        {searchResult ? 'Cities' : 'Weather'}
+      </SpanInterB36>
       <InputDefault
         value={search}
         onChange={(event) => setSearch(event.target.value)}

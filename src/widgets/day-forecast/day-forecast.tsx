@@ -12,8 +12,12 @@ import { IconWeather } from '@assets/icons/icon-weather'
 import { findMinMaxTemperatures } from '@functions/find-min-max-temperatures'
 import { formatTimestampDateOfWeek } from '@functions/format-timestamp-date-of-week'
 import { LayoutWidget, LayoutWidgetContainerLine } from '@layouts/layout-widget'
-import { SpanInterM16, SpanInterR12, SpanInterSB10 } from '@styles/fonts/inter'
-import { theme } from '@styles/theme'
+import {
+  SpanInterM16,
+  SpanInterR12,
+  SpanInterSB10,
+  JeneseiTheme,
+} from 'jenesei-react-ui'
 import React, { FC } from 'react'
 
 export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
@@ -24,7 +28,9 @@ export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
       title={
         <>
           <IconWeather.DayForecast />
-          <SpanInterR12>8-DAY FORECAST</SpanInterR12>
+          <SpanInterR12 color={JeneseiTheme.colors.white[100]}>
+            8-DAY FORECAST
+          </SpanInterR12>
         </>
       }
       content={
@@ -34,7 +40,7 @@ export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
               <React.Fragment key={id}>
                 <WidgetDayForecastListItem key={id}>
                   <WidgetDayForecastListItemDay>
-                    <SpanInterM16>
+                    <SpanInterM16 color={JeneseiTheme.colors.white[100]}>
                       {formatTimestampDateOfWeek(e.dt)}
                     </SpanInterM16>
                   </WidgetDayForecastListItemDay>
@@ -43,14 +49,14 @@ export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
                       $url={e.weather[0].icon}
                     />
                     {+e.pop.toFixed() > 0 && (
-                      <SpanInterSB10 color={theme.color.color.blue[100]}>
+                      <SpanInterSB10 color={JeneseiTheme.colors.white[100]}>
                         {(e.pop * 100).toFixed()}
                         {' %'}
                       </SpanInterSB10>
                     )}
                   </WidgetDayForecastListItemContainerPicture>
                   <WidgetDayForecastListItemStyledSpanInterM18
-                    color={theme.color.default.white40}
+                    color={JeneseiTheme.colors.white[100]}
                   >
                     {e.temp.min.toFixed(1)}°
                   </WidgetDayForecastListItemStyledSpanInterM18>
@@ -74,7 +80,7 @@ export const WidgetDayForecast: FC<WidgetDayForecastProps> = (props) => {
                     />
                   )}
                   <WidgetDayForecastListItemStyledSpanInterM18
-                    color={theme.color.default.white}
+                    color={JeneseiTheme.colors.white[100]}
                   >
                     {e.temp.max.toFixed(1)}°
                   </WidgetDayForecastListItemStyledSpanInterM18>

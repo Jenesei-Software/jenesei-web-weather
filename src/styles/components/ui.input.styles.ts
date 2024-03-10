@@ -1,4 +1,4 @@
-import { FontInterR19 } from '@styles/fonts/inter'
+import { FontInterR16 } from 'jenesei-react-ui'
 import { InputHTMLAttributes } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import styled, { css } from 'styled-components'
@@ -44,19 +44,20 @@ export const UIInputIcon = styled.div<UIInputIconProps>`
     width: 19px;
     height: 19px;
     & path {
-      fill: ${(props) => props.theme.color.black['80']};
+      fill: ${(props) => props.theme.colors.black['80']};
     }
   }
 `
 
 export const UIInputPlaceholder = css`
-  ${FontInterR19};
-  color: ${(props) => props.theme.color.default.white};
+  ${FontInterR16};
+  color: ${(props) => props.theme.colors.white[100]};
   opacity: 0.6;
 `
 export const UIInput = css`
-  ${FontInterR19};
+  ${FontInterR16};
   ${UIInputPlaceholder};
+  color: ${(props) => props.theme.colors.white[100]};
   padding: 0px 12px 0px 12px;
   display: flex;
   align-items: center;
@@ -90,7 +91,7 @@ export const UIInput = css`
   }
   &:focus,
   &:focus-visible {
-    outline: 1px solid ${(props) => props.theme.color.default.white};
+    outline: 1px solid ${(props) => props.theme.screens.tablet.width};
   }
   &*,
   &*::before,
