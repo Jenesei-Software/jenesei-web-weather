@@ -7,7 +7,6 @@
 
 [![imageban](https://i2.imageban.ru/out/2024/03/27/0395fc00177ebd596599301494eece6e.gif)](https://imageban.ru)
 
-
 Shows the weather based on your location
 
 ## Technologies
