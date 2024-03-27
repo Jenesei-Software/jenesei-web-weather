@@ -5,7 +5,8 @@
 
 [![DEMO](https://img.shields.io/badge/live%20demo-0073cf?style=for-the-badge&logoColor=white)](https://weather.jenesei.ru)
 
-[![imageban](https://i2.imageban.ru/out/2024/03/27/0395fc00177ebd596599301494eece6e.gif)](https://imageban.ru)
+![GIF](https://github.com/CyrilStrone/jenesei-weather/blob/main/git/jenesei-weather.gif)
+
 
 Shows the weather based on your location
 
